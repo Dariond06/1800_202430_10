@@ -6,9 +6,19 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
+<<<<<<< HEAD
 * ... 
 * ...
-* Hi my name is Isaac.
+* Hi my name is Isaac. I am from east van and like hiking.
+=======
+<<<<<<< HEAD
+* Darion Delorme: I'm from Kamloops and i like to play the trumpet.
+=======
+* Bullen Kosa, former Football pro and current senior software developer.
+>>>>>>> 3632f5f3e89e7eada90354c1234cd585809bca67
+* ...
+* ...
+>>>>>>> ef70298055fe3f33f49e842086a0dcad1119a0fe
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
