@@ -29,6 +29,10 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
@@ -80,39 +84,60 @@
   <div class="container mt-3">
     <div class="row">
       <div class="col-6">
-        <div class="card p-3 text-center" style="background-color: #b0b0b0;">
-          <img src="images/NewAssign.png" class="card-img-top" alt="New Assignment">
-          <p class="m-0">New Assignment</p>
-        </div>
+        <a href="#">
+          <div class="card p-3 text-center" style="background-color: #b0b0b0;">
+            <img src="images/NewAssign.png" class="card-img-top" alt="New Assignment">
+            <p class="m-0">New Assignment</p>
+          </div>
+        </a>
       </div>
+    
       <div class="col-6">
-        <div class="card p-3 text-center" style="background-color: #b0b0b0;">
-          <img src="images/NewNote.png" class="card-img-top" alt="New Note">
-          <p class="m-0">New Note</p>
-        </div>
+        <a href="#">
+          <div class="card p-3 text-center" style="background-color: #b0b0b0;">
+            <img src="images/NewNote.png" class="card-img-top" alt="New Note">
+            <p class="m-0">New Note</p>
+          </div>
+        </a>
       </div>
     </div>
-  </div>
+    
 
-  <!-- Footer -->
-  <div class="fixed-bottom d-flex justify-content-around bg-dark text-white py-2">
-    <div class="text-center">
-      <img src="images/Class.png" class="nav-icon img-fluid" alt="Classes">
-      <p class="m-0">Classes</p>
-    </div>
-    <div class="text-center">
-      <img src="images/Home.png" class="nav-icon img-fluid" alt="Home">
-      <p class="m-0">Home</p>
-    </div>
-    <div class="text-center">
-      <img src="images/Calander.png" class="nav-icon img-fluid" alt="Calendar">
-      <p class="m-0">Calendar</p>
-    </div>
-  </div>
 
-  <!-- Link to scripts of your own -->
-  <script src="./scripts/firebaseAPI.js"></script>
-  <script src="./scripts/authentication.js"></script>
+      <!-- Footer -->
+      <div class="fixed-bottom d-flex justify-content-around bg-dark text-white py-2">
+        <div class="text-center">
+          <a href="#">
+            <div class="card p-3 text-center" style="background-color: #b0b0b0;">
+              <img src="images/Class.png" class="nav-icon img-fluid" alt="Classes">
+              <p class="m-0">Classes</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="text-center">
+          <a href="#">
+            <div class="card p-3 text-center" style="background-color: #b0b0b0;">
+              <img src="images/Home.png" class="nav-icon img-fluid" alt="Home">
+              <p class="m-0">Home</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="text-center">
+          <a href="#">
+            <div class="card p-3 text-center" style="background-color: #b0b0b0;">
+              <img src="images/Calander.png" class="nav-icon img-fluid" alt="Calendar">
+              <p class="m-0">Calendar</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+
+      <!-- Link to scripts of your own -->
+      <script src="./scripts/firebaseAPI.js"></script>
+      <script src="./scripts/authentication.js"></script>
 
 </body>
 

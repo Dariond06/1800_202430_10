@@ -1,1 +1,5 @@
 
+.nav-icon {
+    width: 30px; /* Adjust this value as needed */
+    height: auto; /* Keeps the aspect ratio */
+}
