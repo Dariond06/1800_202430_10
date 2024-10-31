@@ -3,3 +3,17 @@
     width: 30px; /* Adjust this value as needed */
     height: auto; /* Keeps the aspect ratio */
 }
+
+#newAssignImg {
+    width: 30px;
+    height: auto;
+    align-self: center;
+}
+
+#newAssign {
+    margin-top: 150px;  
+}
+
+#assignContainer {
+    height: 400px;
+}

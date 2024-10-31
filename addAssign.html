@@ -10,8 +10,7 @@
   integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <!-- Bootstrap Library JS CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-  crossorigin="anonymous"></script>
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <!-- Font Awesome for Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -35,92 +34,92 @@
 
 <body>
 
-<!-- Header -->
-<div class="d-flex justify-content-between align-items-center p-3" style="background-color: #3a3a3a;">
-    <button class="btn btn-link text-white">
-      <i class="fas fa-bars"></i> <!-- Menu icon -->
-    </button>
-    <button class="btn btn-link text-white">
-      <i class="fas fa-cog"></i> <!-- Settings icon -->
-    </button>
-  </div>
-  <br>
-<!-- Date selector -->
+  <!-- Header -->
+  <nav id="navbarPlaceholder"></nav>
+
+
+  <!-- Date selector -->
   <div class="text-center p-3" style="background-color: #f8f9fa; color: #000;">
     <form>
-        <label for="dateInput" class="fw-bold">Select a Date:</label>
-        <input type="date" id="dateInput" class="form-control mb-2" required>
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <label for="dateInput" class="fw-bold">Select a Date:</label>
+      <input type="date" id="dateInput" class="form-control mb-2" required>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</div>
- 
-<!-- Assignment details -->
+  </div>
+
+  <!-- Assignment details -->
   <div class="container mt-3">
     <div class="card mb-1" style="background-color: #b0b0b0; height: 500px;">
-        <div class="card-body">
-            <div class="fw-bold mb-3 text-center" style="font-size: 24px;">Title of Assignment</div>  
-            <form>
-                <div class="form-group mb-4">
-                    <input type="text" class="form-control" id="titleInput" placeholder="Title..." />
-                </div>
+      <div class="card-body">
+        <div class="fw-bold mb-3 text-center" style="font-size: 24px;">Title of Assignment</div>
+        <form>
+          <div class="form-group mb-4">
+            <input type="text" class="form-control" id="titleInput" placeholder="Title..." />
+          </div>
 
-                <div class="row">
-                    <!-- Class Section -->
-                    <div class="col-md-3 mb-3">
-                        <label for="classSelect" class="fw-bold">Class</label>
-                        <select class="form-select" id="classSelect">
-                            <option value="class1">COMP 1712</option>
-                            <option value="class2">COMP 1537</option>
-                            <option value="class3">COMP 1510</option>
-                            <option value="class3">COMP 1100</option>
-                            <option value="class3">COMP 1113</option>
-                            <option value="class3">COMP 1116</option>
+          <div class="row">
+            <!-- Class Section -->
+            <div class="col-md-3 mb-3">
+              <label for="classSelect" class="fw-bold">Class</label>
+              <select class="form-select" id="classSelect">
+                <option value="class1">COMP 1712</option>
+                <option value="class2">COMP 1537</option>
+                <option value="class3">COMP 1510</option>
+                <option value="class3">COMP 1100</option>
+                <option value="class3">COMP 1113</option>
+                <option value="class3">COMP 1116</option>
 
-                        </select>
-                    </div>
+              </select>
+            </div>
 
-                    <!-- Notifications Section -->
-                    <div class="col-md-3 mb-3">
-                        <label for="notificationSelect" class="fw-bold">Notifications</label>
-                        <select class="form-select" id="notificationSelect">
-                            <option value="1day">1 day before</option>
-                            <option value="2days">2 days before</option>
-                            <option value="3days">3 days before</option>
-                            <option value="1week">1 week before</option>
-                        </select>
-                    </div>
-                     
-                    
-                    <!-- Affected Calendars Section -->
-                    <div class="col-md-3 mb-3">
-                        <label for="calendarSelect" class="fw-bold">Affected Calendars</label>
-                        <select class="form-select" id="calendarSelect">
-                            <option value="calendar1">Work Calendar</option>
-                            <option value="calendar2">Personal Calendar</option>
-                            <option value="calendar3">School Calendar</option>
-                            <option value="calendar4">Google Calendar</option>
-                            <option value="calendar5">Apple Calendar</option>
-                        </select>
-                    </div>
+            <!-- Notifications Section -->
+            <div class="col-md-3 mb-3">
+              <label for="notificationSelect" class="fw-bold">Notifications</label>
+              <select class="form-select" id="notificationSelect">
+                <option value="1day">1 day before</option>
+                <option value="2days">2 days before</option>
+                <option value="3days">3 days before</option>
+                <option value="1week">1 week before</option>
+              </select>
+            </div>
 
-                    <!-- Assignment Notes Section -->
-                    <div class="col-md-3 mb-3">
-                        <label for="notesInput" class="fw-bold">Assignment Notes</label>
-                        <textarea class="form-control" id="notesInput" rows="3" placeholder="Enter notes..."></textarea>
-                    </div>
-                </div>
-            </form>
 
-            <!-- Images positioned at the bottom corners -->
-            <img src="images/back.png" class="position-absolute bottom-0 start-0 m-3" width="40" height="40">
-            <img src="images/confirm.png" class="position-absolute bottom-0 end-0 m-3" width="40" height="40">
-        </div>
+            <!-- Affected Calendars Section -->
+            <div class="col-md-3 mb-3">
+              <label for="calendarSelect" class="fw-bold">Affected Calendars</label>
+              <select class="form-select" id="calendarSelect">
+                <option value="calendar1">Work Calendar</option>
+                <option value="calendar2">Personal Calendar</option>
+                <option value="calendar3">School Calendar</option>
+                <option value="calendar4">Google Calendar</option>
+                <option value="calendar5">Apple Calendar</option>
+              </select>
+            </div>
+
+            <!-- Assignment Notes Section -->
+            <div class="col-md-3 mb-3">
+              <label for="notesInput" class="fw-bold">Assignment Notes</label>
+              <textarea class="form-control" id="notesInput" rows="3" placeholder="Enter notes..."></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- Images positioned at the bottom corners -->
+        <img src="images/back.png" class="position-absolute bottom-0 start-0 m-3" width="40" height="40">
+        <img src="images/confirm.png" class="position-absolute bottom-0 end-0 m-3" width="40" height="40">
+      </div>
     </div>
-</div>
+  </div>
 
-</div>
+  </div>
 
-<!-- Footer -->
-<nav id="footerPlaceholder"></nav>
+  <!-- Footer -->
+  <nav id="footerPlaceholder"></nav>
+
+
+  <!-- Link to scripts of your own -->
+  <script src="./scripts/skeleton.js"></script>
 
 </body>
+
+<html>

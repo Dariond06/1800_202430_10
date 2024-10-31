@@ -10,8 +10,7 @@
   integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <!-- Bootstrap Library JS CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-  crossorigin="anonymous"></script>
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <!-- Font Awesome for Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -34,25 +33,17 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center p-3" style="background-color: #3a3a3a;">
-        <button class="btn btn-link text-white">
-          <i class="fas fa-bars"></i> <!-- Menu icon -->
-        </button>
-        <button class="btn btn-link text-white">
-          <i class="fas fa-cog"></i> <!-- Settings icon -->
-        </button>
-      </div>
+  <!-- Header -->
+  <nav id="navbarPlaceholder"></nav>
 
+  <!-- Welcome Message -->
+  <div class="text-center p-3" style="background-color: #f8f9fa; color: #000;">
+    <h5 class="m-0">CST Set #</h5>
+  </div>
 
-    <!-- Welcome Message -->
-    <div class="text-center p-3" style="background-color: #f8f9fa; color: #000;">
-        <h5 class="m-0">CST Set #</h5>
-     </div> 
-
-     <!-- Assignments List -->
+  <!-- Assignments List -->
   <div class="container mt-3">
-    
+
     <!-- Assignment Card 1 -->
     <div class="card mb-3" style="background-color: #b0b0b0;">
       <div class="card-body d-flex justify-content-between align-items-center">
@@ -102,30 +93,33 @@
         <span class="font-weight-bold">Assignment</span>
         <span>Due Date: 17-12-24</span>
       </div>
-      </div>
-      <!-- Assignment Card 7 -->
+    </div>
+    <!-- Assignment Card 7 -->
     <div class="card mb-3" style="background-color: #4a4a4a;">
-        <div class="card-body d-flex justify-content-between align-items-center">
-          <span>Class: 1100</span>
-          <span class="font-weight-bold">Assignment</span>
-          <span>Due Date: 13-11-24</span>
-        </div>
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <span>Class: 1100</span>
+        <span class="font-weight-bold">Assignment</span>
+        <span>Due Date: 13-11-24</span>
+      </div>
     </div>
     <!-- Add class card -->
     <div class="card mb-3" style="background-color: #4a4a4a;">
-        <div class="card-body d-flex justify-content-between align-items-center">
-          
-          <span class="font-weight-bold">Add class...</span>
-          <img src="images/NewAssign.png" class="card-img-side" width="25" height=auto>
+      <div class="card-body d-flex justify-content-between align-items-center">
 
-        </div>
+        <span class="font-weight-bold">Add class...</span>
+        <img src="images/NewAssign.png" class="card-img-side" width="25" height=auto>
+
       </div>
+    </div>
   </div>
 
   <!-- Footer -->
   <nav id="footerPlaceholder"></nav>
 
-  
+
+  <!-- Link to scripts of your own -->
+  <script src="./scripts/skeleton.js"></script>
+
 </body>
 
 </html>
