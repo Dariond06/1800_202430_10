@@ -1,99 +1,94 @@
-<title>My BCIT Project</title>
-<meta name="comp1800 template" content="My 1800 App">
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="My 1800 App">
 
-<!-- Bootstrap Library CSS CDN -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<!-- Bootstrap Library JS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Font Awesome for Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1v6vEXUEh43C1pz6fUgSz0vP1gmcpQTHL4d05" crossorigin="anonymous">
+    <!-- Bootstrap Library CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Library JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1v6vEXUEh43C1pz6fUgSz0vP1gmcpQTHL4d05" crossorigin="anonymous">
 
-<!-- Firebase 8 Library stuff -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <!-- Firebase 8 Library stuff -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-
-<!-- CSS -->
-<link rel="stylesheet" href="styles/style.css">
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
 
-  <!-- Header -->
-  <nav id="navbarPlaceholder"></nav>
+    <!-- Header -->
+    <nav id="navbarPlaceholder"></nav>
 
-  <!-- Assignment details -->
-  <div class="container mt-3">
-    <div id="addAssignPage" class="card mb-1" style="background-color: #b0b0b0;">
-      <div class="card-body">
-        <div class="fw-bold mb-3 text-center" style="font-size: 24px;">Add Assignment</div>
-        <form>
-          <div class="form-group mb-4">
-            <label for="titleInput" class="fw-bold">Assignment Title</label>
-            <input type="text" class="form-control" id="titleInput" placeholder="Title of assigment..." />
-          </div>
+    <!-- Assignment details -->
+    <div class="container mt-3">
+        <div id="addAssignPage" class="card mb-1" style="background-color: #b0b0b0;">
+            <div class="card-body">
+                <div class="fw-bold mb-3 text-center" style="font-size: 24px;">Add Assignment</div>
+                <form>
+                    <div class="form-group mb-4">
+                        <label for="titleInput" class="fw-bold">Assignment Title</label>
+                        <input type="text" class="form-control" id="titleInput" placeholder="Title of assignment..." />
+                    </div>
 
-          <div class="row">
-            <!-- Class Section -->
-            <div class="col-md-3 mb-3">
-              <label for="classSelect" class="fw-bold">Class</label>
-              <select class="form-select" id="classSelect">
-                <option value="class1">COMP 1100</option>
-                <option value="class2">COMP 1116</option>
-                <option value="class3">COMP 1113</option>
-                <option value="class3">COMP 1510</option>
-                <option value="class3">COMP 1537</option>
-                <option value="class3">COMP 1712</option>
-                <option value="class3">COMP 1800</option>
+                    <div class="row">
+                        <!-- Class Section -->
+                        <div class="col-md-3 mb-3">
+                            <label for="classSelect" class="fw-bold">Class</label>
+                            <select class="form-select" id="classSelect">
+                                <option value="class1">COMP 1100</option>
+                                <option value="class2">COMP 1116</option>
+                                <option value="class3">COMP 1113</option>
+                                <option value="class4">COMP 1510</option>
+                                <option value="class5">COMP 1537</option>
+                                <option value="class6">COMP 1712</option>
+                                <option value="class7">COMP 1800</option>
+                            </select>
+                        </div>
 
-              </select>
+                        <!-- Assignment Notes Section -->
+                        <div class="col-md-3 mb-3">
+                            <label for="notesInput" class="fw-bold">Assignment Notes</label>
+                            <textarea class="form-control" id="notesInput" rows="6" placeholder="Assignment notes and links here.."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="dateInput" class="fw-bold">Due Date:</label>
+                        <input type="date" id="dateInput" class="form-control mb-2" required>
+                    </div>
+
+                    <button type="button" class="btn btn-primary addBtn">Submit</button>
+                </form>
             </div>
-
-            
-            <!-- Assignment Notes Section -->
-            <div class="col-md-3 mb-3">
-              <label for="notesInput" class="fw-bold">Assignment Notes</label>
-              <textarea class="form-control" id="notesInput" rows="6" placeholder="Assignment notes and links here.."></textarea>
-            </div>
-          </div>
-        </form>
-
-        <form>
-          <label for="dateInput" class="fw-bold">Select a Date:</label>
-          <input type="date" id="dateInput" class="form-control mb-2" required>
-        </form>
-
-        <button type="submit" class="btn btn-primary addBtn">Submit</button>
-
-        
-      </div>
+        </div>
     </div>
-  </div>
 
-  </div>
+    <!-- Footer -->
+    <nav id="footerPlaceholder"></nav>
 
-  <!-- Footer -->
-  <nav id="footerPlaceholder"></nav>
-
-
-  <!-- Link to scripts of your own -->
-  <script src="./scripts/skeleton.js"></script>
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/addAssign.js"></script>
 
 </body>
 
-<html>
+</html>
