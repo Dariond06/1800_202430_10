@@ -11,10 +11,15 @@
 }
 
 #newAssign {
-    margin-top: 150px;  
+     padding: 10px;
 }
 
 #assignContainer {
-    height: 400px;
+    height: 580px;
 }
 
+
+.addBtn {
+    display: block;
+    margin: auto;
+}
