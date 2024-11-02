@@ -25,38 +25,22 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/auth.css">
+
 </head>
 
 <body>
-  <!-- <div id="firebaseui-auth-container"></div>
-  <div class="container vh-100 d-flex justify-content-center align-items-center" style="margin-top: 10px;">
-    <div class="card p-4" style="width: 100%; max-width: 400px;">
-      <h3 class="text-center mb-4">Login</h3> -->
-
-  <!-- <form id="loginForm"> -->
-  <!-- Email Field -->
-  <!-- <div class="form-group">
-          <label for="email" aria-label="Email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" required>
-        </div> -->
-
-  <!-- Password Field -->
-  <!-- <div class="form-group">
-          <label for="password" aria-label="Password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter password" required>
-        </div> -->
-
-  <!-- Submit Button -->
-  <!-- <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
-      </form>
-      <p id="error" class="text-danger text-center mt-3"></p>
-    </div>
-  </div> -->
-  <div class="container">
-
-  </div>
   <div id="firebaseui-auth-container"></div>
   <div id="loader">Loading...</div>
+
+  <!-- Class Code Input Form, hidden by default -->
+<div id="class-code-form" style="display: none;">
+  <h3>Enter Class Code</h3>
+  <input type="text" id="classCode" placeholder="Enter Class Code" required />
+  <button onclick="submitClassCode()">Submit</button>
+</div>
 
   <!-- Link to scripts of your own -->
   <script src="./scripts/firebaseAPI.js"></script>

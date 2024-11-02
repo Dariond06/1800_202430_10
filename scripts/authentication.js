@@ -1,36 +1,68 @@
-// Initialize the FirebaseUI Widget using Firebase.
+// Initialize FirebaseUI Widget
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 var uiConfig = {
     callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        return true;
-      },
-      uiShown: function() {
-        // The widget is rendered.
-        // Hide the loader.
-        document.getElementById('loader').style.display = 'none';
-      }
+        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+            // Check if user is new
+            if (authResult.additionalUserInfo.isNewUser) {
+                // Hide FirebaseUI
+                document.getElementById('firebaseui-auth-container').style.display = 'none';
+                
+                // Show Class Code input form
+                document.getElementById('class-code-form').style.display = 'block';
+            } else {
+                // If not a new user, continue to the redirect URL
+                return true;
+            }
+        },
+        uiShown: function() {
+            document.getElementById('loader').style.display = 'none';
+        }
     },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
     signInSuccessUrl: 'main.html',
     signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-    //   firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    //   firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    //   firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    //   firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    //   firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
-    // Terms of service url.
     tosUrl: '<your-tos-url>',
-    // Privacy policy url.
     privacyPolicyUrl: '<your-privacy-policy-url>'
-  };
+};
 
-  ui.start('#firebaseui-auth-container', uiConfig);
+// Start FirebaseUI
+ui.start('#firebaseui-auth-container', uiConfig);
+
+
+
+function submitClassCode() {
+  const classCode = document.getElementById('classCode').value;
+  const userId = firebase.auth().currentUser.uid;
+  const userName = firebase.auth().currentUser.displayName; // Get the user's display name from Firebase Auth
+
+  // Query to check if the class code exists in the classes collection
+  firebase.firestore().collection('classes').where('classCode', '==', classCode).get()
+  .then((querySnapshot) => {
+      if (!querySnapshot.empty) {
+          // Class code exists, get the first matching document
+          const classDoc = querySnapshot.docs[0]; // Get the first matching class document
+          
+          // Save the user's data to the users subcollection of the matched class
+          classDoc.ref.collection('users').doc(userId).set({
+              name: userName, // User's name
+              classSet: classDoc.id, // Class set related to the collection
+              assignments: [] // Initialize an empty array for assignments
+          }).then(() => {
+              // Redirect to the main page
+              window.location.href = 'main.html';
+          }).catch((error) => {
+              console.error("Error adding user to class: ", error);
+          });
+      } else {
+          // Class code does not exist
+          alert("The entered class code does not exist. Please try again.");
+      }
+  }).catch((error) => {
+      console.error("Error checking class code: ", error);
+  });
+}
+
