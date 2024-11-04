@@ -67,6 +67,24 @@
 }
 
 
+.card-link {
+    text-decoration: none;          
+    color: #000;                    
+    border-radius: 10px;            
+    display: block;                       
+    transition: filter 0.3s, transform 0.3s; 
+}
 
+.card-link:hover {
+    cursor: pointer;                
+    filter: brightness(1.2); 
+    transform: translateY(-5px);
+}
 
+.card-link .card-body {
+    color: inherit;                
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
 
+}
