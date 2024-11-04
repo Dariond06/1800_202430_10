@@ -1,9 +1,3 @@
-
-.nav-icon {
-    width: 30px; /* Adjust this value as needed */
-    height: auto; /* Keeps the aspect ratio */
-}
-
 #navbarPlaceholder {
     background-color: #87a330;
     color: #ffff;
@@ -20,7 +14,13 @@
 
 #newAssign {
      padding: 10px;
-     
+     transition: filter 0.3s, transform 0.3s;
+}
+
+#newAssign:hover {
+    cursor: pointer;                
+    filter: brightness(1.2); 
+    transform: translateY(-5px);
 }
 
 :root {
@@ -31,9 +31,9 @@
 }
 
 #assignContainer {
-    height: 580px;
+    height: 564px;
     flex-direction: column;
-    gap: 15px;
+    
 }
 
 #assignContainer .card-header {
@@ -46,12 +46,9 @@
     border-radius: 8px 8px 0 0;
 }
 
-#assignContainer .card{
+#assignContainer {
     background: linear-gradient(135deg, #a1c349, #243010);
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: white;
-    border-radius: 8px; 
+    
 }
 #addBtn {
 
@@ -63,10 +60,6 @@
 
 a {
     text-decoration: none;
-}
-
-#footerPlaceholder {
-     background-color: #87a330;
 }
 
 

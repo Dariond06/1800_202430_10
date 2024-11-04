@@ -1,29 +1,38 @@
-<!-- Footer -->
-<div class="fixed-bottom d-flex justify-content-around bg-dark text-white py-2" >
-    <div class="text-center">
-        <a href="#">
-            <div class="card p-3 text-center" style="background-color: #87a330;">
-                <img src="images/Class.png" class="nav-icon img-fluid" alt="Classes">
-                <p class="m-0">Classes</p>
+<head>
+    <link rel="stylesheet" href="styles/foot.css">
+</head>
+
+<div class="fixed-bottom d-flex justify-content-around footer">
+    <div class="footer-indicator"></div> <!-- Sliding indicator -->
+
+    <div class="footer-item" id="classesLink">
+        <a href="classes.html" class="footer-link">
+            <div class="footer-card">
+                <img src="images/Class.png" class="nav-icon" alt="Classes">
+                <p class="footer-text">Classes</p>
             </div>
         </a>
     </div>
 
-    <div class="text-center">
-        <a href="main.html">
-            <div class="card p-3 text-center" style="background-color: #87a330;">
-                <img src="images/Home.png" class="nav-icon img-fluid" alt="Home">
-                <p class="m-0">Home</p>
+    <div class="footer-item" id="homeLink">
+        <a href="main.html" class="footer-link">
+            <div class="footer-card">
+                <img src="images/Home.png" class="nav-icon" alt="Home">
+                <p class="footer-text">Home</p>
             </div>
         </a>
     </div>
 
-    <div class="text-center">
-        <a href="#">
-            <div class="card p-3 text-center" style="background-color: #87a330;">
-                <img src="images/Calander.png" class="nav-icon img-fluid" alt="Calendar">
-                <p class="m-0">Calendar</p>
+    <div class="footer-item" id="calendarLink">
+        <a href="calendar.html" class="footer-link">
+            <div class="footer-card">
+                <img src="images/Calander.png" class="nav-icon" alt="Calendar">
+                <p class="footer-text">Calendar</p>
             </div>
         </a>
     </div>
 </div>
+
+
+<script src="./scripts/foot.js"></script>
+
