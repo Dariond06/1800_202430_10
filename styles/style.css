@@ -25,7 +25,9 @@
     margin: auto;
 }
 
-
+a {
+    text-decoration: none;
+}
 
 .card-link {
     text-decoration: none;          
