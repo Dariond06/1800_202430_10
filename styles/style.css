@@ -4,30 +4,71 @@
     height: auto; /* Keeps the aspect ratio */
 }
 
+#navbarPlaceholder {
+    background-color: #87a330;
+    color: #ffff;
+    padding: 1rem;
+    
+}
+
 #newAssignImg {
     width: 30px;
     height: auto;
     align-self: center;
+    
 }
 
 #newAssign {
      padding: 10px;
+     
+}
+
+:root {
+    
+    --start-color: #243010;
+    --end-color: #cad593;
+    
 }
 
 #assignContainer {
     height: 580px;
+    flex-direction: column;
+    gap: 15px;
 }
 
+#assignContainer .card-header {
 
+    background-color: #87a330;
+    color: #ffff;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px 8px 0 0;
+}
 
-.addBtn {
+#assignContainer .card{
+    background: linear-gradient(135deg, #a1c349, #243010);
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    border-radius: 8px; 
+}
+#addBtn {
+
+    color: #ffffff;
     display: block;
     margin: auto;
+    
 }
 
 a {
     text-decoration: none;
 }
+
+#footerPlaceholder {
+     background-color: #87a330;
+}
+
 
 .card-link {
     text-decoration: none;          
