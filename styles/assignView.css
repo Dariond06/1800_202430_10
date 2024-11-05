@@ -1,49 +1,30 @@
-:root {
-    
-    --start-color: #243010;
-    --end-color: #cad593;
-    
-}
 
-#card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.card {
-    background-color: linear(135deg, #a1c349, #243010);
+.custom-container {
+    margin-top: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .custom-card {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  
+  .card-body {
     padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: white;
-    border-radius: 8px;
-
-}
-
-.card-1 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
-
-.card-2 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
-
-.card-3 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
-
-.card-4 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
-
-.card-5 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
-
-.card-6 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
-
-.card-7 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .addAssignment {
+    background-color: #636363;
+    color: #ffffff;
+  }
+  .card-img-side {
+    display: inline-block;
+    margin-left: auto;
+  }
+  

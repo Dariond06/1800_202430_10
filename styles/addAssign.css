@@ -1,4 +1,37 @@
 
-#addAssignPage {
-    background-color: #a1c349;
+
+.container {
+    margin-top: 1rem;
+    padding: 0 1rem;
+
+    
+}
+
+
+.card {
+    background-color: #d1d1d1;
+    margin-bottom: 0.25rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+
+.card-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+
+.label-bold {
+    font-weight: bold;
+}
+
+
+.addBtn {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 16px;
 }

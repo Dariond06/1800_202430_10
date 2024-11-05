@@ -1,17 +1,70 @@
 
-.card {
-    border-radius: 8px; 
-    padding: 15px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.container {
+    margin-top: 1rem;
+    padding: 0 1rem;
      
 }
 
-#card-mb-1 -gradient-card-1 {
-    background-color: linear(135deg, #a1c349, #243010);
-}
-
-.gradient-card-2 {
-    background-color: linear(135deg, #a1c349, #243010);
-    color: white;
+.card {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     
 }
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    
+    
+}
+
+.card-1 {
+    height: 100px;
+    background-color: #636363;
+
+}
+
+.card-2 {
+    height: 500px;
+    background-color: #d1d1d1;
+    
+}
+
+.detailstitle {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: #000;
+}
+
+.details-body {
+    color:#000;
+    line-height: 1.5;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.bottom-0 {
+    bottom: 0;
+  }
+  
+  .start-0 {
+    left: 0;
+  }
+  
+  .end-0 {
+    right: 0;
+  }
+  
+  .m-3 {
+    margin: 1rem;
+  }

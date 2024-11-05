@@ -24,7 +24,7 @@
 
 /* Footer Card Styling */
 .footer-card {
-    background-color: #87a330; 
+    background-color: #85c7f2; 
     padding: 15px;
     border-radius: 0; 
     transition: background-color 0.5s ease; 
@@ -40,7 +40,7 @@
 
 /* Active State for Only Current Page Button */
 .footer-card.active {
-    background-color: #A3C858; /* Highlight color for active button */
+    background-color: #89cff0; /* Highlight color for active button */
 }
 
 /* Icon Styling */
@@ -58,7 +58,7 @@
 
 /* Hover Effect for Footer Cards */
 .footer-card:hover {
-    background-color: #9db846; 
+    background-color: #636363; 
     cursor: pointer;
 }
 
