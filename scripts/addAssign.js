@@ -10,22 +10,22 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Get the current user ID
+        // Gets the current user ID
         const userId = firebase.auth().currentUser.uid;
         const set = db.collection("classes")
 
-        // Retrieve the user's classSet field from Firestore
+        // Retrieves the user's classSet field from Firestore
         db.collection("users").doc(userId).get()
             .then((doc) => {
                 if (doc.exists) {
-                    // Use the classSet field to find the specific class document
+                    // Uses the classSet field to find the specific class document
                     const classSet = doc.data().classSet;
                     console.log(classSet);
 
-                    // Reference to the assignments collection within the specific class
+                    // References the assignments collection within the specific class
                     const assignmentsRef = db.collection("classes").doc(classSet).collection("assignments");
 
-                    // Add the assignment to the specified class's assignments collection
+                    // Adds the assignment to the specified class's assignments collection
                     assignmentsRef.add({
                         title: title,
                         courseName: classSelected,

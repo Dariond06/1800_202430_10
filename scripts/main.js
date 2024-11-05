@@ -12,10 +12,10 @@ const assignments = [
     
     
     
-    // Add more assignments as needed
+
 ];
 
-// Function to interpolate color between two colors based on a factor (0 to 1)
+// Function to interpolate color between two colors based on the factor (0 to 1)
 function redGreenGradient(color1, color2, factor) {
     const result = color1.slice(); // Copy the first color
     for (let i = 0; i < 3; i++) {
@@ -33,7 +33,7 @@ function lightenColor(color, factor) {
     return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
 }
 
-// Define red and green colors as RGB arrays
+// Defines red and green colors as RGB arrays
 const red = [255, 0, 0];   // RGB for red
 const green = [0, 255, 0]; // RGB for green
 
