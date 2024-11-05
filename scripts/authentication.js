@@ -47,7 +47,7 @@ function submitClassCode() {
           const classDoc = querySnapshot.docs[0]; // Get the first matching class document
           
           // Save the user's data to the users subcollection of the matched class
-          classDoc.ref.collection('users').doc(userId).set({
+          firebase.firestore().collection('users').doc(userId).set({
               name: userName, // User's name
               classSet: classDoc.id, // Class set related to the collection
               assignments: [] // Initialize an empty array for assignments
