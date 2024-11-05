@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Get the current user ID
         const userId = firebase.auth().currentUser.uid;
+        const set = db.collection("classes")
 
         // Retrieve the user's classSet field from Firestore
-        db.collection("classes").doc("classSet").collection("users").doc(userId).get()
+        db.collection("users").doc(userId).get()
             .then((doc) => {
                 if (doc.exists) {
                     // Use the classSet field to find the specific class document
