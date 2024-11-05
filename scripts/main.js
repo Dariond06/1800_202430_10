@@ -10,6 +10,8 @@ const assignments = [
     { class: '1522', title: 'namehere', dueDate: '2024-12-14' }, 
     { class: '1212', title: 'namehere', dueDate: '2024-12-17' },
     
+    
+    
     // Add more assignments as needed
 ];
 

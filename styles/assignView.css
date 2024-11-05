@@ -1,0 +1,30 @@
+
+.custom-container {
+    margin-top: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .custom-card {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  
+  .card-body {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .addAssignment {
+    background-color: #636363;
+    color: #ffffff;
+  }
+  .card-img-side {
+    display: inline-block;
+    margin-left: auto;
+  }
+  
