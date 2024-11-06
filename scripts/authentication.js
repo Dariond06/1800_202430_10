@@ -4,15 +4,15 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-            // Check if user is new
+            // Checks if user is new
             if (authResult.additionalUserInfo.isNewUser) {
-                // Hide FirebaseUI
+
                 document.getElementById('firebaseui-auth-container').style.display = 'none';
 
-                // Show Class Code input form
+                // Shows Class Code input form
                 document.getElementById('class-code-form').style.display = 'block';
             } else {
-                // If not a new user, continue to the redirect URL
+                // If not a new user, continues to the redirect URL
                 return true;
             }
         },
@@ -37,22 +37,22 @@ ui.start('#firebaseui-auth-container', uiConfig);
 function submitClassCode() {
     const classCode = document.getElementById('classCode').value;
     const userId = firebase.auth().currentUser.uid;
-    const userName = firebase.auth().currentUser.displayName; // Get the user's display name from Firebase Auth
+    const userName = firebase.auth().currentUser.displayName; // Gets the user's display name from Firebase Auth
 
-  // Query to check if the class code exists in the classes collection
+  // Querys to check if the class code exists in the classes collection
   firebase.firestore().collection('classes').where('classCode', '==', classCode).get()
   .then((querySnapshot) => {
       if (!querySnapshot.empty) {
           // Class code exists, get the first matching document
-          const classDoc = querySnapshot.docs[0]; // Get the first matching class document
+          const classDoc = querySnapshot.docs[0]; // Gets the first matching class document
           
-          // Save the user's data to the users subcollection of the matched class
+          // Saves the user's data to the users subcollection of the matched class
           firebase.firestore().collection('users').doc(userId).set({
               name: userName, // User's name
               classSet: classDoc.id, // Class set related to the collection
-              assignments: [] // Initialize an empty array for assignments
+              assignments: [] // Initializes an empty array for assignments
           }).then(() => {
-              // Redirect to the main page
+              // Redirects to the main page
               window.location.href = 'main.html';
           }).catch((error) => {
               console.error("Error adding user to class: ", error);
