@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Gets the current user ID
         const userId = firebase.auth().currentUser.uid;
-        const set = db.collection("classes")
 
         // Retrieves the user's classSet field from Firestore
         db.collection("users").doc(userId).get()
