@@ -62,7 +62,7 @@ assignments.forEach((assign, index) => {
         <div class="card-body d-flex justify-content-between">
             <span>Class: ${assign.class}</span>
             <span class="font-weight-bold">${assign.title}</span>
-            <span>Due Date: ${assign.dueDate}</span>
+            <span>${assign.dueDate}</span>
         </div>
     </a>
     `;
