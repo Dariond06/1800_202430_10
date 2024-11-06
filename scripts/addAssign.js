@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                         .then(() => {
                             alert("Assignment successfully added!");
+                            window.location.href = 'main.html';
                         })
                         .catch((error) => {
                             console.error("Error adding assignment: ", error);
