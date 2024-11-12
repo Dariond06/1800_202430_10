@@ -1,3 +1,39 @@
+const dueButton = document.getElementById('dueButton');
+const doneButton = document.getElementById('doneButton');
+const dueContent = document.getElementById('dueContent');
+const doneContent = document.getElementById('doneContent');
+
+loadAssignments();
+
+dueButton.addEventListener('click', function() {
+  // Add active class to the 'Due' button and remove from 'Done'
+  dueButton.classList.add('active');
+  doneButton.classList.remove('active');
+  
+  // Show 'Due' content and hide 'Done' content
+  dueContent.style.display = 'block';
+  doneContent.style.display = 'none';
+
+  // Optionally, clear or reset the 'Due' content (for dynamic assignment data)
+  dueContent.innerHTML = '<p>Due tasks...</p>'; // Reset or clear the content
+});
+
+loadAssignments();
+
+doneButton.addEventListener('click', function() {
+  // Add active class to the 'Done' button and remove from 'Due'
+  doneButton.classList.add('active');
+  dueButton.classList.remove('active');
+  
+  // Show 'Done' content and hide 'Due' content
+  doneContent.style.display = 'block';
+  dueContent.style.display = 'none';
+
+  // Optionally, clear or reset the 'Done' content (for dynamic assignment data)
+  doneContent.innerHTML = '<p>Completed tasks...</p>'; // Reset or clear the content
+});
+
+
 // Function to interpolate color between two colors based on a factor (0 to 1)
 function redGreenGradient(color1, color2, factor) {
     const result = color1.slice();
@@ -6,7 +42,6 @@ function redGreenGradient(color1, color2, factor) {
     }
     return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
 }
-
 
 const red = [255, 0, 0];    // RGB for red
 const green = [0, 255, 0];  // RGB for green
@@ -31,7 +66,6 @@ function loadAssignments(userSet) {
             assignments.forEach((data, index) => {
                 const factor = index / (assignments.length - 1);
                 const backgroundColor = redGreenGradient(red, green, factor);
-
 
                 const formattedDate = new Date(data.dueDate.toDate()).toLocaleDateString();
                 const assignmentItem = `
