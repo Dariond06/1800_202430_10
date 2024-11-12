@@ -53,16 +53,21 @@ body {
     padding: 1rem;
     border-radius: 8px 8px 0 0;
 }
-
-#assignContainer .card-footer {
-
-    background-color: #636262;
-    color: #ffff;
-    font-weight: bold;
-    text-align: center;
-    padding: 1rem;
-    
-}
+  
+.rightBTN {
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0.09; 
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0; 
+  }
+  
+  .leftBTN {
+    border-bottom-left-radius: 0.375rem; 
+    border-bottom-right-radius: 0; 
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0;
+  }
+  
 
 
 #assignContainer {

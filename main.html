@@ -49,28 +49,39 @@
         <h4>Upcoming Deadlines!</h4>
       </div>
 
-
       <div class="card-body overflow-auto" id="assignList">
-
-      </div>
-
-
-
-      <!-- Completed and Done Buttons -->
-      <div class="card-footer text-center font-weight-bold">
-        <div class="btn-group" role="group" aria-label="Completed or Done">
-          <button type="button" class="btn btn-secondary">Completed</button>
-          <button type="button" class="btn btn-secondary">Done</button>
+        <!-- Dynamic content for Due and Done assignments will go here -->
+        <div id="dueContent" class="content">
+          <!-- Content for 'Due' -->
+          <p>Due tasks...</p>
+        </div>
+        <div id="doneContent" class="content" style="display: none;">
+          <!-- Content for 'Done' -->
+          <p>Completed tasks...</p>
         </div>
       </div>
 
-      <!-- <a href="#">
+      <!-- Completed and Done Buttons (Full Width, Edge-to-Edge) -->
+      <div class="card-footer p-0">
+        <div class="d-flex w-100">
+          <button id="dueButton" type="button" class="btn btn-secondary w-50 mb-0 leftBTN active">Due</button>
+          <button id="doneButton" type="button" class="btn btn-secondary w-50 mb-0 rightBTN">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- <a href="#">
       <div class="text-center p-2" style="background-color: #b0b0b0; color: #000;">
         <h5 class="m-0">View all</h5>
       </div>
       </a> -->
 
-    </div>
+  </div>
   </div>
 
 
