@@ -69,15 +69,18 @@ function loadAssignments(userSet) {
 
                 const formattedDate = new Date(data.dueDate.toDate()).toLocaleDateString();
                 const assignmentItem = `
-                <div class="card mb-2">
-                    <a href="assignDetails.html?courseName=${encodeURIComponent(data.courseName)}&title=${encodeURIComponent(data.title)}&dueDate=${encodeURIComponent(formattedDate)}&details=${encodeURIComponent(data.details)}" class="card-link" style="background-color: #f5f5f5; text-decoration: none;">
-                        <div class="card-body d-flex justify-content-between">
-                            <span>${data.courseName}</span>
-                            <span class="font-weight-bold">${data.title}</span>
-                            <span>${formattedDate}</span>
-                        </div>
-                    </a>
-                </div>`;
+                <div class="card mb-2 shadow-sm rounded-lg" style="background: ${backgroundColor}; border: none;">
+                    <a href="assignDetails.html?courseName=${encodeURIComponent(data.courseName)}&title=${encodeURIComponent(data.title)}&dueDate=${encodeURIComponent(formattedDate)}&details=${encodeURIComponent(data.details)}" class="card-link" style="background-color: ${backgroundColor}; text-decoration: none;">
+                        <div class="card-body d-flex justify-content-between align-items-center py-2">
+                            <div>
+                                <h5 class="card-title mb-0 text-primary font-weight-bold">${data.courseName}</h5>
+                                    <p class="card-text  mb-0">${data.title}</p>
+                                </div>
+                                <span class="card-text ">${formattedDate}</span>
+                            </div>
+                        </a>
+                    </div>`;
+
                 assignList.insertAdjacentHTML('beforeend', assignmentItem);
             });
         })
