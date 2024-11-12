@@ -44,41 +44,29 @@
   <nav id="navbarPlaceholder"></nav>
 
   <!-- Assignment to-add -->
-  <div class="container">
+  <div class="container mt-3">
     <!-- Preview -->
-     <div class ="card">
-     <div class="card-1">
+    <div class="card">
       <div class="card-body">
-        <span>Class Information:<br>1712</span>
-        <span class="font-weight-bold">Assignment info: <br> Assignment</span>
-        <span>Due Date: 12-12-24</span>
+        <span id="courseName">Class:<br></span>
+        <span id="assignmentTitle" class="font-weight-bold">Title: <br></span>
+        <span id="dueDate">Due Date: </span>
       </div>
     </div>
-    </div>
+
     <!-- Assignment Details -->
-    <div class ="card">
-    <div class="card-2">
-      
+    <div class="card mt-3">
+      <div class="card-body">
         <div class="detailsTitle">Assignment Details: </div>
-        <div class="detailsBody">
           <div class="cardBody">
-          <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Integer nunc nisl, bibendum eget ante dictum, placerat varius ex.
-            Vestibulum eleifend congue dui. Etiam hendrerit volutpat lobortis.
-            Nam pretium, tellus quis imperdiet interdum, urna erat venenatis lorem, non commodo mi velit vitae orci.
-            Cras at leo ligula. Pellentesque consequat scelerisque maximus. In egestas nunc vel vehicula porttitor.
-            Aliquam vitae nulla vel elit sodales sodales nec vel mauris. Duis rutrum pulvinar efficitur.
-            Nunc vitae consectetur orci.Maecenas quam tortor, imperdiet eget dui a, blandit bibendum purus.
-            Morbi vulputate, diam tempus mollis gravida, dolor velit elementum metus, quis consectetur quam elit at dui.
-            In hac habitasse platea dictumst.
-          </span> <br>
-          <img src="images/back.png" class="position-absolute bottom-0 start-0 m-3" width="40" height="40">
-          <img src="images/confirm.png" class="position-absolute bottom-0 end-0 m-3" width="40" height="40">
-        </div>
+            <span id="assignmentDetails">Details should show here...</span>
+            <br>
+            <img src="images/back.png"  class="position-absolute bottom-0 start-0 m-3" width="40" height="40" onclick="goBack()">
+            <img src="images/confirm.png" class="position-absolute bottom-0 end-0 m-3" width="40" height="40">
+          </div>
       </div>
     </div>
   </div>
-</div> 
 
 
 
@@ -86,6 +74,7 @@
   <nav id="footerPlaceholder"></nav>
   
   <!-- Link to scripts of your own -->
+  <script src=".\scripts\assignDetails.js"></script>
   <script src="./scripts/skeleton.js"></script>
 
 </body>

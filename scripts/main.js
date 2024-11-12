@@ -77,7 +77,7 @@ function loadAssignments(userSet) {
                 
                 const assignmentItem = `
                 <div class="card mb-2">
-                    <a href="#" class="card-link" style="background-color: #f5f5f5; text-decoration: none;">
+                    <a href="assignDetail.html?courseName=${encodeURIComponent(data.courseName)}&title=${encodeURIComponent(data.title)}&dueDate=${encodeURIComponent(formattedDate)}&details=${encodeURIComponent(data.details)}" class="card-link" style="background-color: #f5f5f5; text-decoration: none;">
                         <div class="card-body d-flex justify-content-between">
                             <span>${data.courseName}</span>
                             <span class="font-weight-bold">${data.title}</span>
