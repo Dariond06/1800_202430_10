@@ -64,6 +64,7 @@ body {
     
 }
 
+
 #assignContainer {
     background-color: #d1d1d1;
     
@@ -82,18 +83,21 @@ a {
 
 
 .card-link {
-    text-decoration: none;          
-    color: #000;                    
-    border-radius: 10px;            
-    display: block;                       
-    transition: filter 0.5s, transform 0.3s; 
+    text-decoration: none;
+    color: #000; /* Default text color */
+    border-radius: 10px;
+    display: block;
+    transition: filter 0.5s, transform 0.3s, color 0.3s;
 }
 
 .card-link:hover {
-    cursor: pointer;                
-    filter: brightness(2); 
+    cursor: pointer;
+    filter: brightness(2); /* Increase brightness for a subtle hover effect */
     transform: translateY(-5px);
+    
 }
+
+
 
 .card-link .card-body {
     color: inherit;                
