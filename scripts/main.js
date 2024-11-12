@@ -1,19 +1,7 @@
 // Assuming you have an array of assignments
 const assignments = [
-    { class: '1427', title: 'namehere', dueDate: '2024-12-12' },
-    { class: '1522', title: 'namehere', dueDate: '2024-12-14' }, 
-    { class: '1212', title: 'namehere', dueDate: '2024-12-17' }, 
-    { class: '1427', title: 'namehere', dueDate: '2024-12-12' }, 
-    { class: '1522', title: 'namehere', dueDate: '2024-12-14' }, 
-    { class: '1212', title: 'namehere', dueDate: '2024-12-17' }, 
-    { class: '1427', title: 'namehere', dueDate: '2024-12-12' }, 
-    { class: '1522', title: 'namehere', dueDate: '2024-12-14' }, 
-    { class: '1212', title: 'namehere', dueDate: '2024-12-17' },
-    
-    
-    
-
 ];
+
 
 // Function to interpolate color between two colors based on the factor (0 to 1)
 function redGreenGradient(color1, color2, factor) {
@@ -25,11 +13,11 @@ function redGreenGradient(color1, color2, factor) {
 }
 
 // Function to lighten a color by a given factor for hovering (0 to 1)
-function lightenColor(color, factor) {
-    const result = color.slice(); // Copy the original color
-    for (let i = 0; i < 3; i++) {
-        result[i] = Math.min(Math.round(result[i] + (255 - result[i]) * factor), 255);
-    }
+function lightenColor(rgbString, factor) {
+    const match = rgbString.match(/\d+/g); // Extract RGB values
+    if (!match) return rgbString; // Fallback in case of bad input
+    const [r, g, b] = match.map(Number);
+    const result = [r, g, b].map(val => Math.min(Math.round(val + (255 - val) * factor), 255));
     return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
 }
 
@@ -39,6 +27,9 @@ const green = [0, 255, 0]; // RGB for green
 
 // Sort assignments by due date
 assignments.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
+// Get the assignment list container
+const assignList = document.getElementById('assignList');
 
 // Create cards with gradient color based on due date
 assignments.forEach((assign, index) => {
@@ -54,6 +45,9 @@ assignments.forEach((assign, index) => {
     card.style.backgroundColor = backgroundColor;
     card.style.color = '#000'; // Ensure text color is readable (black)
 
+    // Format the due date to show only the calendar date
+    const formattedDate = new Date(assign.dueDate).toLocaleDateString();
+
     // Set hover color using inline CSS
     card.innerHTML = `
     <a href="#" class="card-link" style="background: ${backgroundColor}; color: inherit; text-decoration: none;" 
@@ -62,9 +56,76 @@ assignments.forEach((assign, index) => {
         <div class="card-body d-flex justify-content-between">
             <span>Class: ${assign.class}</span>
             <span class="font-weight-bold">${assign.title}</span>
-            <span>${assign.dueDate}</span>
+            <span>${formattedDate}</span>
         </div>
     </a>
     `;
     assignList.appendChild(card);
 });
+
+function loadAssignments(userSet) {
+    const assignList = document.getElementById('assignList');
+    assignList.innerHTML = ''; // Clear any existing content
+
+    db.collection('classes').doc(userSet).collection('assignments')
+        .get()
+        .then((querySnapshot) => {
+            console.log(`Loaded ${querySnapshot.size} assignments`);  // Log the number of assignments
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const formattedDate = new Date(data.dueDate.toDate()).toLocaleDateString();
+                
+                const assignmentItem = `
+                <div class="card mb-2">
+                    <a href="#" class="card-link" style="background-color: #f5f5f5; text-decoration: none;">
+                        <div class="card-body d-flex justify-content-between">
+                            <span>${data.courseName}</span>
+                            <span class="font-weight-bold">${data.title}</span>
+                            <span>${formattedDate}</span>
+                        </div>
+                    </a>
+                </div>`;
+                assignList.insertAdjacentHTML('beforeend', assignmentItem);
+            });
+        })
+        .catch((error) => {
+            console.error('Error fetching assignments:', error);
+        });
+}
+
+// Example: Call loadAssignments with user-specific set
+function getUserSetAndLoad(userId) {
+    // Assuming user set is fetched dynamically
+    db.collection('users')
+        .doc(userId) // Replace with the actual user ID
+        .get()
+        .then((doc) => {
+            if (doc.exists) {
+                const userSet = doc.data().classSet; // e.g., 'cstSetC'
+                console.log('User set:', userSet);
+                loadAssignments(userSet); // Load assignments for the specific set
+            } else {
+                console.error('No user data found!');
+            }
+        })
+        .catch((error) => {
+            console.error('Error fetching user set:', error);
+        });
+}
+
+// Call this function when the page loads
+window.onload = function () {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            const userId = user.uid; // Get the authenticated user's UID
+            console.log(`Loading assignments for user: ${userId}`);
+            getUserSetAndLoad(userId);
+        } else {
+            console.error('No user is signed in.');
+            // Optionally, redirect to login page or show a message
+            window.location.href = '/login.html'; // Replace with your login page
+        }
+    });
+};
+
+
