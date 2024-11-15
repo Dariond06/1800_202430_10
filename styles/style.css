@@ -45,7 +45,6 @@ body {
 }
 
 #assignContainer .card-header {
-
     background-color: #4c4c4c;
     color: #ffff;
     font-weight: bold;
@@ -68,12 +67,6 @@ body {
     border-top-right-radius: 0;
   }
   
-
-
-#assignContainer {
-    background-color: #d1d1d1;
-    
-}
 #addBtn {
 
     color: #ffffff;

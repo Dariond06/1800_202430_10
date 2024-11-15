@@ -1,4 +1,30 @@
 <!-- Header Bar -->
 <h5 class="m-0">BCIT Class Tracker</h5>
 
-<h5 class="m-0">CST Set #</h5>
+<h5 class="m-0" id="classSetHeader">Loading Class...</h5>
+
+
+
+<script>
+    // Fetch the user's class set from Firestore
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // Get the user's class set from Firestore
+            var userRef = db.collection("users").doc(user.uid);
+
+            userRef.get().then(function(doc) {
+                if (doc.exists) {
+                    var classSet = doc.data().classSet;  // Assuming the 'classSet' field exists
+                    // Update the header with the user's class set
+                    document.getElementById("classSetHeader").textContent = classSet;
+                } else {
+                    console.log("No such document!");
+                }
+            }).catch(function(error) {
+                console.error("Error getting document: ", error);
+            });
+        } else {
+            console.log("No user is signed in.");
+        }
+    });
+</script>

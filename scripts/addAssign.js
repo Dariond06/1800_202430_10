@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("submitAssignment").addEventListener("click", () => {
+        const submitButton = document.getElementById("submitAssignment");
+        submitButton.disabled = true; // Disable the button to prevent multiple clicks
+        
         const title = document.getElementById("titleInput").value;
         const classSelected = document.getElementById("classSelect").value;
         const details = document.getElementById("detailsInput").value;

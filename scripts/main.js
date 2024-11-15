@@ -91,6 +91,7 @@ function loadAssignments(userSet) {
 }
 
 function getUserSetAndLoad(userId) {
+    assignList.innerHTML = '<p>Loading Assignments</p>';
     db.collection('users')
         .doc(userId)
         .get()
@@ -120,3 +121,12 @@ window.onload = function () {
         }
     });
 };
+
+
+
+
+
+
+
+
+

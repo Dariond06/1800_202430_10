@@ -5,7 +5,7 @@ const currentPage = window.location.pathname.split('/').pop();
 const pageLinks = {
     'classes.html': 'classesLink',
     'main.html': 'homeLink',
-    'calendar.html': 'calendarLink'
+    'setting.html': 'settingLink'
 };
 
 // Add 'active' class to the corresponding footer card if it matches the current page
