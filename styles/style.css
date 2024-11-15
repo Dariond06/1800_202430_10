@@ -14,11 +14,9 @@ body {
 }
 
 
-#newAssignImg {
-    width: 30px;
-    height: auto;
-    align-self: center;
-    
+#newAssign i {
+    font-size: 4rem;
+    align-self: center; 
 }
 
 #newAssign {

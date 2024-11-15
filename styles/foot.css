@@ -46,8 +46,7 @@
 
 /* Icon Styling */
 .footer-item i {
-    width: 24px;
-    height: 24px;
+    font-size: 3rem;
     margin-bottom: 5px;
 }
 
