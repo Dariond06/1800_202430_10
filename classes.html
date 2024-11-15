@@ -1,0 +1,162 @@
+<title>Classes</title>
+<meta name="comp1800 template" content="My 1800 App">
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap Library CSS CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- Bootstrap Library JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<!-- Font Awesome for Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<!-- Firebase 8 Library stuff -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/classess.css">
+
+</head>
+
+<body>
+  <!-- Header -->
+  <nav id="navbarPlaceholder"></nav>
+
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row" id="classesContainer">
+      <!-- Class 1: COMP 1100 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 rounded">
+          <h5 class="card-title">COMP 1100 CST Program Fundamentals</h5>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et diam et urna condimentum volutpat. Nullam ac libero et metus auctor malesuada.</p>
+            <div class="mt-3">
+              <p><strong>Instructor:</strong> Thomas Magliery</p>
+              <p><strong>Email:</strong> <a href="mailto:tommagliery@bcit.ca">tommagliery@bcit.ca</a></p>
+              <a href="https://learn.bcit.ca/d2l/home/1054880" class="btn btn-primary" target="_blank">Go to Class Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class 2: COMP 1113 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 rounded">
+          <h5 class="card-title">COMP 1113 Applied Mathematics</h5>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et diam et urna condimentum volutpat. Nullam ac libero et metus auctor malesuada.</p>
+            <div class="mt-3">
+              <p><strong>Instructor:</strong> Paul Rozman</p>
+              <p><strong>Email:</strong> <a href="mailto:Paul_Rozman@bcit.ca">Paul_Rozman@bcit.ca</a></p>
+              <a href="https://learn.bcit.ca/d2l/home" class="btn btn-primary" target="_blank">Go to Class Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class 3: COMM 1116 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 rounded">
+          <h5 class="card-title">COMM 1116 Business Communications</h5>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et diam et urna condimentum volutpat. Nullam ac libero et metus auctor malesuada.</p>
+            <div class="mt-3">
+              <p><strong>Instructors:</strong> Thorsten Ewald, Frank Schnurr</p>
+              <p><strong>Emails:</strong> <a href="mailto:Thorsten_Ewald@bcit.ca">Thorsten_Ewald@bcit.ca</a>, <a href="mailto:frank_schnurr@bcit.ca">frank_schnurr@bcit.ca</a></p>
+              <a href="https://learn.bcit.ca/d2l/home/1057594" class="btn btn-primary" target="_blank">Go to Class Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class 4: COMP 1510 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 rounded">
+          <h5 class="card-title">COMP 1510 Programming Methods</h5>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et diam et urna condimentum volutpat. Nullam ac libero et metus auctor malesuada.</p>
+            <div class="mt-3">
+              <p><strong>Instructor:</strong> Bruce Link</p>
+              <p><strong>Email:</strong> <a href="mailto:Bruce_Link@bcit.ca">Bruce_Link@bcit.ca</a></p>
+              <a href="https://learn.bcit.ca/d2l/home/1054880" class="btn btn-primary" target="_blank">Go to Class Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class 5: COMP 1537 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 rounded">
+          <h5 class="card-title">COMP 1537 Web Development 1</h5>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et diam et urna condimentum volutpat. Nullam ac libero et metus auctor malesuada.</p>
+            <div class="mt-3">
+              <p><strong>Instructor:</strong> Arron Ferguson</p>
+              <p><strong>Email:</strong> <a href="mailto:arron_ferguson@bcit.ca">arron_ferguson@bcit.ca</a></p>
+              <a href="https://learn.bcit.ca/d2l/home/1057594" class="btn btn-primary" target="_blank">Go to Class Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class 6: COMP 1712 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 rounded">
+          <h5 class="card-title">COMP 1712 Business Analysis and Systems Design</h5>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et diam et urna condimentum volutpat. Nullam ac libero et metus auctor malesuada.</p>
+            <div class="mt-3">
+              <p><strong>Instructor:</strong> Maryam Khezrzadeh</p>
+              <p><strong>Email:</strong> <a href="mailto:mkhezrzadeh@bcit.ca">mkhezrzadeh@bcit.ca</a></p>
+              <a href="https://learn.bcit.ca/d2l/home/1057594" class="btn btn-primary" target="_blank">Go to Class Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class 7: COMP 1800 -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-0 rounded">
+          <h5 class="card-title">COMP 1800 Projects 1</h5>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et diam et urna condimentum volutpat. Nullam ac libero et metus auctor malesuada.</p>
+            <div class="mt-3">
+              <p><strong>Instructors:</strong> Carly Wong-Orr</p>
+              <p><strong>Emails:</strong> <a href="mailto:carly_wong_orr@bcit.ca">carly_wong_orr@bcit.ca</a></p>
+              <a href="https://learn.bcit.ca/d2l/home/1057594" class="btn btn-primary" target="_blank">Go to Class Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+
+  <!-- Footer -->
+  <nav id="footerPlaceholder"></nav>
+
+
+  <!-- Link to scripts of your own -->
+  <script src="./scripts/firebaseAPI.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+
+</body>
+
+</html>
