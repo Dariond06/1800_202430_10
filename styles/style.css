@@ -15,7 +15,7 @@ body {
 
 
 #newAssign i {
-    font-size: 4rem;
+    font-size: 3rem;
     align-self: center; 
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 #assignContainer {
-    height: 640px;
+    height: 600px;
     flex-direction: column;
     
 }
