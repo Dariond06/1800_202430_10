@@ -1,72 +1,92 @@
-function test() {
-  firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-          let userId = user.uid
-          // console.log(userId)
-      } else {
-          console.log("no user");
-      }
-  })
-}
-test();
-
-
 window.onload = function () {
-  // Get the assignment ID from the URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const assignmentId = urlParams.get('id');
-  const userId = firebase.auth().currentUser.uid;
-  console.log("User id:", userId);
-
-  // Reference Firestore and fetch assignment details
+  // Reference Firestore
   const db = firebase.firestore();
-  db.collection('assignments')
-    .doc(assignmentId)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        const data = doc.data();
 
-        console.log("Firestore data:", data); // Log the entire data to check its structure
+  // Get the assignment ID from the URL
+  const assignmentId = new URLSearchParams(window.location.search).get('id');
+  if (!assignmentId) {
+    return displayError('Invalid assignment. Please check the URL.');
+  }
 
-        // Populate the data from Firestore into the HTML elements
-        if (data.courseName && data.title && data.dueDate && data.details) {
-          document.getElementById('courseName').innerHTML = `Course Number:<br>${data.courseName}`;
-          document.getElementById('assignmentTitle').innerHTML = `Assignment Title: <br>${data.title}`;
-          
-          // Check if dueDate is a Firestore Timestamp and convert it properly
-          if (data.dueDate && data.dueDate.seconds) {
-            const formattedDate = new Date(data.dueDate.seconds * 1000).toLocaleDateString();
-            document.getElementById('dueDate').innerHTML = `Due Date: ${formattedDate}`;
-          } else {
-            console.error('Invalid or missing dueDate.');
-            document.getElementById('dueDate').innerHTML = 'Invalid due date';
-          }
-
-          document.getElementById('assignmentDetails').innerHTML = `${data.details}`;
-        } else {
-          console.error('Missing fields in Firestore document.');
-          document.getElementById('courseName').innerHTML = 'Course information unavailable.';
-          document.getElementById('assignmentTitle').innerHTML = 'Assignment title unavailable.';
-          document.getElementById('dueDate').innerHTML = 'Due date unavailable.';
-          document.getElementById('assignmentDetails').innerHTML = 'Details unavailable.';
-        }
-      } else {
-        console.error('No such document!');
-        document.getElementById('courseName').innerHTML = 'Assignment not found.';
-        document.getElementById('assignmentTitle').innerHTML = '';
-        document.getElementById('dueDate').innerHTML = '';
-        document.getElementById('assignmentDetails').innerHTML = '';
-      }
-    })
-    .catch((error) => {
-      console.error('Error fetching assignment details:', error);
-      document.getElementById('courseName').innerHTML = 'Error fetching data';
-      document.getElementById('assignmentTitle').innerHTML = '';
-      document.getElementById('dueDate').innerHTML = '';
-      document.getElementById('assignmentDetails').innerHTML = '';
-    });
+  // Wait for the user to be authenticated
+  firebase.auth().onAuthStateChanged(async (user) => {
+    if (user) {
+      await handleUserAuth(db, user, assignmentId);
+    } else {
+      displayError('Please log in to view assignments.');
+    }
+  });
 };
+
+// Handle authenticated user, fetch user class set and assignment data
+async function handleUserAuth(db, user, assignmentId) {
+  try {
+    const userId = user.uid;
+
+    // Step 1: Fetch the user's class set
+    const userDoc = await db.collection("users").doc(userId).get();
+    if (!userDoc.exists) return displayError("User not found.");
+    
+    const classSet = userDoc.data().classSet;
+    if (!classSet) return displayError("Class set not assigned to user.");
+
+    // Step 2: Fetch assignment data from the class set
+    await fetchAssignmentData(db, classSet, assignmentId);
+  } catch (error) {
+    displayError('Error fetching data. Please try again later.');
+    console.error('Error:', error);
+  }
+}
+
+// Fetch assignment data based on the class set
+async function fetchAssignmentData(db, classSet, assignmentId) {
+  try {
+    const assignmentDoc = await db
+      .collection("classes")
+      .doc(classSet)
+      .collection("assignments")
+      .doc(assignmentId)
+      .get();
+
+    if (!assignmentDoc.exists) {
+      return displayError('Assignment not found.');
+    }
+
+    const data = assignmentDoc.data();
+    populateAssignmentData(data);
+  } catch (error) {
+    displayError('Error fetching assignment data.');
+    console.error('Error:', error);
+  }
+}
+
+// Populate the HTML elements with assignment data
+function populateAssignmentData(data) {
+  if (data.courseName && data.title && data.dueDate && data.details) {
+    document.getElementById('courseName').innerHTML = `Course Number:<br>${data.courseName}`;
+    document.getElementById('assignmentTitle').innerHTML = `Assignment Title: <br>${data.title}`;
+
+    // Check if dueDate is a Firestore Timestamp
+    if (data.dueDate && data.dueDate.seconds) {
+      const formattedDate = new Date(data.dueDate.seconds * 1000).toLocaleDateString();
+      document.getElementById('dueDate').innerHTML = `Due Date: ${formattedDate}`;
+    } else {
+      document.getElementById('dueDate').innerHTML = 'Invalid due date';
+    }
+
+    document.getElementById('assignmentDetails').innerHTML = `${data.details}`;
+  } else {
+    displayError('Incomplete assignment data.');
+  }
+}
+
+// Function to display errors
+function displayError(message) {
+  document.getElementById('courseName').innerHTML = message;
+  document.getElementById('assignmentTitle').innerHTML = '';
+  document.getElementById('dueDate').innerHTML = '';
+  document.getElementById('assignmentDetails').innerHTML = 'Details unavailable.';
+}
 
 // Go back to the previous page when the back button is clicked
 function goBack() {

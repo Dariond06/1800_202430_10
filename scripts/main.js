@@ -45,17 +45,27 @@ function loadAssignments(userSet) {
 
             console.log(`Loaded ${querySnapshot.size} assignments`);
 
-            // Sort assignments by due date
-            const assignments = querySnapshot.docs.map(doc => doc.data()).sort((a, b) => a.dueDate.toDate() - b.dueDate.toDate());
+            // Map through the docs and extract both document ID and data
+            const assignments = querySnapshot.docs.map(doc => ({
+                id: doc.id, // Document ID
+                data: doc.data() // Assignment data
+            }));
 
-            assignments.forEach((data, index) => {
-                const factor = index / (assignments.length - 1);
+            // Sort assignments by due date
+            assignments.sort((a, b) => a.data.dueDate.toDate() - b.data.dueDate.toDate());
+
+            assignments.forEach((assignment) => {
+                const data = assignment.data;
+                const assignmentId = assignment.id; // Correctly use the document ID
+
+                // Calculate the color for each assignment
+                const factor = assignments.indexOf(assignment) / (assignments.length - 1);
                 const backgroundColor = redGreenGradient(red, green, factor);
 
+                // Format the due date
                 const formattedDate = new Intl.DateTimeFormat('en-US').format(new Date(data.dueDate.toDate()));
-                const assignmentId = querySnapshot.docs[index].id; // Get the document ID
 
-                // Create the assignment item with only the document ID in the URL
+                // Create the assignment item with the correct document ID in the URL
                 const assignmentItem = `
                     <div class="card mb-2 shadow-sm rounded-lg" style="background: ${backgroundColor}; border: none;">
                         <a href="assignDetails.html?id=${encodeURIComponent(assignmentId)}" class="card-link" style="background-color: ${backgroundColor}; text-decoration: none;">
@@ -69,6 +79,7 @@ function loadAssignments(userSet) {
                         </a>
                     </div>`;
 
+                // Append the assignment item to the list
                 assignList.insertAdjacentHTML('beforeend', assignmentItem);
             });
         })
@@ -77,6 +88,7 @@ function loadAssignments(userSet) {
             assignList.innerHTML = '<p>Error loading assignments. Please try again later.</p>';
         });
 }
+
 
 function getUserSetAndLoad(userId) {
     assignList.innerHTML = '<p>Loading Assignments</p>';
@@ -108,17 +120,4 @@ window.onload = function () {
             window.location.href = '/login.html';
         }
     });
-<<<<<<< HEAD
 };
-=======
-};
-
-
-
-
-
-
-
-
-
->>>>>>> 271101891ad8673d8714208bbbefe0997d3a7c7b
