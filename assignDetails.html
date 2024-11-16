@@ -61,8 +61,12 @@
           <div class="cardBody">
             <span id="assignmentDetails">Details should show here...</span>
             <br>
-            <img src="images/back.png"  class="position-absolute bottom-0 start-0 m-3" width="40" height="40" onclick="goBack()">
-            <img src="images/confirm.png" class="position-absolute bottom-0 end-0 m-3" width="40" height="40">
+            <button onclick="" class="position-absolute bottom-0 start-0 m-3">
+              <img src="images/back.png" alt="Back" width="40" height="40">
+            </button>
+            <button onclick="completeAssignment()" class="position-absolute bottom-0 end-0 m-3">
+              <img src="images/confirm.png" alt="Complete" width="40" height="40">
+            </button>
           </div>
       </div>
     </div>
@@ -74,7 +78,8 @@
   <nav id="footerPlaceholder"></nav>
   
   <!-- Link to scripts of your own -->
-  <script src=".\scripts\assignDetails.js"></script>
+  <script src="./scripts/firebaseAPI.js"></script>
+  <script src="./scripts/assignDetails.js"></script>
   <script src="./scripts/skeleton.js"></script>
 
 </body>

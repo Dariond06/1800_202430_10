@@ -3,36 +3,21 @@ const doneButton = document.getElementById('doneButton');
 const dueContent = document.getElementById('dueContent');
 const doneContent = document.getElementById('doneContent');
 
-loadAssignments();
+// Toggle between Due and Done content display
+function toggleContent(activeButton, inactiveButton, activeContent, inactiveContent) {
+    activeButton.classList.add('active');
+    inactiveButton.classList.remove('active');
+    activeContent.style.display = 'block';
+    inactiveContent.style.display = 'none';
+}
 
-dueButton.addEventListener('click', function() {
-  // Add active class to the 'Due' button and remove from 'Done'
-  dueButton.classList.add('active');
-  doneButton.classList.remove('active');
-  
-  // Show 'Due' content and hide 'Done' content
-  dueContent.style.display = 'block';
-  doneContent.style.display = 'none';
-
-  // Optionally, clear or reset the 'Due' content (for dynamic assignment data)
-  dueContent.innerHTML = '<p>Due tasks...</p>'; // Reset or clear the content
+dueButton.addEventListener('click', function () {
+    toggleContent(dueButton, doneButton, dueContent, doneContent);
 });
 
-loadAssignments();
-
-doneButton.addEventListener('click', function() {
-  // Add active class to the 'Done' button and remove from 'Due'
-  doneButton.classList.add('active');
-  dueButton.classList.remove('active');
-  
-  // Show 'Done' content and hide 'Due' content
-  doneContent.style.display = 'block';
-  dueContent.style.display = 'none';
-
-  // Optionally, clear or reset the 'Done' content (for dynamic assignment data)
-  doneContent.innerHTML = '<p>Completed tasks...</p>'; // Reset or clear the content
+doneButton.addEventListener('click', function () {
+    toggleContent(doneButton, dueButton, doneContent, dueContent);
 });
-
 
 // Function to interpolate color between two colors based on a factor (0 to 1)
 function redGreenGradient(color1, color2, factor) {
@@ -67,16 +52,19 @@ function loadAssignments(userSet) {
                 const factor = index / (assignments.length - 1);
                 const backgroundColor = redGreenGradient(red, green, factor);
 
-                const formattedDate = new Date(data.dueDate.toDate()).toLocaleDateString();
+                const formattedDate = new Intl.DateTimeFormat('en-US').format(new Date(data.dueDate.toDate()));
+                const assignmentId = querySnapshot.docs[index].id; // Get the document ID
+
+                // Create the assignment item with only the document ID in the URL
                 const assignmentItem = `
-                <div class="card mb-2 shadow-sm rounded-lg" style="background: ${backgroundColor}; border: none;">
-                    <a href="assignDetails.html?courseName=${encodeURIComponent(data.courseName)}&title=${encodeURIComponent(data.title)}&dueDate=${encodeURIComponent(formattedDate)}&details=${encodeURIComponent(data.details)}" class="card-link" style="background-color: ${backgroundColor}; text-decoration: none;">
-                        <div class="card-body d-flex justify-content-between align-items-center py-2">
-                            <div>
-                                <h5 class="card-title mb-0 text-primary font-weight-bold">${data.courseName}</h5>
-                                    <p class="card-text  mb-0">${data.title}</p>
+                    <div class="card mb-2 shadow-sm rounded-lg" style="background: ${backgroundColor}; border: none;">
+                        <a href="assignDetails.html?id=${encodeURIComponent(assignmentId)}" class="card-link" style="background-color: ${backgroundColor}; text-decoration: none;">
+                            <div class="card-body d-flex justify-content-between align-items-center py-2">
+                                <div>
+                                    <h5 class="card-title mb-0 text-primary font-weight-bold">${data.courseName}</h5>
+                                    <p class="card-text mb-0">${data.title}</p>
                                 </div>
-                                <span class="card-text ">${formattedDate}</span>
+                                <span class="card-text">${formattedDate}</span>
                             </div>
                         </a>
                     </div>`;

@@ -4,7 +4,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-            // Checks if user is new
+            // Checks if the user is new
             if (authResult.additionalUserInfo.isNewUser) {
 
                 document.getElementById('firebaseui-auth-container').style.display = 'none';
@@ -12,7 +12,7 @@ var uiConfig = {
                 // Shows Class Code input form
                 document.getElementById('class-code-form').style.display = 'block';
             } else {
-                // If not a new user, continues to the redirect URL
+                // If it's not a new user, continue to the redirect URL
                 return true;
             }
         },
@@ -37,13 +37,13 @@ ui.start('#firebaseui-auth-container', uiConfig);
 function submitClassCode() {
     const classCode = document.getElementById('classCode').value;
     const userId = firebase.auth().currentUser.uid;
-    const userName = firebase.auth().currentUser.displayName; // Gets the user's display name from Firebase Auth
+    const userName = firebase.auth().currentUser.displayName; // Gets the user's display name from FirebaseAuth
 
   // Querys to check if the class code exists in the classes collection
   firebase.firestore().collection('classes').where('classCode', '==', classCode).get()
   .then((querySnapshot) => {
       if (!querySnapshot.empty) {
-          // Class code exists, get the first matching document
+          // Since class code exists, get the first matching document
           const classDoc = querySnapshot.docs[0]; // Gets the first matching class document
           
           // Saves the user's data to the users subcollection of the matched class
