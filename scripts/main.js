@@ -79,6 +79,7 @@ function loadAssignments(userSet) {
 }
 
 function getUserSetAndLoad(userId) {
+    assignList.innerHTML = '<p>Loading Assignments</p>';
     db.collection('users')
         .doc(userId)
         .get()
@@ -107,4 +108,17 @@ window.onload = function () {
             window.location.href = '/login.html';
         }
     });
+<<<<<<< HEAD
 };
+=======
+};
+
+
+
+
+
+
+
+
+
+>>>>>>> 271101891ad8673d8714208bbbefe0997d3a7c7b

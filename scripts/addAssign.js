@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("submitAssignment").addEventListener("click", () => {
+        const submitButton = document.getElementById("submitAssignment");
+        submitButton.disabled = true; // Disable the button to prevent multiple clicks
+        
+        const title = document.getElementById("titleInput").value;
+        const classSelected = document.getElementById("classSelect").value;
+        const details = document.getElementById("detailsInput").value;
+        const dueDate = document.getElementById("dateInput").value;
+>>>>>>> 271101891ad8673d8714208bbbefe0997d3a7c7b
 
 function test() {
     firebase.auth().onAuthStateChanged(user => {
