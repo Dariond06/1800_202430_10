@@ -29,10 +29,8 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles/style.css">
-  <link rel="stylesheet" href="styles/specificAssignView.css">
+  <link rel="stylesheet" href="styles/AssignDetails.css">
 
 </head>
 
@@ -56,16 +54,12 @@
     <div class="card mt-3">
       <div class="card-body">
         <div class="detailsTitle">Assignment Details: </div>
-          <div class="cardBody">
-            <span id="assignmentDetails">Details should show here...</span>
-            <br>
-            <button onclick="" class="position-absolute bottom-0 start-0 m-3">
-              <img src="images/back.png" alt="Back" width="40" height="40">
-            </button>
-            <button onclick="completeAssignment()" class="position-absolute bottom-0 end-0 m-3">
-              <img src="images/confirm.png" alt="Complete" width="40" height="40">
-            </button>
-          </div>
+        <div class="cardBody">
+          <div class="links">Assignment Links:</div>
+          <span id="assignmentDetails">Details should show here...</span>
+          <br>
+          <button type="button" class="btn btn-primary addBtn" id="submitAssignment">Submit</button>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +68,7 @@
 
   <!-- Footer -->
   <nav id="footerPlaceholder"></nav>
-  
+
   <!-- Link to scripts of your own -->
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/assignDetails.js"></script>

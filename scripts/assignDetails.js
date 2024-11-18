@@ -62,7 +62,7 @@ async function fetchAssignmentData(db, classSet, assignmentId) {
 
 // Populate the HTML elements with assignment data
 function populateAssignmentData(data) {
-  if (data.courseName && data.title && data.dueDate && data.details) {
+  if (data.courseName && data.title && data.dueDate && data.details && data.links) {
     document.getElementById('courseName').innerHTML = `Course Number:<br>${data.courseName}`;
     document.getElementById('assignmentTitle').innerHTML = `Assignment Title: <br>${data.title}`;
 
@@ -75,6 +75,7 @@ function populateAssignmentData(data) {
     }
 
     document.getElementById('assignmentDetails').innerHTML = `${data.details}`;
+    // document.getElementById('links').innerHTML = `${data.links}`; //This is breaking the assignDetails page
   } else {
     displayError('Incomplete assignment data.');
   }
