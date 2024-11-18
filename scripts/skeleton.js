@@ -17,10 +17,11 @@ function loadSkeleton() {
     //         console.log($('#footerPlaceholder').load('./text/footer.html'));
     //     }
     // });
-    console.log($('#navbarPlaceholder').load('./text/navbar.html'));
-    console.log($('#footerPlaceholder').load('./text/footer.html'));
+    $('#navbarPlaceholder').load('./text/navbar.html');
+    $('#footerPlaceholder').load('./text/footer.html');
 
 
 
 }
-loadSkeleton(); //invoke the function
+loadSkeleton(); //invoke the function\
+

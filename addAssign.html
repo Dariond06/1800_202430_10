@@ -68,14 +68,22 @@
                         <!-- Assignment Notes Section -->
                         <div class="col-md-3 mb-3">
                             <label for="detailsInput" class="fw-bold">Assignment Details</label>
-                            <textarea class="form-control" id="detailsInput" rows="6"
-                                placeholder="Assignment details, time, links..."></textarea>
+                            <textarea class="form-control" id="detailsInput" rows="4"
+                                placeholder="Assignment details"></textarea>
                         </div>
+
+                        <!-- Assignmets links -->
+                        <div class="col-md-3 mb-3">
+                            <label for="linkInput" class="fw-bold">Links</label>
+                            <textarea class="form-control" id="linkInput" rows="4"
+                                placeholder="Assignment links..."></textarea>
+                        </div>
+
                     </div>
 
                     <div class="mb-4">
                         <label for="dateInput" class="fw-bold">Due Date:</label>
-                        <input type="date" id="dateInput" class="form-control mb-2" required>
+                        <input type="datetime-local" id="dateInput" class="form-control mb-2" required>
                     </div>
 
                     <button type="button" class="btn btn-primary addBtn" id="submitAssignment">Submit</button>

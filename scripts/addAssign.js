@@ -9,9 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const classSelected = document.getElementById("classSelect").value.trim();
         const details = document.getElementById("detailsInput").value.trim();
         const dueDate = document.getElementById("dateInput").value;
+        const links = document.getElementById("linkInput").value;
 
         // Validate input fields
-        if (!title || !details || !dueDate) {
+        if (!title || !details || !dueDate || !links) {
             alert("Please fill in all fields.");
             submitButton.disabled = false; // Re-enable the button
             return;
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 courseName: classSelected,
                 dueDate: firebase.firestore.Timestamp.fromDate(new Date(dueDate)),
                 details: details,
+                links: links,
                 usersCompleted: [] // Initializes empty array for users who have completed the assignment
             });
 
