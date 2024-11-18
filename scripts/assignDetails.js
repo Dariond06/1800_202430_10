@@ -74,8 +74,8 @@ function populateAssignmentData(data) {
       document.getElementById('dueDate').innerHTML = 'Invalid due date';
     }
 
-    document.getElementById('assignmentDetails').innerHTML = `${data.details}`;
-    // document.getElementById('links').innerHTML = `${data.links}`; //This is breaking the assignDetails page
+    document.getElementById('assignmentDetails').innerHTML.href = `${data.details}`;
+    document.getElementById('links').innerHTML = `${data.links}`; //This is breaking the assignDetails page
   } else {
     displayError('Incomplete assignment data.');
   }
