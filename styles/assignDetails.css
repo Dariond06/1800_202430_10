@@ -1,6 +1,6 @@
 .card-title, .info-card {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .material-icons {
@@ -34,4 +34,33 @@
 
 .link-card {
     padding-top: 10px;
+}
+
+#back {
+    font-size: 3rem;
+    color: red; 
+    transition: color 0.3s ease;
+
+}
+
+#back:hover {
+    color: rgb(179, 11, 45); /* Darker shade on hover */
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.right {
+    margin-right: auto;
+}
+
+.hide {
+    visibility: hidden;
 }

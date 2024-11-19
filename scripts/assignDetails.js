@@ -92,12 +92,7 @@ function markAsDone() {
       .collection('completedAssignments')
       .doc(assignmentId) // Sets the document ID to the assignmentId
       .set({ assignmentId }) // Creates a document with assignmentId as the ID
-      .then(() => {
-        alert('Assignment marked as complete!');
-      })
-      .catch((error) => {
-        console.error('Error marking assignment as complete:', error);
-      });
+
   } else {
     console.error('User not authenticated or assignment ID not found.');
   }

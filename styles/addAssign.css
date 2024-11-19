@@ -51,6 +51,21 @@
     justify-content: space-between;
 }
 
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.left {
+    margin-right: auto;
+    margin-left: auto;
+}
 
-    
+.right {
+    margin-right: auto;
+}
+
+.hide {
+    visibility: hidden;
+}
