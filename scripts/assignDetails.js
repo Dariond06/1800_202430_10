@@ -78,14 +78,54 @@ function populateAssignmentData(data) {
   }
 }
 
-// Function to mark an assignment as done
+document.addEventListener('DOMContentLoaded', () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      isItComplete(user); // Pass the authenticated user to the function
+    } else {
+      console.error("User not authenticated.");
+    }
+  });
+});
+
+function isItComplete(user) {
+  const assignmentId = new URLSearchParams(window.location.search).get('id');
+
+  if (!assignmentId) {
+    console.error("Assignment ID not found in URL.");
+    return;
+  }
+
+  const userId = user.uid;
+
+  firebase.firestore()
+    .collection('users')
+    .doc(userId)
+    .collection('completedAssignments')
+    .doc(assignmentId)
+    .get()
+    .then((doc) => {
+      const complete = document.getElementById('completeAssignment');
+      if (doc.exists) {
+        complete.textContent = "Mark As Not Complete";
+        complete.classList.add("not-complete"); // Add class for dark gray styling
+      } else {
+        complete.textContent = "Mark As Complete";
+        complete.classList.remove("not-complete"); // Remove class for default styling
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking assignment status:', error);
+    });
+}
+
 function markAsDone() {
   const user = firebase.auth().currentUser;
   const assignmentId = new URLSearchParams(window.location.search).get('id');
 
   if (user && assignmentId) {
     const userId = user.uid;
-    
+
     firebase.firestore()
       .collection('users')
       .doc(userId)
