@@ -39,17 +39,17 @@ function loadDueAssignments() {
 
     const userId = firebase.auth().currentUser.uid;
 
-    // Step 1: Get completed assignments from user's assignments
-    db.collection('users').doc(userId).collection('assignments').get()
-        .then(userSnapshot => {
-            const completedIds = userSnapshot.docs.map(doc => doc.id); // Collect completed assignment IDs
-            console.log('Completed Assignment IDs (user):', completedIds);
+    // Get all completed assignment IDs from the user's completedAssignments subcollection
+    db.collection('users').doc(userId).collection('completedAssignments').get()
+        .then(completedSnapshot => {
+            const completedIds = new Set(completedSnapshot.docs.map(doc => doc.id)); // Use a Set for fast lookup
 
-            // Step 2: Get all assignments from the class's assignments
-            db.collection('classes').doc(currentUserSet).collection('assignments').get()
+            // Get all assignments from the class's assignments collection
+            return db.collection('classes').doc(currentUserSet).collection('assignments').get()
                 .then(classSnapshot => {
+                    // Filter out assignments that are in the completedIds Set
                     const dueAssignments = classSnapshot.docs
-                        .filter(doc => !completedIds.includes(doc.id)) // Exclude completed assignments
+                        .filter(doc => !completedIds.has(doc.id)) // Exclude completed assignments
                         .map(doc => ({ id: doc.id, data: doc.data() }));
 
                     console.log('Due Assignments:', dueAssignments);
@@ -66,13 +66,13 @@ function loadDoneAssignments() {
 
     const userId = firebase.auth().currentUser.uid;
 
-    // Step 1: Get completed assignments from user's assignments
-    db.collection('users').doc(userId).collection('assignments').get()
+    // Get completed assignments from user's assignments
+    db.collection('users').doc(userId).collection('completedAssignments').get()
         .then(userSnapshot => {
             const completedIds = userSnapshot.docs.map(doc => doc.id); // Collect completed assignment IDs
             console.log('Completed Assignment IDs (user):', completedIds);
 
-            // Step 2: Get all assignments from the class's assignments
+            // Get all assignments from the class's assignments
             db.collection('classes').doc(currentUserSet).collection('assignments').get()
                 .then(classSnapshot => {
                     const doneAssignments = classSnapshot.docs
@@ -103,7 +103,7 @@ function loadDoneAssignments() {
 }
 
 
-// Helper function to render assignments in a container
+// Render assignments in a container
 function renderAssignments(assignments, container, type) {
     container.innerHTML = ''; // Clear content
     if (assignments.length === 0) {
@@ -119,7 +119,7 @@ function renderAssignments(assignments, container, type) {
         
         // If the section is "Done", set the background to grey
         if (type === 'Done') {
-            backgroundColor = 'rgb(169, 169, 169)'; // Grey color
+            backgroundColor = 'rgb(169, 169, 169)';
         } else {
             // If it's "Due", apply the gradient based on the index
             const factor = index / (assignments.length - 1);
@@ -140,40 +140,6 @@ function renderAssignments(assignments, container, type) {
             </div>`;
         container.insertAdjacentHTML('beforeend', assignmentItem);
     });
-}
-
-
-// Function to mark an assignment as done
-function markAsDone(assignmentId, classCode) {
-    const userId = firebase.auth().currentUser.uid;
-
-    // Reference to the assignment in the class collection
-    const assignmentRef = db.collection('classes').doc(classCode).collection('assignments').doc(assignmentId);
-
-    // Get the assignment data
-    assignmentRef.get()
-        .then(doc => {
-            if (doc.exists) {
-                const assignmentData = doc.data();
-
-                // Reference to the user's 'done' subcollection
-                const userDoneRef = db.collection('users').doc(userId).collection('assignments').doc(assignmentId);
-
-                // Add the assignment to the user's 'done' subcollection
-                userDoneRef.set(assignmentData)
-                    .then(() => {
-                        console.log(`Assignment ${assignmentId} marked as done for user ${userId}`);
-                    })
-                    .catch(error => {
-                        console.error('Error adding assignment to user done collection:', error);
-                    });
-            } else {
-                console.error('Assignment not found in class collection');
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching assignment:', error);
-        });
 }
 
 function getUserSetAndLoad(userId) {

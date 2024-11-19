@@ -78,15 +78,27 @@ function populateAssignmentData(data) {
   }
 }
 
-// Function to display errors
-function displayError(message) {
-  document.getElementById('courseName').innerHTML = message;
-  document.getElementById('assignmentTitle').innerHTML = '';
-  document.getElementById('dueDate').innerHTML = '';
-  document.getElementById('assignmentDetails').innerHTML = 'Details unavailable.';
-}
+// Function to mark an assignment as done
+function markAsDone() {
+  const user = firebase.auth().currentUser;
+  const assignmentId = new URLSearchParams(window.location.search).get('id');
 
-// Go back to the previous page when the back button is clicked
-function goBack() {
-  window.history.back();
+  if (user && assignmentId) {
+    const userId = user.uid;
+    
+    firebase.firestore()
+      .collection('users')
+      .doc(userId)
+      .collection('completedAssignments')
+      .doc(assignmentId) // Sets the document ID to the assignmentId
+      .set({ assignmentId }) // Creates a document with assignmentId as the ID
+      .then(() => {
+        alert('Assignment marked as complete!');
+      })
+      .catch((error) => {
+        console.error('Error marking assignment as complete:', error);
+      });
+  } else {
+    console.error('User not authenticated or assignment ID not found.');
+  }
 }
