@@ -26,7 +26,7 @@ async function handleUserAuth(db, user, assignmentId) {
     // Step 1: Fetch the user's class set
     const userDoc = await db.collection("users").doc(userId).get();
     if (!userDoc.exists) return displayError("User not found.");
-    
+
     const classSet = userDoc.data().classSet;
     if (!classSet) return displayError("Class set not assigned to user.");
 
@@ -63,21 +63,16 @@ async function fetchAssignmentData(db, classSet, assignmentId) {
 // Populate the HTML elements with assignment data
 function populateAssignmentData(data) {
   if (data.courseName && data.title && data.dueDate && data.details && data.links) {
-    document.getElementById('courseName').innerHTML = `Course Number:<br>${data.courseName}`;
-    document.getElementById('assignmentTitle').innerHTML = `Assignment Title: <br>${data.title}`;
+    document.getElementById('courseName').innerHTML = `${data.courseName}`;
+    document.getElementById('assignmentTitle').innerHTML = `${data.title}`;
 
-    // Check if dueDate is a Firestore Timestamp
-    if (data.dueDate && data.dueDate.seconds) {
-      const formattedDate = new Date(data.dueDate.seconds * 1000).toLocaleDateString();
-      document.getElementById('dueDate').innerHTML = `Due Date: ${formattedDate}`;
-    } else {
-      document.getElementById('dueDate').innerHTML = 'Invalid due date';
-    }
+    const formattedDate = data.dueDate.toDate().toLocaleString();
+    document.getElementById('dueDate').innerHTML = `${formattedDate}`;
 
     document.getElementById('assignmentDetails').innerHTML = `${data.details}`;
     document.getElementById('links').innerHTML = `${data.links}`; // puts the link text from firestore 
     document.getElementById('links').href = `${data.links}`; //adds the link to the href
-    
+
   } else {
     displayError('Incomplete assignment data.');
   }

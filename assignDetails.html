@@ -40,31 +40,41 @@
   <nav id="navbarPlaceholder"></nav>
 
   <!-- Assignment to-add -->
-  <div class="container mt-3">
-    <!-- Preview -->
-    <div class="card">
-      <div class="card-body">
-        <span id="courseName">Class:<br></span>
-        <span id="assignmentTitle" class="font-weight-bold">Title: <br></span>
-        <span id="dueDate">Due Date: </span>
+  <div class="container mt-4">
+    <!-- Assignment Info Card -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h3 class="card-title title-card"><strong id="assignmentTitle"></strong></h3>
+      </div>
+      <div class="card-body info-card">
+        <h5 id="courseName"></h5>
+        <h5 id="dueDate"></h5>
       </div>
     </div>
 
-    <!-- Assignment Details -->
-    <div class="card mt-3">
+    <!-- Assignment Details Card -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5><b>Detials:</b></h5>
+      </div>
+      <div class="card-body details-card">
+        <p id="assignmentDetails"></p>
+      </div>
+      <div class="card-header link-card">
+        <h5><b>Assignment Link:</b></h5>
+      </div>
       <div class="card-body">
-        <div class="detailsTitle">Assignment Details: </div>
-        <div class="cardBody">
-          <a id="links" href="link" target="_blank"></a>
-          <span id="assignmentDetails">Details should show here...</span>
-          <br>
-          <button type="button" class="btn btn-primary addBtn" id="submitAssignment">Submit</button>
-        </div>
+        <a id="links" target="_blank"></a>
+      </div>
+    </div>
+
+    <!-- Complete Assignment Card -->
+    <div class="card">
+      <div class="card-body text-center">
+        <button type="button" class="btn btn-primary addBtn" id="completeAssignment">Complete</button>
       </div>
     </div>
   </div>
-
-
 
   <!-- Footer -->
   <nav id="footerPlaceholder"></nav>
