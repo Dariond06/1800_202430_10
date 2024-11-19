@@ -64,8 +64,14 @@
 .hide {
     visibility: hidden;
 }
+
 .not-complete {
     background-color: rgb(95, 93, 93);
     color: white;
-    
-  }
+    border-color: rgb(95, 93, 93);
+}
+
+.not-complete:hover {
+    background-color: red;
+    border-color: red;
+}
