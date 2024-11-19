@@ -50,7 +50,7 @@ function submitClassCode() {
           firebase.firestore().collection('users').doc(userId).set({
               name: userName, // User's name
               classSet: classDoc.id, // Class set related to the collection
-              assignments: [] // Initializes an empty array for assignments
+
           }).then(() => {
               // Redirects to the main page
               window.location.href = 'main.html';

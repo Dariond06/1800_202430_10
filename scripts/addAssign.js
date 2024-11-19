@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Check if the due date is still the preset value (current date/time)
+        const presetDate = document.getElementById('dateInput').getAttribute('min');
+        if (dueDate === presetDate) {
+            alert("Please change the due date and time before submitting.");
+            submitButton.disabled = false; // Re-enable the button
+            return;
+        }
+
         try {
             // Ensure user is authenticated
             const user = firebase.auth().currentUser;
@@ -62,3 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+// Get the current date and time
+const now = new Date();
+// Get the current local time in YYYY-MM-DDTHH:mm format
+const year = now.getFullYear();
+const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+const day = String(now.getDate()).padStart(2, '0');
+const hours = String(now.getHours()).padStart(2, '0');
+const minutes = String(now.getMinutes()).padStart(2, '0');
+const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+// Set the value of the input field to current date and time
+document.getElementById('dateInput').value = formattedDateTime;
+
+// Set the minimum date/time for the input field to prevent past dates
+document.getElementById('dateInput').setAttribute('min', formattedDateTime);
