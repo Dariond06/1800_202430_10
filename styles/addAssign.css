@@ -35,3 +35,22 @@
     padding: 0.5rem;
     font-size: 16px;
 }
+
+#back {
+    font-size: 3rem;
+    color: red; 
+    transition: color 0.3s ease; 
+}
+
+#back:hover {
+    color: rgb(179, 11, 45); /* Darker shade on hover */
+  }
+
+.space {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+    
