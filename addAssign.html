@@ -20,6 +20,9 @@
     <!-- Font Awesome for Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=cancel" />
+
     <!-- Firebase 8 Library stuff -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -43,25 +46,30 @@
     <div class="container">
         <div id="addAssignPage" class="card">
             <div class="card-body">
-                <div class="card-title">Add Assignment</div>
+                <div class="space">
+                    <div class="card-title">Add Assignment</div>
+                    <a href="main.html"><i id="back" class="material-symbols-outlined">cancel</i></a>
+                </div>
+
                 <form>
                     <div class="form-group mb-4">
                         <label for="titleInput" class="label-bold">Assignment Title</label>
                         <input type="text" class="form-control" id="titleInput" placeholder="Title of assignment..." />
                     </div>
 
+
                     <div class="row">
                         <!-- Class Section -->
                         <div class="col-md-3 mb-3">
                             <label for="classSelect" class="fw-bold">Class</label>
                             <select class="form-select" id="classSelect">
-                                <option value="1100">COMM 1100</option>
-                                <option value="1116">COMP 1116</option>
-                                <option value="1113">COMP 1113</option>
-                                <option value="1510">COMP 1510</option>
-                                <option value="1537">COMP 1537</option>
-                                <option value="1712">COMP 1712</option>
-                                <option value="1800">COMP 1800</option>
+                                <option value="COMP 1100">COMP 1100</option>
+                                <option value="COMM 1116">COMM 1116</option>
+                                <option value="COMP 1113">COMP 1113</option>
+                                <option value="COMP 1510">COMP 1510</option>
+                                <option value="COMP 1537">COMP 1537</option>
+                                <option value="COMP 1712">COMP 1712</option>
+                                <option value="COMP 1800">COMP 1800</option>
                             </select>
                         </div>
 
