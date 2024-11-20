@@ -22,17 +22,6 @@ doneButton.addEventListener('click', function () {
     toggleContent(doneButton, dueButton, doneContent, dueContent, loadDoneAssignments);
 });
 
-// Function to interpolate color between two colors based on a factor (0 to 1)
-function redGreenGradient(color1, color2, factor) {
-    const result = color1.slice();
-    for (let i = 0; i < 3; i++) {
-        result[i] = Math.round(result[i] + factor * (color2[i] - color1[i]));
-    }
-    return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
-}
-
-const red = [255, 0, 0];    // RGB for red
-const green = [0, 255, 0];  // RGB for green
 
 function loadDueAssignments() {
     dueContent.innerHTML = '<p>Loading Due Assignments...</p>';
@@ -51,6 +40,8 @@ function loadDueAssignments() {
                     const dueAssignments = classSnapshot.docs
                         .filter(doc => !completedIds.has(doc.id)) // Exclude completed assignments
                         .map(doc => ({ id: doc.id, data: doc.data() }));
+
+                    dueAssignments.sort((a, b) => a.data.dueDate.toDate() - b.data.dueDate.toDate());
 
                     console.log('Due Assignments:', dueAssignments);
                     renderAssignments(dueAssignments, dueContent, 'Due');
@@ -84,11 +75,7 @@ function loadDoneAssignments() {
                         }));
 
                     // Sort completed assignments by dueDate (ascending or descending)
-                    doneAssignments.sort((a, b) => {
-                        const dateA = a.dueDate.toDate();  // Convert Firestore Timestamp to JS Date
-                        const dateB = b.dueDate.toDate();  // Convert Firestore Timestamp to JS Date
-                        return dateA - dateB;  // Ascending order (for descending, use dateB - dateA)
-                    });
+                    doneAssignments.sort((a, b) => a.data.dueDate.toDate() - b.data.dueDate.toDate());
 
                     console.log('Sorted Done Assignments:', doneAssignments);
                     renderAssignments(doneAssignments, doneContent, 'Done');
@@ -102,7 +89,6 @@ function loadDoneAssignments() {
         });
 }
 
-
 // Render assignments in a container
 function renderAssignments(assignments, container, type) {
     container.innerHTML = ''; // Clear content
@@ -113,34 +99,84 @@ function renderAssignments(assignments, container, type) {
 
     assignments.forEach((assignment, index) => {
         const data = assignment.data;
-        const formattedDate = new Date(data.dueDate.toDate()).toLocaleDateString();
-        
-        let backgroundColor;
-        
-        // If the section is "Done", set the background to grey
+        const dueDate = data.dueDate.toDate(); // Firestore Timestamp to JS Date
+        const formattedDate = dueDate.toLocaleDateString();
+
+        const now = new Date();
+        const timeDiff = dueDate - now;
+        const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // Full days left
+        const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Hours left
+        const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)); // Minutes left
+
+        let daysLeftText;
+        let daysLeftClass = '';  // Default class for the due date indicator
+        let daysLeftColor = ''; // Default background color for the due date indicator
+
         if (type === 'Done') {
-            backgroundColor = 'rgb(169, 169, 169)';
+            daysLeftColor = 'rgb(169, 169, 169)'; // Grey for completed assignments
+            daysLeftText = ''; // No "Days Left" text for completed assignments
         } else {
-            // If it's "Due", apply the gradient based on the index
-            const factor = index / (assignments.length - 1);
-            backgroundColor = redGreenGradient(red, green, factor);
+            if (timeDiff > 0) {
+                const { daysLeftText: daysText, daysLeftClass: classText, daysLeftColor: color } = getColorByDaysLeft(daysLeft);
+                daysLeftText = daysText;
+                daysLeftClass = classText;
+                daysLeftColor = color;
+            } else {
+                daysLeftText = 'Overdue';
+                daysLeftColor = 'rgb(0, 0, 0)'; // Bright red for overdue assignments
+            }
         }
 
         const assignmentItem = `
-            <div class="card mb-2 shadow-sm rounded-lg" style="background: ${backgroundColor}; border: none;">
-                <a href="assignDetails.html?id=${encodeURIComponent(assignment.id)}" class="card-link" style="background-color: ${backgroundColor}; text-decoration: none;">
+            <div class="card mb-2 shadow-sm rounded-lg" style="border: none;">
+                <a href="assignDetails.html?id=${encodeURIComponent(assignment.id)}" class="card-link" style="text-decoration: none;">
                     <div class="card-body d-flex justify-content-between align-items-center py-2">
-                        <div>
-                            <h5 class="card-title mb-0 text-primary font-weight-bold">${data.courseName}</h5>
-                            <p class="card-text mb-0">${data.title}</p>
+                        <div class="assignment-details">
+                            <h5 class="card-title mb-0 text-primary font-weight-bold">${data.title}</h5> <!-- Title -->
+                            <p class="card-text mb-0">${data.courseName}</p> <!-- Course name -->
                         </div>
-                        <span class="card-text">${formattedDate}</span>
+                        <div class="due-date-container d-flex align-items-center">
+                            <!-- Only show the "Days Left" box if the assignment is not done and there's valid text -->
+                            ${assignment.status !== 'done' && daysLeftText && daysLeftText.trim() !== ''
+                        ? `<span class="card-text mb-0" style="background-color: ${daysLeftColor}; padding: 5px 15px; border-radius: 20px; color: white;">${daysLeftText}</span>`
+                        : ''
+                    }
+                            <span class="card-text mb-0 mr-2">${formattedDate}</span> <!-- Due date -->
+                        </div>
                     </div>
                 </a>
             </div>`;
+
+
         container.insertAdjacentHTML('beforeend', assignmentItem);
     });
 }
+
+
+// This function sets the color and text based on the number of days left
+function getColorByDaysLeft(daysLeft) {
+    let daysLeftText;
+    let daysLeftColor = ''; // Default background color for the due date indicator
+
+    if (daysLeft <= 3) {
+        daysLeftColor = 'rgba(255, 0, 0, .7)';  // Red for 3 days or less
+        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
+    } else if (daysLeft === 4) {
+        daysLeftColor = 'rgba(255, 165, 0, .7)'; // Orange for 4 days
+        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
+    } else if (daysLeft === 5) {
+        daysLeftColor = 'rgba(255, 255, 0, .5)'; // Yellow for 5 days
+        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
+    } else if (daysLeft > 7) {
+        daysLeftColor = 'rgba(0, 255, 0, .7)';  // Green for after 7 days
+        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
+    }
+
+    return { daysLeftText, daysLeftColor };
+}
+
+
+
 
 function getUserSetAndLoad(userId) {
     db.collection('users')

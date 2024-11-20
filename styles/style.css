@@ -40,6 +40,7 @@ body {
     height: 600px;
     flex-direction: column;
     
+    
 }
 
 #assignContainer .card-header {
@@ -84,13 +85,13 @@ a {
     color: #000; /* Default text color */
     border-radius: 10px;
     display: block;
-    transition: filter 0.5s, transform 0.3s, color 0.3s;
+    transition: filter 0.5s, transform 0.3s;
 }
 
 .card-link:hover {
     cursor: pointer;
-    filter: brightness(2); /* Increase brightness for a subtle hover effect */
-    transform: translateY(-5px);
+    filter: brightness(1.5); /* Increase brightness for a subtle hover effect */
+    transform: translateY(-4px);
     
 }
 
@@ -100,6 +101,21 @@ a {
     color: inherit;                
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
+    padding-top: 2px;
+    background-color: #8a8282;
+    border-radius: 8px;
 
+}
+
+
+.card-body h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+
+
+.due-date-container .card-text + .card-text {
+    margin-left: 10px; 
 }
