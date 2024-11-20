@@ -39,11 +39,13 @@
   <div id="loader">Loading...</div>
 
   <!-- Class Code Input Form, hidden by default -->
-<div id="class-code-form" style="display: none;">
-  <h3>Enter Class Code</h3>
-  <input type="text" id="classCode" placeholder="Enter Class Code" required />
-  <button onclick="submitClassCode()">Submit</button>
-</div>
+  <div id="class-code-form" style="display: none;">
+    <h3>Select Class</h3>
+    <select id="classCodeDropdown" required>
+      <option value="">Select a class...</option>
+    </select>
+    <button onclick="submitClassCode()">Submit</button>
+  </div>
 
   <!-- Link to scripts of your own -->
   <script src="./scripts/firebaseAPI.js"></script>

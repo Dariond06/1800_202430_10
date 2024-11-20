@@ -105,8 +105,7 @@ function renderAssignments(assignments, container, type) {
         const now = new Date();
         const timeDiff = dueDate - now;
         const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // Full days left
-        const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Hours left
-        const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)); // Minutes left
+        
 
         let daysLeftText;
         let daysLeftClass = '';  // Default class for the due date indicator
@@ -116,14 +115,18 @@ function renderAssignments(assignments, container, type) {
             daysLeftColor = 'rgb(169, 169, 169)'; // Grey for completed assignments
             daysLeftText = ''; // No "Days Left" text for completed assignments
         } else {
-            if (timeDiff > 0) {
+            if (daysLeft == 0) {
+                daysLeftText = 'Due Today!'
+                daysLeftColor = 'rgba(255, 0, 0, .7)';
+            } else if (timeDiff > 0) {
                 const { daysLeftText: daysText, daysLeftClass: classText, daysLeftColor: color } = getColorByDaysLeft(daysLeft);
                 daysLeftText = daysText;
                 daysLeftClass = classText;
                 daysLeftColor = color;
+                
             } else {
-                daysLeftText = 'Overdue';
-                daysLeftColor = 'rgb(0, 0, 0)'; // Bright red for overdue assignments
+                daysLeftText = 'Overdue!';
+                daysLeftColor = 'rgb(0, 0, 0)'; // black for overdue assignments
             }
         }
 
@@ -138,7 +141,7 @@ function renderAssignments(assignments, container, type) {
                         <div class="due-date-container d-flex align-items-center">
                             <!-- Only show the "Days Left" box if the assignment is not done and there's valid text -->
                             ${assignment.status !== 'done' && daysLeftText && daysLeftText.trim() !== ''
-                        ? `<span class="card-text mb-0" style="background-color: ${daysLeftColor}; padding: 5px 15px; border-radius: 20px; color: white;">${daysLeftText}</span>`
+                        ? `<span class="card-text mb-0 day" style="background-color: ${daysLeftColor}; padding: 5px 15px;">${daysLeftText}</span>`
                         : ''
                     }
                             <span class="card-text mb-0 mr-2">${formattedDate}</span> <!-- Due date -->
