@@ -163,16 +163,16 @@ function getColorByDaysLeft(daysLeft) {
 
     if (daysLeft <= 3) {
         daysLeftColor = 'rgba(255, 0, 0, .7)';  // Red for 3 days or less
-        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
-    } else if (daysLeft === 4) {
+        daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
+    } else if (daysLeft == 4) {
         daysLeftColor = 'rgba(255, 165, 0, .7)'; // Orange for 4 days
-        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
-    } else if (daysLeft === 5) {
+        daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
+    } else if (daysLeft <= 6) {
         daysLeftColor = 'rgba(255, 255, 0, .5)'; // Yellow for 5 days
-        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
-    } else if (daysLeft > 7) {
-        daysLeftColor = 'rgba(0, 255, 0, .7)';  // Green for after 7 days
-        daysLeftText = `${daysLeft} day${daysLeft > 1 ? 's' : ''} left`;
+        daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
+    } else if (daysLeft >= 7) {
+        daysLeftColor = 'rgba(0, 255, 0, .5)';  // Green for after 7 days
+        daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
     }
 
     return { daysLeftText, daysLeftColor };

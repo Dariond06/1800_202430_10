@@ -42,48 +42,45 @@
     <!-- Header Bar -->
     <nav id="navbarPlaceholder"></nav>
 
-        <div class="container mt-4">
-            <!-- User Info Card -->
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h5 class="card-title">Personal Information</h5>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <fieldset class="mb-3" id="personalInfoFields" disabled>
-                            <div class="form-group">
-                                <label for="nameInput">Name</label>
-                                <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
-                            </div>
-                        </fieldset>
-                        <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
-                            <span style="width: 10px"></span>
-                            <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+    <div class="container mt-4">
+        <!-- User Info Card -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Personal Information</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <fieldset class="mb-3" id="personalInfoFields" disabled>
+                        <div class="form-group">
+                            <label for="nameInput">Name</label>
+                            <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </fieldset>
 
-            <!-- Future Settings Card -->
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h5 class="card-title">Future Settings</h5>
-                </div>
-                <div class="card-body">
-                    <p>Coming soon: additional settings options will be added here!</p>
-                    <!-- Placeholder for future settings controls -->
-                    <button class="btn btn-warning">Coming Soon!</button>
-                </div>
-            </div>
-
-            <!-- Log Out Button Card -->
-            <div class="card">
-                <div class="card-body text-center">
-                    <button type="button" class="btn btn-danger" onclick="logOutUser()">Log Out</button>
-                </div>
+                </form>
             </div>
         </div>
+
+        <!-- Future Settings Card -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Upcoming Priority</h5>
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+
+<!-- Log Out Button Card -->
+<div class="card">
+    <div class="logout">
+        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+        <span style="width: 10px"></span>
+        <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+    </div>
+    <button type="button" class="btn btn-danger" onclick="logOutUser()">Log Out</button>
+</div>
+
 
 
     <!-- Footer -->

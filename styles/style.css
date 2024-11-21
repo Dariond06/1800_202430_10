@@ -122,10 +122,18 @@ a {
 
 
 .day {
+    font-size: .9rem;
     padding: 5px 15px; 
     border-radius: 20px; 
     color: white; 
-    width:120px; 
+    width:108px; 
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+
+.logout {
     display: flex;
     justify-content: space-around;
 }
