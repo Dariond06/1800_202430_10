@@ -11,6 +11,9 @@ var uiConfig = {
 
                 // Shows Class Code input form
                 document.getElementById('class-code-form').style.display = 'block';
+
+                // Call function to populate the dropdown with class data
+                populateClassDropdown();
             } else {
                 // If it's not a new user, continue to the redirect URL
                 return true;
@@ -32,37 +35,64 @@ var uiConfig = {
 // Start FirebaseUI
 ui.start('#firebaseui-auth-container', uiConfig);
 
+// Function to populate the dropdown with class data from Firestore
+function populateClassDropdown() {
+    const dropdown = document.getElementById('classCodeDropdown');
+    
+    // Fetch classes from Firestore
+    firebase.firestore().collection('classes').get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // Log the document ID to ensure we are fetching the correct data
+            console.log("Class ID (Document ID): ", doc.id); 
+            console.log("Class Data: ", doc.data()); 
+
+            // Get the document ID 
+            const classId = doc.id; 
+            const className = doc.id; 
+
+            // Create an option for each class document
+            const option = document.createElement('option');
+            option.value = classId; 
+            option.textContent = className; 
+            dropdown.appendChild(option);
+        });
+    }).catch((error) => {
+        console.error("Error fetching classes: ", error);
+    });
+}
+
 
 
 function submitClassCode() {
-    const classCode = document.getElementById('classCode').value;
+    const classCode = document.getElementById('classCodeDropdown').value;
     const userId = firebase.auth().currentUser.uid;
     const userName = firebase.auth().currentUser.displayName; // Gets the user's display name from FirebaseAuth
 
-  // Querys to check if the class code exists in the classes collection
-  firebase.firestore().collection('classes').where('classCode', '==', classCode).get()
-  .then((querySnapshot) => {
-      if (!querySnapshot.empty) {
-          // Since class code exists, get the first matching document
-          const classDoc = querySnapshot.docs[0]; // Gets the first matching class document
-          
-          // Saves the user's data to the users subcollection of the matched class
-          firebase.firestore().collection('users').doc(userId).set({
-              name: userName, // User's name
-              classSet: classDoc.id, // Class set related to the collection
+    if (!classCode) {
+        alert("Please select a class.");
+        return;
+    }
 
-          }).then(() => {
-              // Redirects to the main page
-              window.location.href = 'main.html';
-          }).catch((error) => {
-              console.error("Error adding user to class: ", error);
-          });
-      } else {
-          // Class code does not exist
-          alert("The entered class code does not exist. Please try again.");
-      }
-  }).catch((error) => {
-      console.error("Error checking class code: ", error);
-  });
+    // Query to fetch the selected class from Firestore by its document ID
+    firebase.firestore().collection('classes').doc(classCode).get()
+    .then((classDoc) => {
+        if (classDoc.exists) {
+            // Saves the user's data to the users subcollection of the matched class
+            firebase.firestore().collection('users').doc(userId).set({
+                name: userName, // User's name
+                classSet: classDoc.id, // Class set related to the collection
+            }).then(() => {
+                // Redirects to the main page
+                window.location.href = 'main.html';
+            }).catch((error) => {
+                console.error("Error adding user to class: ", error);
+            });
+        } else {
+            // Class code does not exist
+            alert("The selected class does not exist. Please try again.");
+        }
+    }).catch((error) => {
+        console.error("Error fetching class: ", error);
+    });
 }
-

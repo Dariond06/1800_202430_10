@@ -119,3 +119,25 @@ a {
 .due-date-container .card-text + .card-text {
     margin-left: 10px; 
 }
+
+
+.day {
+    font-size: .9rem;
+    padding: 5px 15px; 
+    border-radius: 20px; 
+    color: white; 
+    width:108px; 
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+
+.logout {
+    display: flex;
+    justify-content: space-around;
+}
+
+#footerPlaceholder {
+    height: 120px;
+}
