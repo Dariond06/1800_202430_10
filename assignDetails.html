@@ -44,43 +44,44 @@
   <!-- Assignment to-add -->
   <div class="container mt-4">
     <!-- Assignment Info Card -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h3 class="card-title title-card box">
-          <a><i id="backButton" class="material-symbols-outlined hide">cancel</i></a>
-          <div class="card-title left"><strong id="assignmentTitle"></strong></div>
-          <a href="main.html"><i id="backLink" class="material-symbols-outlined right">cancel</i></a>
-        </h3>
-      </div>
-      <div class="card-body info-card">
-        <h5 id="courseName"></h5>
-        <input type="text" id="courseName" class="form-control" style="display:none;" />
-        <h5 id="dueDate"></h5>
-      </div>
-    </div>
+<div class="card mb-4">
+  <div class="card-header">
+    <h3 class="card-title title-card box">
+      <a><i id="back" class="material-symbols-outlined hide">cancel</i></a>
+      <div class="card-title left"><strong id="assignmentTitle"></strong></div>
+      <a href="main.html"><i id="back" class="material-symbols-outlined right">cancel</i></a>
+    </h3>
+  </div>
+  <div class="card-body info-card">
+    <h5 id="courseName"></h5>
+    <h5 id="dueDate"></h5>
+  </div>
+</div>
 
-    <!-- Assignment Details Card -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h5><b>Details:</b></h5>
-      </div>
-      <div class="card-body details-card">
-        <p id="assignmentDetails"></p>
-        <input type="text" id="assignmentDetailsInput" class="form-control" style="display:none;" />
-      </div>
-      <div class="card-header link-card">
-        <h5><b>Assignment Link:</b></h5>
-      </div>
-      <div class="card-body">
-        <a id="links" target="_blank"></a>
-        <input type="text" id="linksInput" class="form-control" style="display:none;" />
-      </div>
-      <!-- Buttons for Edit and Delete -->
-      <div style="display: flex; justify-content: flex-end; padding-bottom: 5px;">
-        <button id="editAssignment" class="btn btn-warning" style="margin-right: 10px;">Edit</button>
-        <button id="deleteAssignment" class="btn btn-danger" style="margin-right: 10px;">Delete</button>
-      </div>
-    </div>
+<!-- Assignment Details Card -->
+<div class="card mb-4">
+  <div class="card-header">
+    <h5><b>Details:</b></h5>
+  </div>
+  <div class="card-body details-card">
+    <p id="assignmentDetails"></p>
+    <input type="text" id="assignmentDetailsInput" class="form-control" style="display:none;" />
+  </div>
+  <div class="card-header link-card">
+    <h5><b>Assignment Link:</b></h5>
+  </div>
+  <div class="card-body">
+    <a id="links" target="_blank"></a>
+    <input type="text" id="linksInput" class="form-control" style="display:none;" />
+  </div>
+  <!-- Buttons for Edit and Delete -->
+  <div style="display: flex; justify-content: flex-end; padding-bottom: 5px;">
+    <button id="editAssignment" class="btn btn-warning" style="margin-right: 10px;">Edit</button>
+    <button id="deleteAssignment" class="btn btn-danger" style="margin-right: 10px;">Delete</button>
+  </div>
+</div>
+
+
 
     <!-- Complete Assignment Card -->
     <div class="card">
@@ -90,6 +91,9 @@
         </button>
       </div>
     </div>
+
+
+
 
     <!-- Footer -->
     <nav id="footerPlaceholder"></nav>
@@ -101,4 +105,4 @@
 
 </body>
 
-</html>
+<html>
