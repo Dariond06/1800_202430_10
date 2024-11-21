@@ -20,7 +20,7 @@
     <!-- Font Awesome for Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Firebase 8 Library stuff -->
+    <!-- Firebase 8 Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -29,68 +29,102 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-
-
-    <!-- CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/style.css">
-
-
+    <link rel="stylesheet" href="styles/setting.css">
 </head>
 
-<body>
-
+<body class="bg-light">
     <!-- Header Bar -->
     <nav id="navbarPlaceholder"></nav>
 
     <div class="container mt-4">
         <!-- User Info Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="card-title">Personal Information</h5>
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">Personal Information</h5>
             </div>
             <div class="card-body">
                 <form>
-                    <fieldset class="mb-3" id="personalInfoFields" disabled>
-                        <div class="form-group">
-                            <label for="nameInput">Name</label>
+                    <fieldset id="personalInfoFields" disabled>
+                        <div class="mb-3">
+                            <label for="nameInput" class="form-label">Name</label>
                             <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
                         </div>
                     </fieldset>
-
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary me-2" onclick="editUserInfo()">Edit</button>
+                        <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+                    </div>
                 </form>
             </div>
         </div>
 
-        <!-- Future Settings Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="card-title">Upcoming Priority</h5>
+        <!-- Settings Card -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="card-title mb-0">Upcoming Priority</h5>
             </div>
             <div class="card-body">
+                <form>
+                    <!-- Priority Level 1 -->
+                    <div class="d-flex align-items-center mb-3">
+                        <label class="me-3" for="redDays">
+                            <span class="badge rounded-pill text-white"
+                                style="background-color: rgba(255, 0, 0, .7);">Red</span>
+                                <p>Less then:</p>
+                        </label>
+                        <input type="number" class="form-control" placeholder="Days in advance" min="1" id="redDays">
+                    </div>
 
+                    <!-- Priority Level 2 -->
+                    <div class="d-flex align-items-center mb-3">
+                        <label class="me-3" for="orangeDays">
+                            <span class="badge rounded-pill text-dark"
+                                style="background-color: rgba(255, 165, 0, .7);">Orange</span>
+                                <p>Less then:</p>
+                        </label>
+                        <input type="number" class="form-control" placeholder="Days in advance" min="1" id="orangeDays">
+                    </div>
+
+                    <!-- Priority Level 3 -->
+                    <div class="d-flex align-items-center mb-3">
+                        <label class="me-3" for="yellowDays">
+                            <span class="badge rounded-pill text-dark"
+                                style="background-color: rgba(255, 255, 0, .5);">Yellow</span>
+                                <p>Less then:</p>
+                        </label>
+                        <input type="number" class="form-control" placeholder="Days in advance" min="1" id="yellowDays">
+                    </div>
+
+                    
+
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary me-2" onclick="savePrioritySettings()">Save
+                            Priorities</button>
+                        <button type="button" id="resetButton" class="btn btn-primary" onclick="resetPrioritySettings()">Reset to Defaults</button>
+                            </div>
+                    </div>
+                </form>
             </div>
         </div>
 
-<!-- Log Out Button Card -->
-<div class="card">
-    <div class="logout">
-        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
-        <span style="width: 10px"></span>
-        <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+
+        <!-- Log Out Button -->
+        <div class="text-center">
+            <button type="button" class="btn btn-danger btn-lg" onclick="logOutUser()">Log Out</button>
+        </div>
     </div>
-    <button type="button" class="btn btn-danger" onclick="logOutUser()">Log Out</button>
-</div>
-
-
 
     <!-- Footer -->
-    <nav id="footerPlaceholder"></nav>
+    <footer id="footerPlaceholder" class="mt-5">
+        <p class="text-center text-muted">© 2024 My 1800 App</p>
+    </footer>
 
-    <!-- Link to scripts of your own -->
+    <!-- Link to scripts -->
     <script src="./scripts/firebaseAPI.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/setting.js"></script>
-
 </body>
 
 </html>

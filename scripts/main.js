@@ -108,7 +108,6 @@ function renderAssignments(assignments, container, type) {
         
 
         let daysLeftText;
-        let daysLeftClass = '';  // Default class for the due date indicator
         let daysLeftColor = ''; // Default background color for the due date indicator
 
         if (type === 'Done') {
@@ -119,9 +118,8 @@ function renderAssignments(assignments, container, type) {
                 daysLeftText = 'Due Today!'
                 daysLeftColor = 'rgba(255, 0, 0, .7)';
             } else if (timeDiff > 0) {
-                const { daysLeftText: daysText, daysLeftClass: classText, daysLeftColor: color } = getColorByDaysLeft(daysLeft);
+                const { daysLeftText: daysText, daysLeftColor: color } = getColorByDaysLeft(daysLeft);
                 daysLeftText = daysText;
-                daysLeftClass = classText;
                 daysLeftColor = color;
                 
             } else {
@@ -156,27 +154,54 @@ function renderAssignments(assignments, container, type) {
 }
 
 
-// This function sets the color and text based on the number of days left
+let priorityNumbers = { redNum: 0, orangeNum: 0, yellowNum: 0 }; // Default values
+
+// Fetch priority numbers from Firestore
+function fetchPriorityNumbers(userId) {
+    return db.collection('users').doc(userId).collection('settings').doc('priorities')
+        .get()
+        .then(doc => {
+            if (doc.exists) {
+                const data = doc.data();
+                priorityNumbers.redNum = data.red; 
+                priorityNumbers.orangeNum = data.orange; 
+                priorityNumbers.yellowNum = data.yellow; 
+                console.log('Fetched Priority Numbers:', priorityNumbers);
+            } else {
+                priorityNumbers.redNum = 3; 
+                priorityNumbers.orangeNum = 4; 
+                priorityNumbers.yellowNum = 6;
+                console.error('No priority data found!');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching priority numbers:', error);
+        });
+}
+
+// Use the priority numbers in the color system
 function getColorByDaysLeft(daysLeft) {
     let daysLeftText;
     let daysLeftColor = ''; // Default background color for the due date indicator
 
-    if (daysLeft <= 3) {
-        daysLeftColor = 'rgba(255, 0, 0, .7)';  // Red for 3 days or less
+    if (daysLeft <= priorityNumbers.redNum) {
+        daysLeftColor = 'rgba(255, 0, 0, .7)';  // Red for days <= redNum
         daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
-    } else if (daysLeft == 4) {
-        daysLeftColor = 'rgba(255, 165, 0, .7)'; // Orange for 4 days
+    } else if (daysLeft <= priorityNumbers.orangeNum) {
+        daysLeftColor = 'rgba(255, 165, 0, .7)'; // Orange for days <= orangeNum
         daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
-    } else if (daysLeft <= 6) {
-        daysLeftColor = 'rgba(255, 255, 0, .5)'; // Yellow for 5 days
+    } else if (daysLeft <= priorityNumbers.yellowNum) {
+        daysLeftColor = 'rgba(255, 255, 0, .5)'; // Yellow for days <= yellowNum
         daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
-    } else if (daysLeft >= 7) {
-        daysLeftColor = 'rgba(0, 255, 0, .5)';  // Green for after 7 days
+    } else {
+        daysLeftColor = 'rgba(0, 255, 0, .5)';  // Green for more than yellowNum days
         daysLeftText = `${daysLeft} Day${daysLeft > 1 ? 's' : ''} Left`;
     }
 
     return { daysLeftText, daysLeftColor };
 }
+
+
 
 
 
@@ -198,12 +223,14 @@ function getUserSetAndLoad(userId) {
         });
 }
 
+// Modify the onAuthStateChanged function to fetch priority numbers
 window.onload = function () {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             const userId = user.uid;
             console.log(`Loading assignments for user: ${userId}`);
-            getUserSetAndLoad(userId);
+            fetchPriorityNumbers(userId); // Fetch the priority numbers
+            getUserSetAndLoad(userId); // Continue loading the class assignments
         } else {
             console.error('No user is signed in.');
             window.location.href = '/login.html';
