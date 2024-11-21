@@ -16,10 +16,12 @@ function toggleContent(activeButton, inactiveButton, activeContent, inactiveCont
 
 dueButton.addEventListener('click', function () {
     toggleContent(dueButton, doneButton, dueContent, doneContent, loadDueAssignments);
+    document.getElementById("pageTitle").textContent = "Upcoming Deadlines!"
 });
 
 doneButton.addEventListener('click', function () {
     toggleContent(doneButton, dueButton, doneContent, dueContent, loadDoneAssignments);
+    document.getElementById("pageTitle").textContent = "Completed Assignments"
 });
 
 
@@ -54,7 +56,7 @@ function loadDueAssignments() {
 
 function loadDoneAssignments() {
     doneContent.innerHTML = '<p>Loading Completed Assignments...</p>';
-
+    
     const userId = firebase.auth().currentUser.uid;
 
     // Get completed assignments from user's assignments

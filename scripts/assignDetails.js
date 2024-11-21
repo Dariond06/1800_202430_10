@@ -157,11 +157,11 @@ function markAsNotDone() {
 
 function toggleCompletion(button) {
   if (button.textContent.trim() === "Mark As Complete") {
-    button.textContent = "Mark As Not Complete";
+    button.textContent = "Mark As Still Due";
     button.classList.add("not-complete"); // Add class for dark gray styling
     markAsDone(); // Call function to mark the assignment as complete
   } else {
-    button.textContent = "Mark As Complete";
+    button.textContent = "Mark As Done";
     button.classList.remove("not-complete"); // Remove class for default styling
     markAsNotDone(); // Call function to mark the assignment as not complete
   }
