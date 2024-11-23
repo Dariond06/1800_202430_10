@@ -1,0 +1,171 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FDF0D5; 
+    color: #333; 
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(135deg, #440202, #ff0000); 
+    color: #fff;
+    padding: 60px 0;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+main {
+    padding: 40px 15px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+#featureArea {
+    background-color: #f0f0f0; /* Light gray background for the feature section */
+    padding: 20px; /* Add padding if needed */
+    margin: 0 auto; /* Center the section content */
+    width: 100%; /* Make it span the full width of the page */
+}
+
+#feature h1 {
+    color: #333; /* Text styling inside the feature section */
+}
+
+
+
+#features .card {
+    background-color: #fff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#features .card-body {
+    padding: 30px;
+}
+
+#features .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#features .card-text {
+    font-size: 1rem;
+    color: #666;
+}
+
+#logBtn a {
+    background-color: #3498db; 
+    color: #fff;
+    font-size: 1.125rem;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#logBtn a:hover {
+    background-color: #2980b9;
+}
+
+
+footer {
+    background-color: #ecf0f1; 
+    color: #2c3e50; 
+    padding: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+
+
+
+
+#loginButtonWrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loginButtonWrapper a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 0.875rem;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out; 
+}
+
+/* Expanded Full-Length Button */
+#loginButtonWrapper.expanded {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+#loginButtonWrapper.expanded a {
+    border-radius: 50px;
+    padding: 15px 30px; 
+    font-size: 1.125rem; 
+    width: auto;
+    height: auto;
+    transition: all 0.3s ease-in-out; 
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#features .card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+#intro, #logBtn {
+    animation: fadeIn 0.7s ease-out;
+}
