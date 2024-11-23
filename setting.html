@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <!-- Settings Card -->
+        <!-- priority Settings -->
         <div class="card shadow-sm mb-4">
             <div class="card-header bg-secondary text-white">
                 <h5 class="card-title mb-0">Upcoming Priority</h5>
@@ -72,7 +72,7 @@
                         <label class="me-3" for="redDays">
                             <span class="badge rounded-pill text-white"
                                 style="background-color: rgba(255, 0, 0, .7);">Red</span>
-                                <p>Less then:</p>
+                            <p>Less then:</p>
                         </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="redDays">
                     </div>
@@ -82,7 +82,7 @@
                         <label class="me-3" for="orangeDays">
                             <span class="badge rounded-pill text-dark"
                                 style="background-color: rgba(255, 165, 0, .7);">Orange</span>
-                                <p>Less then:</p>
+                            <p>Less then:</p>
                         </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="orangeDays">
                     </div>
@@ -92,33 +92,76 @@
                         <label class="me-3" for="yellowDays">
                             <span class="badge rounded-pill text-dark"
                                 style="background-color: rgba(255, 255, 0, .5);">Yellow</span>
-                                <p>Less then:</p>
+                            <p>Less then:</p>
                         </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="yellowDays">
                     </div>
 
-                    
+
 
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-primary me-2" onclick="savePrioritySettings()">Save
                             Priorities</button>
-                        <button type="button" id="resetButton" class="btn btn-primary" onclick="resetPrioritySettings()">Reset to Defaults</button>
-                            </div>
+                        <button type="button" id="resetButton" class="btn btn-primary"
+                            onclick="resetPrioritySettings()">Reset to Defaults</button>
                     </div>
-                </form>
             </div>
-        </div>
-
-
-        <!-- Log Out Button -->
-        <div class="text-center">
-            <button type="button" class="btn btn-danger btn-lg" onclick="logOutUser()">Log Out</button>
+            </form>
         </div>
     </div>
 
+
+    <!-- Themes-->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="card-title mb-0">Themes</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="" checked> <!-- remove checked later-->
+                    <label class="form-check-label" for="">
+                      Default Light
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
+                    <label class="form-check-label" for="">
+                      Default Dark
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
+                    <label class="form-check-label" for="">
+                      other
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
+                    <label class="form-check-label" for="">
+                      other
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
+                    <label class="form-check-label" for="">
+                      other
+                    </label>
+                  </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Log Out Button -->
+    <div class="text-center">
+        <button type="button" class="btn btn-danger btn-lg" onclick="logOutUser()">Log Out</button>
+    </div>
+    </div>
+
     <!-- Footer -->
-    <footer id="footerPlaceholder" class="mt-5">
-        <p class="text-center text-muted">© 2024 My 1800 App</p>
+    <footer id="footerPlaceholder">
+        
     </footer>
 
     <!-- Link to scripts -->
