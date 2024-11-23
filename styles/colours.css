@@ -1,0 +1,53 @@
+:root {
+    --bs-primary: #C1121F;  /* Vibrant Red */
+    --bs-secondary: #669BBC; /* Muted Blue */
+    --bs-danger: #780000;   /* Deep Red */
+    --bs-light: #FDF0D5;    /* Soft Cream */
+    --bs-dark: #003049;     /* Dark Blue */
+    --bs-background: #FDF0D5;
+    --bs-text: #003049;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bs-primary: #003049;  /* Dark Blue */
+    --bs-secondary: #669BBC; /* Muted Blue */
+    --bs-danger: #780000;   /* Deep Red */
+    --bs-light: #121212;    /* Very Dark */
+    --bs-dark: #FDF0D5;     /* Light Cream */
+    --bs-background: #121212;
+    --bs-text: #FDF0D5;
+}
+
+/* Forest Theme */
+[data-theme="forest"] {
+    --bs-primary: #2A9D8F;  /* Teal */
+    --bs-secondary: #264653; /* Dark Forest Green */
+    --bs-danger: #E76F51;   /* Burnt Orange */
+    --bs-light: #F4A261;    /* Soft Peach */
+    --bs-dark: #264653;     /* Dark Forest Green */
+    --bs-background: #264653;
+    --bs-text: #E9C46A;     /* Warm Yellow */
+}
+
+/* Pastel Theme */
+[data-theme="pastel"] {
+    --bs-primary: #F4A3A8;  /* Soft Pink */
+    --bs-secondary: #B5EAEA; /* Pastel Aqua */
+    --bs-danger: #FFB5A7;   /* Pastel Red */
+    --bs-light: #EDF6E5;    /* Soft Mint */
+    --bs-dark: #9D8189;     /* Pastel Mauve */
+    --bs-background: #FFEBE5;
+    --bs-text: #6B4226;     /* Soft Brown */
+}
+
+/* Brown Theme */
+[data-theme="brown"] {
+    --bs-primary: #8B4513;  /* Saddle Brown */
+    --bs-secondary: #D2B48C; /* Tan */
+    --bs-danger: #A52A2A;   /* Brown */
+    --bs-light: #F5F5DC;    /* Beige */
+    --bs-dark: #3E2723;     /* Dark Brown */
+    --bs-background: #3E2723; /* Dark Brown for background */
+    --bs-text: #F5F5DC;     /* Beige for text */
+}
