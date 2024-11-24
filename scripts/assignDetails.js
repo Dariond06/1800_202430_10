@@ -1,5 +1,9 @@
+// Include SweetAlert library (add this in your HTML <head>)
+/*
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+*/
+
 window.onload = function () {
-  // Reference Firestore
   const db = firebase.firestore();
 
   // Get the assignment ID from the URL
@@ -72,7 +76,6 @@ function populateAssignmentData(data) {
     document.getElementById('assignmentDetails').innerHTML = `${data.details}`;
     document.getElementById('links').innerHTML = `${data.links}`; // puts the link text from firestore 
     document.getElementById('links').href = `${data.links}`; //adds the link to the href
-
   } else {
     displayError('Incomplete assignment data.');
   }
@@ -88,16 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Check if the assignment is marked as complete or not
 function isItComplete(user) {
   const assignmentId = new URLSearchParams(window.location.search).get('id');
-
   if (!assignmentId) {
     console.error("Assignment ID not found in URL.");
     return;
   }
 
   const userId = user.uid;
-
   firebase.firestore()
     .collection('users')
     .doc(userId)
@@ -119,75 +121,130 @@ function isItComplete(user) {
     });
 }
 
+// Mark assignment as complete
 function markAsDone() {
   const user = firebase.auth().currentUser;
   const assignmentId = new URLSearchParams(window.location.search).get('id');
 
   if (user && assignmentId) {
     const userId = user.uid;
-
     firebase.firestore()
       .collection('users')
       .doc(userId)
       .collection('completedAssignments')
       .doc(assignmentId)
       .set({ assignmentId })
+      .then(() => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+          }
+      });
+      Toast.fire({
+          icon: "success",
+          title: "Marked as done!"
+      });
+      })
+      .catch((error) => {
+        Swal.fire('Error!', 'There was an error marking the assignment as complete.', 'error');
+      });
   } else {
-    console.error('User not authenticated or assignment ID not found.');
+    Swal.fire('Error!', 'User not authenticated or assignment ID not found.', 'error');
   }
 }
 
+// Mark assignment as not done
 function markAsNotDone() {
   const user = firebase.auth().currentUser;
   const assignmentId = new URLSearchParams(window.location.search).get('id');
 
   if (user && assignmentId) {
     const userId = user.uid;
-
     firebase.firestore()
       .collection('users')
       .doc(userId)
       .collection('completedAssignments')
       .doc(assignmentId)
       .delete()
+      .then(() => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+          }
+      });
+      Toast.fire({
+          icon: "success",
+          title: "Marked as not done!"
+      });
+      })
+      .catch((error) => {
+        Swal.fire('Error!', 'There was an error marking the assignment as not complete.', 'error');
+      });
   } else {
-    console.error('User not authenticated or assignment ID not found.');
+    Swal.fire('Error!', 'User not authenticated or assignment ID not found.', 'error');
   }
 }
 
+// Toggle completion status
 function toggleCompletion(button) {
-  if (button.textContent.trim() === "Mark As Complete") {
+  const currentStatus = button.dataset.status;
+
+  if (currentStatus === "not-done") {
     button.textContent = "Mark As Still Due";
-    button.classList.add("not-complete"); // Add class for dark gray styling
-    alert('You have marked this assginment as Done successfully.');
-    markAsDone(); // Call function to mark the assignment as complete
-  } else {
+    button.classList.add("not-complete"); 
+    button.dataset.status = "done"; 
+    markAsDone(); //
+  } else if (currentStatus === "done") {
     button.textContent = "Mark As Done";
-    button.classList.remove("not-complete"); // Remove class for default styling
-    alert('You have marked this assginment as Still Due successfully.');
-    markAsNotDone(); // Call function to mark the assignment as not complete
+    button.classList.remove("not-complete");
+    button.dataset.status = "not-done"; 
+    markAsNotDone(); 
   }
 }
 
 
-
-
-
-
-document.getElementById('editAssignment').addEventListener('click', async function() {
+document.getElementById('editAssignment').addEventListener('click', async function () {
   const isEditing = this.textContent === "Save"; // Toggle check
-  
+
   if (isEditing) {
     // Save edited data to Firestore
     await saveChanges();
     this.textContent = "Edit";  // Change button text back to "Edit"
     toggleEdit(false); // Revert to the display mode
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+      }
+  });
+  Toast.fire({
+      icon: "success",
+      title: "Your information has been updated."
+  });
   } else {
     this.textContent = "Save"; // Change button text to "Save"
     toggleEdit(true); // Show input fields for editing
   }
 });
 
+// Toggle edit mode
 function toggleEdit(isEditing) {
   const detailsText = document.getElementById('assignmentDetails');
   const detailsInput = document.getElementById('assignmentDetailsInput');
@@ -213,31 +270,29 @@ function toggleEdit(isEditing) {
   }
 }
 
+// Save changes to Firestore
 async function saveChanges() {
   const assignmentId = new URLSearchParams(window.location.search).get('id');
   const user = firebase.auth().currentUser;
-  
+
   if (user && assignmentId) {
     const userId = user.uid;
 
-    // Get the user's class set from their Firestore profile
     try {
       const userDoc = await firebase.firestore()
         .collection("users")
         .doc(userId)
         .get();
         
-      const classSet = userDoc.data().classSet; // Assuming 'classSet' field contains the user's class set
+      const classSet = userDoc.data().classSet;
 
       if (classSet) {
-        // Get the new details and link from the input fields
         const newDetails = document.getElementById('assignmentDetailsInput').value;
         const newLink = document.getElementById('linksInput').value;
 
-        // Navigate to the correct class set collection and update the assignment
         const assignmentDoc = await firebase.firestore()
           .collection("classes")
-          .doc(classSet)  // Use the user's class set to find the correct class collection
+          .doc(classSet)
           .collection("assignments")
           .doc(assignmentId);
         
@@ -245,63 +300,101 @@ async function saveChanges() {
           details: newDetails,
           links: newLink,
         });
-        
-        // Update UI with new data
+
         document.getElementById('assignmentDetails').textContent = newDetails;
         document.getElementById('links').href = newLink;
         document.getElementById('links').textContent = newLink;
       }
     } catch (error) {
-      console.error("Error updating Firestore:", error);
+      Swal.fire('Error!', 'Failed to save changes. Please try again.', 'error');
     }
   }
 }
 
+// Confirm before deleting assignment
+function confirmDelete(assignmentId) {
+  // Make sure the assignmentId is being passed correctly
+  console.log("Attempting to delete assignment with ID:", assignmentId);
 
-document.getElementById('deleteAssignment').addEventListener('click', async function() {
-  // Confirm with the user
-  const confirmation = confirm("Are you sure you want to delete this assignment? This action cannot be undone.");
-  
-  if (confirmation) {
-    try {
-      const assignmentId = new URLSearchParams(window.location.search).get('id');
-      const user = firebase.auth().currentUser;
-
-      if (user && assignmentId) {
-        const userId = user.uid;
-
-        // Get the user's class set from their Firestore profile
-        const userDoc = await firebase.firestore()
-          .collection("users")
-          .doc(userId)
-          .get();
-
-        const classSet = userDoc.data().classSet; // Assuming 'classSet' field contains the user's class set
-
-        if (classSet) {
-          // Navigate to the correct class set collection and delete the assignment
-          await firebase.firestore()
-            .collection("classes")
-            .doc(classSet)
-            .collection("assignments")
-            .doc(assignmentId)
-            .delete();
-
-          alert("Assignment successfully deleted.");
-          // Optionally, redirect to another page after deletion
-          window.location.href = "/main.html"; // Replace with the appropriate URL
-        } else {
-          console.error("Class set not found for the user.");
-        }
-      } else {
-        console.error("User not authenticated or assignment ID not found.");
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to undo this action!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        await deleteAssignment(assignmentId);
+        window.location.href = "main.html";  // Redirect to assignments list after successful deletion
+      } catch (error) {
+        console.error("Error during delete:", error);
+        Swal.fire('Error!', 'There was an issue deleting the assignment.', 'error');
       }
-    } catch (error) {
-      console.error("Error deleting assignment from Firestore:", error);
-      alert("Failed to delete assignment. Please try again.");
+    } else {
+      console.log("Deletion was canceled.");
     }
+  });
+}
+
+// Delete assignment from Firestore
+async function deleteAssignment(assignmentId) {
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    console.log('User not authenticated.');
+    return Swal.fire('Error!', 'You need to be logged in to delete the assignment.', 'error');
+  }
+
+  const userId = user.uid;
+  try {
+    // Fetch user data to get classSet
+    const userDoc = await firebase.firestore()
+      .collection("users")
+      .doc(userId)
+      .get();
+    
+    if (!userDoc.exists) {
+      throw new Error('User document not found.');
+    }
+
+    const classSet = userDoc.data().classSet;
+    if (!classSet) {
+      throw new Error('Class set not found.');
+    }
+
+    // Proceed with deletion of the assignment from Firestore
+    await firebase.firestore()
+      .collection("classes")
+      .doc(classSet)
+      .collection("assignments")
+      .doc(assignmentId)
+      .delete();
+
+    console.log('Assignment deleted successfully.');
+    return true;
+  } catch (error) {
+    console.error('Error during assignment deletion:', error);
+    throw error; // Re-throw to catch in the confirmDelete function
+  }
+}
+
+// Add event listener to the delete button to trigger the confirmation
+document.getElementById('deleteAssignment').addEventListener('click', function () {
+  const assignmentId = new URLSearchParams(window.location.search).get('id');
+  if (assignmentId) {
+    confirmDelete(assignmentId);
   } else {
-    // User cancelled the deletion
-    console.log("Assignment deletion cancelled by user.");
+    console.error('No assignment ID found.');
   }
 });
+
+
+function displayError(message) {
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: message,
+  });
+}

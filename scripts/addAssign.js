@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.getElementById("submitAssignment");
+    const dateInput = document.getElementById("dateInput");
+
+    // Set the current date and time for the due date input
+    const now = new Date();
+    const formattedDateTime = formatDateTime(now);
+    dateInput.value = formattedDateTime;
+    dateInput.setAttribute("min", formattedDateTime);
 
     // Attach a single event listener
     submitButton.addEventListener("click", async () => {
@@ -8,21 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const title = document.getElementById("titleInput").value.trim();
         const classSelected = document.getElementById("classSelect").value.trim();
         const details = document.getElementById("detailsInput").value.trim();
-        const dueDate = document.getElementById("dateInput").value;
+        const dueDate = dateInput.value;
         const links = document.getElementById("linkInput").value;
 
         // Validate input fields
         if (!title || !details || !dueDate || !links) {
-            alert("Please fill in all fields.");
-            submitButton.disabled = false; // Re-enable the button
-            return;
-        }
-
-        // Check if the due date is still the preset value (current date/time)
-        const presetDate = document.getElementById('dateInput').getAttribute('min');
-        if (dueDate === presetDate) {
-            alert("Please change the due date and time before submitting.");
-            submitButton.disabled = false; // Re-enable the button
+            Swal.fire({
+                title: 'Missing Fields!',
+                text: 'Please fill in all fields.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+            submitButton.disabled = false;
             return;
         }
 
@@ -30,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Ensure user is authenticated
             const user = firebase.auth().currentUser;
             if (!user) {
-                alert("User not logged in. Please log in to submit an assignment.");
-                submitButton.disabled = false; // Re-enable the button
+                console.error("User not logged in.");
+                submitButton.disabled = false;
                 return;
             }
 
@@ -40,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Retrieve the user's classSet field from Firestore
             const userDoc = await db.collection("users").doc(userId).get();
             if (!userDoc.exists) {
-                alert("User's class set not found.");
-                submitButton.disabled = false; // Re-enable the button
+                console.error("User's class set not found.");
+                submitButton.disabled = false;
                 return;
             }
 
@@ -60,29 +64,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 usersCompleted: [] // Initializes empty array for users who have completed the assignment
             });
 
-            alert("Assignment successfully added!");
-            window.location.href = 'main.html';
+            Swal.fire({
+                title: 'Success!',
+                text: 'Assignment successfully added!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'main.html';
+            });
         } catch (error) {
             console.error("Error submitting assignment:", error);
-            alert("An error occurred while submitting the assignment. Please try again.");
         } finally {
             submitButton.disabled = false; // Re-enable the button
         }
     });
 });
 
-// Get the current date and time
-const now = new Date();
-// Get the current local time in YYYY-MM-DDTHH:mm format
-const year = now.getFullYear();
-const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-const day = String(now.getDate()).padStart(2, '0');
-const hours = String(now.getHours()).padStart(2, '0');
-const minutes = String(now.getMinutes()).padStart(2, '0');
-const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-
-// Set the value of the input field to current date and time
-document.getElementById('dateInput').value = formattedDateTime;
-
-// Set the minimum date/time for the input field to prevent past dates
-document.getElementById('dateInput').setAttribute('min', formattedDateTime);
+// Function to format date and time in YYYY-MM-DDTHH:mm format
+function formatDateTime(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+}

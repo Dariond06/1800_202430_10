@@ -8,7 +8,6 @@ body {
 
 .container {
     padding: 20px;
-    margin-bottom: 80px;
 }
 
 h5.card-title {
@@ -120,5 +119,10 @@ footer a:hover {
 
 .footer a {
     text-decoration: none;
+}
+
+
+#footerPlaceholder {
+    height: 180px;
 }
 

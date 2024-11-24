@@ -4,26 +4,27 @@ var currentUser; // Points to the document of the user who is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            // Access current user document in Firestore
+            console.log("User is signed in:", user.uid);
             currentUser = db.collection("users").doc(user.uid);
 
-            // Get the document for the current user
             currentUser.get()
                 .then(userDoc => {
-                    // Get and populate user data
-                    let userName = userDoc.data().name;
-                    if (userName != null) {
-                        document.getElementById("nameInput").value = userName;
+                    if (userDoc.exists) {
+                        let userName = userDoc.data().name;
+                        if (userName) {
+                            document.getElementById("nameInput").value = userName;
+                        }
+                    } else {
+                        console.error("User document does not exist");
                     }
                 })
                 .catch(error => {
-                    console.log("Error getting user document:", error);
+                    console.error("Error getting user document:", error);
                 });
 
-            // Load priority settings
             loadPrioritySettings(user.uid);
         } else {
-            console.log("No user is signed in");
+            console.log("No user is signed in.");
         }
     });
 }
@@ -37,12 +38,32 @@ function editUserInfo() {
 function saveUserInfo() {
     const userName = document.getElementById('nameInput').value;
 
+    if (!userName.trim()) {
+        Swal.fire("Missing Field", "Please enter your name before saving.", "warning");
+        return;
+    }
+
     currentUser.update({ name: userName })
         .then(() => {
-            console.log("Document successfully updated!");
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Your information has been updated."
+            });
         })
         .catch(error => {
-            console.log("Error updating document:", error);
+            console.error("Error updating document:", error);
+            Swal.fire("Error", "Failed to save your information. Please try again.", "error");
         });
 
     document.getElementById('personalInfoFields').disabled = true;
@@ -50,16 +71,30 @@ function saveUserInfo() {
 
 // Function to log out user
 function logOutUser() {
-    firebase.auth().signOut().then(() => {
-        alert('You have logged out successfully!');
-        window.location.href = 'login.html';
-    }).catch(error => {
-        console.error('Error logging out: ', error);
+    Swal.fire({
+        title: "Are you sure you want to log out?",
+        showCancelButton: true,
+        confirmButtonText: "Log Out",
+        cancelButtonText: "Cancel"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            firebase.auth().signOut()
+                .then(() => {
+                    Swal.fire("Logged Out", "You have successfully logged out.", "success")
+                        .then(() => {
+                            window.location.href = 'index.html';
+                        });
+                })
+                .catch(error => {
+                    console.error("Error logging out: ", error);
+                    Swal.fire("Error", "Failed to log out. Please try again.", "error");
+                });
+        }
     });
 }
 
 // Firestore reference and default priority days
-const defaultPriorities = { red: 3, orange: 4, yellow: 6, green: 7 };
+const defaultPriorities = { red: 3, orange: 4, yellow: 6 };
 
 // Function to load priority settings
 function loadPrioritySettings(userId) {
@@ -88,32 +123,84 @@ function savePrioritySettings() {
         if (user) {
             const priorityDocRef = db.collection("users").doc(user.uid).collection("settings").doc("priorities");
 
-            // Get priority values from the form
             const red = parseInt(document.getElementById("redDays").value) || defaultPriorities.red;
             const orange = parseInt(document.getElementById("orangeDays").value) || defaultPriorities.orange;
             const yellow = parseInt(document.getElementById("yellowDays").value) || defaultPriorities.yellow;
 
-            // Validation: Ensure red < orange < yellow < green
             if (red >= orange || orange >= yellow) {
-                alert("Priority values must follow the order: Red < Orange < Yellow. Please adjust your input.");
-                return; // Stop the function if validation fails
+                Swal.fire("Validation Error", "Priority values must follow the order: Red < Orange < Yellow.", "warning");
+                return;
             }
 
-            const priorities = { red, orange, yellow };
-
-            // Save valid priorities to Firestore
-            priorityDocRef.set(priorities)
-                .then(() => {
-                    alert("Your priority settings have been saved!");
-                })
-                .catch(error => {
-                    console.error("Error saving priority settings:", error);
-                    alert("Failed to save priority settings. Please try again.");
-                });
+            Swal.fire({
+                title: "Do you want to save the priority changes?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Save",
+                denyButtonText: `Don't save`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const priorities = { red, orange, yellow };
+                    priorityDocRef.set(priorities)
+                        .then(() => {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.onmouseenter = Swal.stopTimer;
+                                    toast.onmouseleave = Swal.resumeTimer;
+                                }
+                            });
+                            Toast.fire({
+                                icon: "success",
+                                title: "Your information has been updated."
+                            });
+                        })
+                        .catch(error => {
+                            console.error("Error saving priority settings:", error);
+                            Swal.fire("Error", "Failed to save priority settings. Please try again.", "error");
+                        });
+                } else if (result.isDenied) {
+                    Swal.fire("Changes Not Saved", "Your priority changes were not saved.", "info");
+                }
+            });
         }
     });
 }
 
+// Function to reset priority settings
+function resetPrioritySettings() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            Swal.fire({
+                title: "Are you sure you want to reset priorities to default?",
+                showCancelButton: true,
+                confirmButtonText: "Reset",
+                cancelButtonText: "Cancel"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const priorityDocRef = db.collection("users").doc(user.uid).collection("settings").doc("priorities");
+
+                    document.getElementById("redDays").value = defaultPriorities.red;
+                    document.getElementById("orangeDays").value = defaultPriorities.orange;
+                    document.getElementById("yellowDays").value = defaultPriorities.yellow;
+
+                    priorityDocRef.set(defaultPriorities)
+                        .then(() => {
+                            Swal.fire("Reset Complete", "Priority settings have been reset to defaults.", "success");
+                        })
+                        .catch(error => {
+                            console.error("Error resetting priority settings:", error);
+                            Swal.fire("Error", "Failed to reset priority settings. Please try again.", "error");
+                        });
+                }
+            });
+        }
+    });
+}
 
 // Function to set default priorities
 function setDefaultPriorities() {
@@ -122,34 +209,7 @@ function setDefaultPriorities() {
     document.getElementById("yellowDays").value = defaultPriorities.yellow;
 }
 
-
-
-function resetPrioritySettings() {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            const priorityDocRef = db.collection("users").doc(user.uid).collection("settings").doc("priorities");
-
-            // Reset form fields to default priorities
-            document.getElementById("redDays").value = defaultPriorities.red;
-            document.getElementById("orangeDays").value = defaultPriorities.orange;
-            document.getElementById("yellowDays").value = defaultPriorities.yellow;
-
-            // Update Firestore with default priorities
-            priorityDocRef.set(defaultPriorities)
-                .then(() => {
-                    alert("Priority settings have been reset to defaults.");
-                    savePrioritySettings()
-                })
-                .catch(error => {
-                    console.error("Error resetting priority settings:", error);
-                    alert("Failed to reset priority settings. Please try again.");
-                });
-        }
-    });
-}
-
-
-// Call the populate function on page load
+// Initialize on page load
 document.addEventListener("DOMContentLoaded", () => {
     populateUserInfo();
 });
