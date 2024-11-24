@@ -1,0 +1,80 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    font-family: Arial, sans-serif;
+  } 
+  
+  h4#pageTitle {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left; 
+    margin-left: 1rem; 
+  }
+  
+  .assignment-details h5.card-title {
+    font-size: 1.2rem;
+    color: #007aff;
+  }
+  
+  .assignment-details p.card-text {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .due-date-container span {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px 12px;
+    border-radius: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    display: inline-block;
+    text-align: center;
+  }
+
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer; 
+}
+
+.card:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+  background-color: #bfd9f3; 
+}
+
+
+  .rightBTN {
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0.09; 
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0; 
+  }
+  
+  .leftBTN {
+    border-bottom-left-radius: 0.375rem; 
+    border-bottom-right-radius: 0; 
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0;
+  }
+  
+  #addBtn {
+
+    color: #ffffff;
+    display: block;
+    margin: auto;
+    
+}
+  
+  .logout {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  #footerPlaceholder {
+    height: 120px;
+    position: relative; 
+  }
+  

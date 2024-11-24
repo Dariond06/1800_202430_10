@@ -29,12 +29,14 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-
   <!-- CSS -->
-  <link rel="stylesheet" href="styles/style.css">
-</head>
+  <link rel="stylesheet" href="styles/head.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/foot.css">
 
-<body>
+</head>   
+
+<body style="background: linear-gradient(135deg, #f5f7fa, #c3cfe2); font-family: Arial, sans-serif;">
 
   <!-- Header Bar -->
   <nav id="navbarPlaceholder"></nav>
@@ -42,8 +44,8 @@
   <!-- Assignments List -->
   <div class="container mt-3">
     <!-- Combined Assignment Card -->
-    <div id="assignContainer" class="card" style="background-color: #e0e0e0;">
-      <div class="card-header text-center font-weight-bold">
+    <div id="assignContainer" class="mt-4 p-3" style="background: none;">
+      <div class="text-center mt-3">
         <h4 id="pageTitle">Upcoming Deadlines!</h4>
       </div>
 
@@ -67,17 +69,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-
-  <!-- New Assignment -->
-  <div id="newAssign" class="addBtn">
-    <a href="addAssign.html">
-      <div class="card text-center p-2 w-100" style="background-color: #8db121">
-        <i class="material-icons" style="color: black;">add</i>
-        <p class="m-0">New Assignment</p>
-      </div>
-    </a>
   </div>
 
   <!-- Footer -->

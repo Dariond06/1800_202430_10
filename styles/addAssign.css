@@ -1,12 +1,9 @@
 
-
 .container {
     margin-top: 1rem;
     padding: 0 1rem;
 
-    
 }
-
 
 .card {
     background-color: #d1d1d1;
@@ -16,7 +13,6 @@
     overflow: hidden;
 }
 
-
 .card-title {
     font-weight: bold;
     font-size: 24px;
@@ -24,11 +20,9 @@
     color: #000;
 }
 
-
 .label-bold {
     font-weight: bold;
 }
-
 
 .addBtn {
     width: 100%;
@@ -43,7 +37,7 @@
 }
 
 #back:hover {
-    color: rgb(179, 11, 45); /* Darker shade on hover */
+    color: rgb(179, 11, 45); 
   }
 
 .space {
