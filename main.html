@@ -45,10 +45,29 @@
   <div class="container mt-3">
     <!-- Combined Assignment Card -->
     <div id="assignContainer" class="mt-4 p-3" style="background: none;">
-      <div class="text-center mt-3">
-        <h4 id="pageTitle">Upcoming Deadlines!</h4>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <h4 id="pageTitle" class="mb-0">Upcoming Deadlines!</h4>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="deadlineDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            View
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="deadlineDropdown">
+            <li>
+              <a class="dropdown-item due-filter" href="#" type="button" button id="dueButton" id="dueFilter">Due</a>
+            </li>
+            <li>
+              <a class="dropdown-item done-filter"  type="button" button id="doneButton" id="doneFilter">Done</a>
+            </li>
+          </ul>
+        </div>
       </div>
-
+      
       <div class="card-body overflow-auto" id="assignList">
         <!-- Dynamic content for Due and Done assignments will go here -->
         <div id="dueContent" class="content">
@@ -62,14 +81,14 @@
       </div>
 
       <!-- Completed and Done Buttons (Full Width, Edge-to-Edge) -->
-      <div class="card-footer p-0">
+     <!-- <div class="card-footer p-0">
         <div class="d-flex w-100">
           <button id="dueButton" type="button" class="btn btn-secondary w-50 mb-0 leftBTN active">Due</button>
           <button id="doneButton" type="button" class="btn btn-secondary w-50 mb-0 rightBTN">Done</button>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Footer -->
   <nav id="footerPlaceholder"></nav>
