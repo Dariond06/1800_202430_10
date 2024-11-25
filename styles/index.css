@@ -1,13 +1,13 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #FDF0D5; 
-    color: #333; 
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
     margin: 0;
     padding: 0;
 }
 
 header {
-    background: linear-gradient(135deg, #440202, #ff0000); 
+    background: linear-gradient(135deg, var(--bs-danger), var(--bs-primary)); 
     color: #fff;
     padding: 60px 0;
 }
@@ -24,11 +24,12 @@ header p {
 }
 
 main {
+    background-color: var(--bs-light);
     padding: 40px 15px;
 }
 
 section {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .text-center {
@@ -38,14 +39,13 @@ section {
 
 
 #featureArea {
-    background-color: #f0f0f0; /* Light gray background for the feature section */
     padding: 20px; /* Add padding if needed */
     margin: 0 auto; /* Center the section content */
     width: 100%; /* Make it span the full width of the page */
 }
 
 #feature h1 {
-    color: #333; /* Text styling inside the feature section */
+    color: var(--bs-dark); /* Text styling inside the feature section */
 }
 
 
@@ -74,23 +74,23 @@ section {
 }
 
 #logBtn a {
-    background-color: #3498db; 
+    background-color: var(--bs-secondary);
     color: #fff;
     font-size: 1.125rem;
     padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: filter 0.3s ease;
 }
 
 #logBtn a:hover {
-    background-color: #2980b9;
+    filter: brightness(1.5);
 }
 
 
 footer {
     background-color: #ecf0f1; 
-    color: #2c3e50; 
+    color: var(--bs-dark); 
     padding: 20px;
 }
 
@@ -121,7 +121,7 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3498db;
+    background-color: var(--bs-btn);
     color: #fff;
     font-size: 0.875rem;
     padding: 0;
