@@ -144,7 +144,7 @@ function renderAssignments(assignments, container, type) {
                         ? `<span class="card-text mb-0 day" style="background-color: ${daysLeftColor}; padding: 5px 15px;">${daysLeftText}</span>`
                         : ''
                     }
-                            <span class="card-text mb-0 mr-2">${formattedDate}</span> <!-- Due date -->
+                            <div class="card-text mb-0 mr-2 date">${formattedDate}</div> <!-- Due date -->
                         </div>
                     </div>
                 </a>
