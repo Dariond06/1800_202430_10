@@ -3,3 +3,6 @@
 }
 
 
+.priority {
+    background-color: var(--bs-primary);
+}

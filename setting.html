@@ -32,7 +32,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/head.css">
     <link rel="stylesheet" href="styles/setting.css">
-    
+    <link rel="stylesheet" href="styles/colours.css">
+
 
     <!-- SweetAlert2-->
     <script src="
@@ -71,7 +72,7 @@
 
         <!-- priority Settings -->
         <div class="card shadow-sm mb-4">
-            <div class="card-header bg-secondary text-white">
+            <div class="card-header priority text-white">
                 <h5 class="card-title mb-0">Upcoming Priority</h5>
             </div>
             <div class="card-body">
@@ -120,46 +121,48 @@
     </div>
 
 
-    <!-- Themes-->
-    <div class="card shadow-sm mb-4">
-        <div class="card-header bg-secondary text-white">
-            <h5 class="card-title mb-0">Themes</h5>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="" checked> <!-- remove checked later-->
-                    <label class="form-check-label" for="">
-                      Default Light
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
-                    <label class="form-check-label" for="">
-                      Default Dark
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
-                    <label class="form-check-label" for="">
-                      other
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
-                    <label class="form-check-label" for="">
-                      other
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="">
-                    <label class="form-check-label" for="">
-                      other
-                    </label>
-                  </div>
-            </form>
-        </div>
+    <!-- Themes -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-secondary text-white">
+        <h5 class="card-title mb-0">Themes</h5>
     </div>
+    <div class="card-body">
+        <form>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="themeRadio" id="light" checked data-theme="light">
+                <label class="form-check-label" for="light">
+                    Light
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="themeRadio" id="dark" data-theme="dark">
+                <label class="form-check-label" for="dark">
+                    Dark
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="themeRadio" id="forest" data-theme="forest">
+                <label class="form-check-label" for="forest">
+                    Forest
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="themeRadio" id="pastel" data-theme="pastel">
+                <label class="form-check-label" for="pastel">
+                    Pastel
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="themeRadio" id="brown" data-theme="brown">
+                <label class="form-check-label" for="brown">
+                    Brown
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 
 
     <!-- Log Out Button -->
@@ -170,7 +173,7 @@
 
     <!-- Footer -->
     <footer id="footerPlaceholder">
-        
+
     </footer>
 
     <!-- Link to scripts -->

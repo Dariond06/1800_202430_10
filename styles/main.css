@@ -1,57 +1,57 @@
 body {
-    background: radial-gradient(circle, var(--bs-light)60%, var(--bs-secondary));
-    font-family: Arial, sans-serif;
-  } 
-  
-  h4#pageTitle {
-    color: #333;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: left; 
-    margin-left: 0, 1rem; 
-    padding: 25px;
-  }
-  
-  .assignment-details h5.card-title {
-    font-size: 1.2rem;
-    color: #007aff;
-  }
-  
-  .assignment-details p.card-text {
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .due-date-container span {
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.7); 
-    border-radius: 20px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
-    display: inline-block;
-    text-align: center;
-    margin-right: 10px;
-    width: 106px;
-  }
+  background: radial-gradient(circle, var(--bs-light)60%, var(--bs-secondary));
+  font-family: Arial, sans-serif;
+}
 
-  .date {
-    font-size: 1.1rem;
-    color: black;
-  }
+h4#pageTitle {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 0, 1rem;
+  padding: 25px;
+}
+
+.assignment-details h5.card-title {
+  font-size: 1.2rem;
+  color: #007aff;
+}
+
+.assignment-details p.card-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.due-date-container span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  text-align: center;
+  margin-right: 10px;
+  width: 106px;
+}
+
+.date {
+  font-size: 1.1rem;
+  color: black;
+}
 
 
 .card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  cursor: pointer; 
+  cursor: pointer;
   padding: 5px;
   margin: 10px;
 }
 
 .card:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
-  background-color: #bfd9f3; 
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background-color: #bfd9f3;
 }
 
 .dropdown {
@@ -75,28 +75,27 @@ body {
 }
 
 
-  .rightBTN {
-    border-bottom-left-radius: 0; 
-    border-bottom-right-radius: 0.09; 
-    border-top-left-radius: 0; 
-    border-top-right-radius: 0; 
-  }
-  
-  .leftBTN {
-    border-bottom-left-radius: 0.375rem; 
-    border-bottom-right-radius: 0; 
-    border-top-left-radius: 0; 
-    border-top-right-radius: 0;
-  }
-  
-  
-  .logout {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  #footerPlaceholder {
-    height: 120px;
-    position: relative; 
-  }
-  
+.rightBTN {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0.09;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.leftBTN {
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+.logout {
+  display: flex;
+  justify-content: space-around;
+}
+
+#footerPlaceholder {
+  height: 120px;
+  position: relative;
+}
