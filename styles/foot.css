@@ -33,6 +33,11 @@
 }
 
 .footer-card:hover {
+    background-color: #779fd3;
+    cursor: pointer;
+}
+
+.footer-card.active {
     background-color: #66a2f2;
     cursor: pointer;
 }
