@@ -35,22 +35,25 @@
 .footer-card:hover {
     background-color: var(--bs-light);
     cursor: pointer;
+    
 }
 
 .footer-card.active {
     background-color: var(--bs-primary);
     cursor: pointer;
+    color: #000;
 }
 
 .footer-item i {
     font-size: 2.5rem;
     margin-bottom: 5px;
     color: #fff;
+    color: var(--bs-text-light);
 }
 
 .footer-text {
     font-size: 0.85em;
-    color: #e0e0e0;
+    color: var(--bs-text-light);
 }
 
 .newAssignBtn {
@@ -69,7 +72,7 @@
 }
 
 .newAssignBtn:hover {
-    background: var(--bs-light);
+    background: var(--bs-btn-hover);
     transform: scale(1.5);
 }
 

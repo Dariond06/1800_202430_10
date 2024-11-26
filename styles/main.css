@@ -5,7 +5,7 @@ body {
 
 /* page title ("Upcoming Deadlines!") */
 h4#pageTitle {
-  color: var(--bs-black);
+  color: var(--bs-dark-text);
   font-size: 1.5rem;
   font-weight: 600;
   text-align: left;
@@ -18,10 +18,11 @@ h4#pageTitle {
   background: linear-gradient(90deg, var(--bs-primary), var(--bs-light));
 }
 
+
 /* assignment title */
 .assignment-details h5.card-title {
   font-size: 1.2rem;
-  color: var(--bs-white);
+  color: var(--bs-light-text);
 }
 
 /* assignment class */
@@ -45,7 +46,7 @@ h4#pageTitle {
 
 .date {
   font-size: 1.1rem;
-  color: var(--bs-black);
+  color: var(--bs-date-text);
 }
 
 
@@ -58,7 +59,7 @@ h4#pageTitle {
 
 .card:hover {
   transform: translateY(-5px);
-  filter: brightness(1.2);
+  filter: brightness(1.5);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -69,17 +70,17 @@ h4#pageTitle {
 
 .dropdown-menu {
   border-radius: 0.5rem;
-  box-shadow: var(--bs-black);
+  box-shadow: var(--bs-dark-text);
 }
 
 .dropdown-item {
   font-size: 1rem;
-  color: var(--bs-black);
+  color: var(--bs-dark-text);
 }
 
 .dropdown-item:hover {
   background-color: var(--bs-primary);
-  color: var(--bs-white);
+  color: var(--bs-light-text);
 }
 
 
