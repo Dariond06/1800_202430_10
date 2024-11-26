@@ -23,3 +23,17 @@ if (currentPage !== 'main.html' && newAssignBtn) {
 } else if (newAssignBtn) {
     newAssignBtn.style.display = ''; // Ensure it's visible on 'main.html'
 }
+
+// Apply the saved theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme'); // Retrieve the saved theme from localStorage
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme); // Apply the theme
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light'); // Default theme
+    }
+});
+
+
+
+

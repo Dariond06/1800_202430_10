@@ -213,3 +213,46 @@ function setDefaultPriorities() {
 document.addEventListener("DOMContentLoaded", () => {
     populateUserInfo();
 });
+
+
+
+
+// Function to change the theme using the 'data-theme' attribute on <html>
+function changeTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme); // Save the selected theme to localStorage
+}
+
+// Get all radio buttons
+const themeRadios = document.querySelectorAll('input[name="themeRadio"]');
+
+// Add event listeners to all radio buttons to handle theme changes
+themeRadios.forEach(radio => {
+    radio.addEventListener('change', (event) => {
+        const selectedTheme = event.target.getAttribute('data-theme');
+        changeTheme(selectedTheme);
+    });
+});
+
+// Apply the saved theme or default theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve the saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        changeTheme(savedTheme);
+
+        // Set the corresponding radio button as checked
+        const radioToCheck = document.querySelector(`input[name="themeRadio"][data-theme="${savedTheme}"]`);
+        if (radioToCheck) {
+            radioToCheck.checked = true;
+        }
+    } else {
+        // If no theme is saved, check the default radio button and apply its theme
+        const defaultRadio = document.querySelector('input[name="themeRadio"]:checked');
+        if (defaultRadio) {
+            const defaultTheme = defaultRadio.getAttribute('data-theme');
+            changeTheme(defaultTheme);
+        }
+    }
+});
+
