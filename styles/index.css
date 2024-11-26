@@ -1,14 +1,14 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: var(--bs-light);
+    background-color: var(--bs-background);
     color: var(--bs-dark);
     margin: 0;
     padding: 0;
 }
 
 header {
-    background: linear-gradient(135deg, var(--bs-danger), var(--bs-primary)); 
-    color: #fff;
+    background-color: var(--bs-primary); 
+    color: var(--bs-white);
     padding: 60px 0;
 }
 
@@ -24,7 +24,7 @@ header p {
 }
 
 main {
-    background-color: var(--bs-light);
+    background-color: var(--bs-gray-200);
     padding: 40px 15px;
 }
 
@@ -39,9 +39,9 @@ section {
 
 
 #featureArea {
-    padding: 20px; /* Add padding if needed */
-    margin: 0 auto; /* Center the section content */
-    width: 100%; /* Make it span the full width of the page */
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 #feature h1 {
@@ -51,7 +51,7 @@ section {
 
 
 #features .card {
-    background-color: #fff; 
+    background: linear-gradient(90deg, var(--bs-primary), var(--bs-light)); 
     border: 1px solid #e0e0e0; 
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -70,7 +70,7 @@ section {
 
 #features .card-text {
     font-size: 1rem;
-    color: #666;
+    color: var(--bs-gray-700);
 }
 
 #logBtn a {
@@ -89,7 +89,7 @@ section {
 
 
 footer {
-    background-color: #ecf0f1; 
+    background-color: var; 
     color: var(--bs-dark); 
     padding: 20px;
 }
@@ -98,10 +98,6 @@ footer p {
     margin: 0;
     font-size: 1rem;
 }
-
-
-
-
 
 #loginButtonWrapper {
     position: fixed;
@@ -149,7 +145,6 @@ footer p {
     height: auto;
     transition: all 0.3s ease-in-out; 
 }
-
 
 @keyframes fadeIn {
     from {

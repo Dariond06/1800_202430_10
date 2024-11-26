@@ -131,12 +131,12 @@ function renderAssignments(assignments, container, type) {
         }
 
         const assignmentItem = `
-            <div class="card mb-2 shadow-sm rounded-lg" style="border: none;">
+            <div class="card mb-2 shadow-sm rounded-lg assignment-card" style="border: none;">
                 <a href="assignDetails.html?id=${encodeURIComponent(assignment.id)}" class="card-link" style="text-decoration: none;">
                     <div class="card-body d-flex justify-content-between align-items-center py-2">
                         <div class="assignment-details">
-                            <h5 class="card-title mb-0 text-primary font-weight-bold">${data.title}</h5> <!-- Title -->
-                            <p class="card-text mb-0">${data.courseName}</p> <!-- Course name -->
+                            <h5 class="card-title mb-0 font-weight-bold assignment-title">${data.title}</h5> <!-- Title -->
+                            <p class="card-text mb-0 assignment-class">${data.courseName}</p> <!-- Course name -->
                         </div>
                         <div class="due-date-container d-flex align-items-center">
                             <!-- Only show the "Days Left" box if the assignment is not done and there's valid text -->

@@ -1,6 +1,6 @@
 /* General Styling */
 body {
-    background-color: #a0a0a0;
+    background-color: var(--bs-background);
     margin: 0;
     padding: 0;
     color: #333;
@@ -13,11 +13,12 @@ body {
 h5.card-title {
     font-size: 1.2em;
     font-weight: bold;
-    color: #007bff;
+    color: var(--bs-secondary);
+    padding: 15px;
 }
 
 .card {
-    background-color: #ffffff;
+    background-color: var(--bs-white);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -49,7 +50,7 @@ h5.card-title {
     font-size: 0.9em;
     font-weight: 600;
     color: #ffffff;
-    background-color: #007bff;
+    background-color: var(--bs-btn);
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -66,7 +67,7 @@ h5.card-title {
 
 /* Links */
 a {
-    color: #007bff;
+    color: var(--bs-primary);
     text-decoration: none;
 }
 

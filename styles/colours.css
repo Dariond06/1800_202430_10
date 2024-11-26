@@ -1,12 +1,9 @@
 :root {
-    --bs-primary: #C1121F;  /* Vibrant Red */
-    --bs-secondary: #669BBC; /* Muted Blue */
-    --bs-danger: #780000;   /* Deep Red */
-    --bs-light: #FDF0D5;    /* Soft Cream */
-    --bs-dark: #003049;     /* Dark Blue */
-    --bs-background: #FDF0D5;
-    --bs-text: #003049;
-    --bs-btn: #007aff;
+    --bs-primary: #63ADF2;  /* Vibrant blue */
+    --bs-secondary: #304D6D; /* Muted blue */
+    --bs-light: #A7CCED;    /* Light blue */
+    --bs-btn: #0d6efd; /* btn-primary blue */
+    --bs-background: #dee2e6; /* Light gray (--bs-gray-300) */
 }
 
 /* Dark Theme */

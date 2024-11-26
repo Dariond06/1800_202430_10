@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="styles/head.css">
   <link rel="stylesheet" href="styles/AssignDetails.css">
   <link rel="stylesheet" href="styles/foot.css">
-
+  <link rel="stylesheet" href="styles/colours.css">
 
   <!-- SweetAlert2-->
   <script src="
@@ -88,7 +88,7 @@
   </div>
   <!-- Buttons for Edit and Delete -->
   <div style="display: flex; justify-content: flex-end; padding-bottom: 5px;">
-    <button id="editAssignment" class="btn btn-warning" style="margin-right: 10px;">Edit</button>
+    <button id="editAssignment" class="btn btn-secondary" style="margin-right: 10px;">Edit</button>
     <button id="deleteAssignment" class="btn btn-danger" style="margin-right: 10px;">Delete</button>
   </div>
 </div>
@@ -98,7 +98,7 @@
     <!-- Complete Assignment Card -->
     <div class="card">
       <div class="card-body text-center">
-        <button data-status="not-done" onclick="toggleCompletion(this)" type="button" class="btn btn-primary addBtn" id="completeAssignment">
+        <button data-status="not-done" onclick="toggleCompletion(this)" type="button" class="btn btn-success addBtn" id="completeAssignment">
           Mark As Complete
         </button>
       </div>

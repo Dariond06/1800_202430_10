@@ -1,5 +1,13 @@
+body {
+    background: var(--bs-background);
+    font-family: Arial, sans-serif;
+}
+
 #footerPlaceholder {
     height: 180px;
 }
 
-
+.card-header {
+    background-color: var(--bs-secondary);
+    color: white;
+}

@@ -1,3 +1,7 @@
+body {
+    background: var(--bs-background);
+    font-family: Arial, sans-serif;
+}
 
 .container {
     margin-top: 1rem;
@@ -6,7 +10,7 @@
 }
 
 .card {
-    background-color: #d1d1d1;
+    background-color: var(bs);
     margin-bottom: 0.25rem;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -32,13 +36,13 @@
 
 #back {
     font-size: 3rem;
-    color: red; 
-    transition: color 0.3s ease; 
+    color: red;
+    transition: color 0.3s ease;
 }
 
 #back:hover {
-    color: rgb(179, 11, 45); 
-  }
+    color: rgb(179, 11, 45);
+}
 
 .space {
     display: flex;

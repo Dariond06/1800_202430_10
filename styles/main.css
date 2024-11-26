@@ -1,57 +1,65 @@
 body {
-    background: radial-gradient(circle, var(--bs-light)60%, var(--bs-secondary));
-    font-family: Arial, sans-serif;
-  } 
-  
-  h4#pageTitle {
-    color: #333;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: left; 
-    margin-left: 0, 1rem; 
-    padding: 25px;
-  }
-  
-  .assignment-details h5.card-title {
-    font-size: 1.2rem;
-    color: #007aff;
-  }
-  
-  .assignment-details p.card-text {
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .due-date-container span {
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.7); 
-    border-radius: 20px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
-    display: inline-block;
-    text-align: center;
-    margin-right: 10px;
-    width: 106px;
-  }
+  background: var(--bs-background);
+  font-family: Arial, sans-serif;
+}
 
-  .date {
-    font-size: 1.1rem;
-    color: black;
-  }
+/* page title ("Upcoming Deadlines!") */
+h4#pageTitle {
+  color: var(--bs-black);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 0, 1rem;
+  padding: 25px;
+}
+
+/* Assignment card */
+.assignment-card {
+  background: linear-gradient(90deg, var(--bs-primary), var(--bs-light));
+}
+
+/* assignment title */
+.assignment-details h5.card-title {
+  font-size: 1.2rem;
+  color: var(--bs-white);
+}
+
+/* assignment class */
+.assignment-details p.card-text {
+  font-size: 0.9rem;
+  color: var(--bs-secondary);
+}
+
+.due-date-container span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--bs-white);
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  text-align: center;
+  margin-right: 10px;
+  width: 106px;
+}
+
+.date {
+  font-size: 1.1rem;
+  color: var(--bs-black);
+}
 
 
 .card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  cursor: pointer; 
+  cursor: pointer;
   padding: 5px;
   margin: 10px;
 }
 
 .card:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
-  background-color: #bfd9f3; 
+  transform: translateY(-5px);
+  filter: brightness(1.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown {
@@ -61,42 +69,42 @@ body {
 
 .dropdown-menu {
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--bs-black);
 }
 
 .dropdown-item {
   font-size: 1rem;
-  color: #1d62a3;
+  color: var(--bs-black);
 }
 
 .dropdown-item:hover {
-  background-color: #007aff;
-  color: #fff;
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
 }
 
 
-  .rightBTN {
-    border-bottom-left-radius: 0; 
-    border-bottom-right-radius: 0.09; 
-    border-top-left-radius: 0; 
-    border-top-right-radius: 0; 
-  }
-  
-  .leftBTN {
-    border-bottom-left-radius: 0.375rem; 
-    border-bottom-right-radius: 0; 
-    border-top-left-radius: 0; 
-    border-top-right-radius: 0;
-  }
-  
-  
-  .logout {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  #footerPlaceholder {
-    height: 120px;
-    position: relative; 
-  }
-  
+.rightBTN {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0.09;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.leftBTN {
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+.logout {
+  display: flex;
+  justify-content: space-around;
+}
+
+#footerPlaceholder {
+  height: 120px;
+  position: relative;
+}
+

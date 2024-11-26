@@ -32,6 +32,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/head.css">
     <link rel="stylesheet" href="styles/setting.css">
+    <link rel="stylesheet" href="styles/colours.css">
     
 
     <!-- SweetAlert2-->
@@ -43,14 +44,14 @@
     " rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body>
     <!-- Header Bar -->
     <nav id="navbarPlaceholder"></nav>
 
     <div class="container mt-4">
         <!-- User Info Card -->
         <div class="card shadow-sm mb-4">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header">
                 <h5 class="card-title mb-0">Personal Information</h5>
             </div>
             <div class="card-body">
@@ -63,7 +64,7 @@
                     </fieldset>
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-secondary me-2" onclick="editUserInfo()">Edit</button>
-                        <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+                        <button type="button" class="btn btn-primary" onclick="saveUserInfo()">Save</button>
                     </div>
                 </form>
             </div>
@@ -71,7 +72,7 @@
 
         <!-- priority Settings -->
         <div class="card shadow-sm mb-4">
-            <div class="card-header bg-secondary text-white">
+            <div class="card-header">
                 <h5 class="card-title mb-0">Upcoming Priority</h5>
             </div>
             <div class="card-body">
@@ -81,7 +82,7 @@
                         <label class="me-3" for="redDays">
                             <span class="badge rounded-pill text-white"
                                 style="background-color: rgba(255, 0, 0, .7);">Red</span>
-                            <p>Less then:</p>
+                            <p>Days in advance:</p>
                         </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="redDays">
                     </div>
@@ -91,7 +92,7 @@
                         <label class="me-3" for="orangeDays">
                             <span class="badge rounded-pill text-dark"
                                 style="background-color: rgba(255, 165, 0, .7);">Orange</span>
-                            <p>Less then:</p>
+                            <p>Days in advance:</p>
                         </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="orangeDays">
                     </div>
@@ -101,7 +102,7 @@
                         <label class="me-3" for="yellowDays">
                             <span class="badge rounded-pill text-dark"
                                 style="background-color: rgba(255, 255, 0, .5);">Yellow</span>
-                            <p>Less then:</p>
+                            <p>Days in advance:</p>
                         </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="yellowDays">
                     </div>
@@ -109,10 +110,9 @@
 
 
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary me-2" onclick="savePrioritySettings()">Save
-                            Priorities</button>
-                        <button type="button" id="resetButton" class="btn btn-primary"
-                            onclick="resetPrioritySettings()">Reset to Defaults</button>
+                        <button type="button" id="resetButton" class="btn btn-warning me-2"
+                        onclick="resetPrioritySettings()">Reset to Defaults</button>
+                        <button type="button" class="btn btn-primary" onclick="savePrioritySettings()">Save</button>
                     </div>
             </div>
             </form>
@@ -122,7 +122,7 @@
 
     <!-- Themes-->
     <div class="card shadow-sm mb-4">
-        <div class="card-header bg-secondary text-white">
+        <div class="card-header">
             <h5 class="card-title mb-0">Themes</h5>
         </div>
         <div class="card-body">
