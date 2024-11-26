@@ -109,10 +109,12 @@ function isItComplete(user) {
     .then((doc) => {
       const complete = document.getElementById('completeAssignment');
       if (doc.exists) {
-        complete.textContent = "Mark As Not Complete";
+        button.dataset.status = "not-done";
+        complete.textContent = "Mark As Still Due";
         complete.classList.add("not-complete"); // Add class for dark gray styling
       } else {
-        complete.textContent = "Mark As Complete";
+        button.dataset.status = "done";
+        complete.textContent = "Mark As Done";
         complete.classList.remove("not-complete"); // Remove class for default styling
       }
     })
@@ -203,7 +205,7 @@ function toggleCompletion(button) {
 
   if (currentStatus === "not-done") {
     button.textContent = "Mark As Still Due";
-    button.classList.add("not-complete"); 
+    button.classList.add("not-complete");
     button.dataset.status = "done"; 
     markAsDone(); //
   } else if (currentStatus === "done") {
