@@ -1,13 +1,115 @@
+:root {
+    --bs-primary: #63ADF2;  /* Vibrant blue */
+    --bs-secondary: #304D6D; /* Muted blue */
+    --bs-light: #A7CCED;    /* Light blue */
+    --bs-btn: #0d6efd; /* btn-primary blue */
+    --bs-background: #dee2e6; /* Light gray */
+    --bs-text-light: #ffffff; /* Light text */
+    --bs-text-dark: #000000; /* Dark text */
+    --bs-btn-hover: #0056b3; /* Darker blue for button hover */
+    --bs-date-text: #000000; /* Default black for date text */
+}
+
+/* General body styling */
 body {
-    background: var(--bs-background);
+    background-color: var(--bs-background);
+    color: var(--bs-text-dark);
     font-family: Arial, sans-serif;
 }
 
-#footerPlaceholder {
-    height: 180px;
+/* Card styling */
+.card {
+    background-color: var(--bs-light);
+    border: 1px solid var(--bs-secondary);
+    border-radius: 8px;
 }
 
 .card-header {
     background-color: var(--bs-secondary);
-    color: white;
+    color: var(--bs-text-light);
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn {
+    background-color: var(--bs-btn);
+    color: var(--bs-text-light);
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--bs-btn-hover);
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"] {
+    border: 1px solid var(--bs-secondary);
+    background-color: var(--bs-light);
+    color: var(--bs-text-dark);
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: var(--bs-secondary);
+    opacity: 0.8;
+}
+
+/* Badges for priority levels */
+.badge {
+    padding: 0.4rem 0.7rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bs-secondary);
+    color: var(--bs-text-light);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Headers */
+h5.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+/* Navbar */
+nav {
+    background-color: var(--bs-primary);
+    color: var(--bs-text-light);
+    padding: 0.5rem 1rem;
+}
+
+/* Radio buttons */
+.form-check-label {
+    color: var(--bs-text-dark);
+}
+
+.form-check-input:checked + .form-check-label {
+    color: var(--bs-primary);
+}
+
+/* Log out button */
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+.days {
+    color: var(--bs-text-dark);
+}
+
+
+#footerPlaceholder {
+    height: 180px;
 }

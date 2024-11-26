@@ -31,9 +31,9 @@
     --bs-btn: #E76F51;      /* Burnt Orange */
     --bs-background: #264653; /* Dark Forest Green Background */
     --bs-text-light: #E9C46A; /* Warm Yellow Text */
-    --bs-text-dark: #072925; /* Teal Text */
+    --bs-text-dark: #00ffe1; /* Teal Text */
     --bs-btn-hover: #d35d3d; /* Deeper Burnt Orange for button hover */
-    --bs-date-text: #665a3c; /* Light text for contrast */
+    --bs-date-text: #3c3524; /* Light text for contrast */
 }
 
 /* Pastel Theme */
@@ -70,15 +70,15 @@
     --bs-btn: #023E8A;      /* Dark Sea Blue for buttons */
     --bs-background: #03045E; /* Midnight Blue Background */
     --bs-text-light: #CAF0F8; /* Soft Sky Blue Text */
-    --bs-text-dark: #023E8A; /* Dark Sea Blue Text */
+    --bs-text-dark: #0757bf; /* Dark Sea Blue Text */
     --bs-btn-hover: #0055a4; /* Darker Ocean Blue for button hover */
-    --bs-date-text: #CAF0F8; /* Light text for contrast */
+    --bs-date-text: #0400ff; /* Light text for contrast */
 }
 
 /* Sunset Theme */
 [data-theme="sunset"] {
     --bs-primary: #FF4500;  /* Bright Orange-Red */
-    --bs-secondary: #FF7F50; /* Coral */
+    --bs-secondary: #030100; /* Coral */
     --bs-light: #FFDAB9;    /* Peach Puff */
     --bs-btn: #8B0000;      /* Dark Red for buttons */
     --bs-background: #FF6347; /* Tomato Red Background */
@@ -122,9 +122,9 @@
     --bs-btn: #8B0000;      /* Dark Red for buttons */
     --bs-background: #5A2D0C; /* Dark Brown Background */
     --bs-text-light: #FFE4C4; /* Bisque Text */
-    --bs-text-dark: #382517; /* Chocolate Text */
+    --bs-text-dark: #a24502; /* Chocolate Text */
     --bs-btn-hover: #a30000; /* Brighter Dark Red for button hover */
-    --bs-date-text: #FFE4C4; /* Light text for contrast */
+    --bs-date-text: #714918; /* Light text for contrast */
 }
 
 /* Monochrome Theme */

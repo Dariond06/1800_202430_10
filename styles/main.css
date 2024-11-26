@@ -109,3 +109,7 @@ h4#pageTitle {
   position: relative;
 }
 
+
+#pageTitle {
+  color: var(--bs-text-dark) !important;
+}

@@ -51,7 +51,7 @@
     <div class="container mt-4">
         <!-- User Info Card -->
         <div class="card shadow-sm mb-4">
-            <div class="card-header">
+            <div class="card-header bg-secondary text-white">
                 <h5 class="card-title mb-0">Personal Information</h5>
             </div>
             <div class="card-body">
@@ -69,140 +69,135 @@
                 </form>
             </div>
         </div>
-
-        <!-- priority Settings -->
+    
+        <!-- Priority Settings Card -->
         <div class="card shadow-sm mb-4">
-            <div class="card-header">
+            <div class="card-header bg-secondary text-white">
                 <h5 class="card-title mb-0">Upcoming Priority</h5>
             </div>
             <div class="card-body">
                 <form>
                     <!-- Priority Level 1 -->
-                    <div class="d-flex align-items-center mb-3">
-                        <label class="me-3" for="redDays">
-                            <span class="badge rounded-pill text-white"
+                    <div class="mb-3">
+                        <label for="redDays" class="form-label d-flex align-items-center">
+                            <span class="badge rounded-pill text-white me-2"
                                 style="background-color: rgba(255, 0, 0, .7);">Red</span>
-                            <p>Days in advance:</p>
+                                <p class="days">Days in advance:</p>
                         </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="redDays">
                     </div>
-
+    
                     <!-- Priority Level 2 -->
-                    <div class="d-flex align-items-center mb-3">
-                        <label class="me-3" for="orangeDays">
-                            <span class="badge rounded-pill text-dark"
+                    <div class="mb-3">
+                        <label for="orangeDays" class="form-label d-flex align-items-center">
+                            <span class="badge rounded-pill text-dark me-2"
                                 style="background-color: rgba(255, 165, 0, .7);">Orange</span>
-                            <p>Days in advance:</p>
-                        </label>
+                                <p class="days">Days in advance:</p>                        </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="orangeDays">
                     </div>
-
+    
                     <!-- Priority Level 3 -->
-                    <div class="d-flex align-items-center mb-3">
-                        <label class="me-3" for="yellowDays">
-                            <span class="badge rounded-pill text-dark"
+                    <div class="mb-3">
+                        <label for="yellowDays" class="form-label d-flex align-items-center">
+                            <span class="badge rounded-pill text-dark me-2"
                                 style="background-color: rgba(255, 255, 0, .5);">Yellow</span>
-                            <p>Days in advance:</p>
-                        </label>
+                                <p class="days">Days in advance:</p>                        </label>
                         <input type="number" class="form-control" placeholder="Days in advance" min="1" id="yellowDays">
                     </div>
-
-
-
+    
                     <div class="d-flex justify-content-end">
                         <button type="button" id="resetButton" class="btn btn-warning me-2"
                             onclick="resetPrioritySettings()">Reset to Defaults</button>
                         <button type="button" class="btn btn-primary" onclick="savePrioritySettings()">Save</button>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
-    </div>
-
-
-   <!-- Themes -->
-<div class="card shadow-sm mb-4">
-    <div class="card-header bg-secondary text-white">
-        <h5 class="card-title mb-0">Themes</h5>
-    </div>
-    <div class="card-body">
-        <form>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="light" checked
-                    data-theme="light">
-                <label class="form-check-label" for="light">
-                    Light
-                </label>
+    
+        <!-- Themes Card -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="card-title mb-0">Themes</h5>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="dark" data-theme="dark">
-                <label class="form-check-label" for="dark">
-                    Dark
-                </label>
+            <div class="card-body">
+                <form>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="light" checked
+                            data-theme="light">
+                        <label class="form-check-label" for="light">
+                            Light
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="dark" data-theme="dark">
+                        <label class="form-check-label" for="dark">
+                            Dark
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="forest" data-theme="forest">
+                        <label class="form-check-label" for="forest">
+                            Forest
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="pastel" data-theme="pastel">
+                        <label class="form-check-label" for="pastel">
+                            Pastel
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="brown" data-theme="brown">
+                        <label class="form-check-label" for="brown">
+                            Brown
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="ocean" data-theme="ocean">
+                        <label class="form-check-label" for="ocean">
+                            Ocean
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="sunset" data-theme="sunset">
+                        <label class="form-check-label" for="sunset">
+                            Sunset
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="minimal" data-theme="minimal">
+                        <label class="form-check-label" for="minimal">
+                            Minimal
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="neon" data-theme="neon">
+                        <label class="form-check-label" for="neon">
+                            Neon
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="autumn" data-theme="autumn">
+                        <label class="form-check-label" for="autumn">
+                            Autumn
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="themeRadio" id="monochrome" data-theme="monochrome">
+                        <label class="form-check-label" for="monochrome">
+                            Monochrome
+                        </label>
+                    </div>
+                </form>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="forest" data-theme="forest">
-                <label class="form-check-label" for="forest">
-                    Forest
-                </label>
+        </div>
+    
+        <!-- Log Out Button Card -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body text-center">
+                <button type="button" class="btn btn-danger btn-lg" onclick="logOutUser()">Log Out</button>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="pastel" data-theme="pastel">
-                <label class="form-check-label" for="pastel">
-                    Pastel
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="brown" data-theme="brown">
-                <label class="form-check-label" for="brown">
-                    Brown
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="ocean" data-theme="ocean">
-                <label class="form-check-label" for="ocean">
-                    Ocean
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="sunset" data-theme="sunset">
-                <label class="form-check-label" for="sunset">
-                    Sunset
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="minimal" data-theme="minimal">
-                <label class="form-check-label" for="minimal">
-                    Minimal
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="neon" data-theme="neon">
-                <label class="form-check-label" for="neon">
-                    Neon
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="autumn" data-theme="autumn">
-                <label class="form-check-label" for="autumn">
-                    Autumn
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="themeRadio" id="monochrome" data-theme="monochrome">
-                <label class="form-check-label" for="monochrome">
-                    Monochrome
-                </label>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-    <!-- Log Out Button -->
-    <div class="text-center">
-        <button type="button" class="btn btn-danger btn-lg" onclick="logOutUser()">Log Out</button>
-    </div>
+        </div>
     </div>
 
     <!-- Footer -->

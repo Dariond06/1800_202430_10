@@ -16,12 +16,12 @@ function toggleContent(activeButton, inactiveButton, activeContent, inactiveCont
 
 dueButton.addEventListener('click', function () {
     toggleContent(dueButton, doneButton, dueContent, doneContent, loadDueAssignments);
-    document.getElementById("pageTitle").textContent = "Upcoming Deadlines!"
+    document.getElementById("pageTitle").innerHTML = "Upcoming Deadlines!"
 });
 
 doneButton.addEventListener('click', function () {
     toggleContent(doneButton, dueButton, doneContent, dueContent, loadDoneAssignments);
-    document.getElementById("pageTitle").textContent = "Completed Assignments"
+    document.getElementById("pageTitle").innerHTML = "Completed Assignments"
 });
 
 
