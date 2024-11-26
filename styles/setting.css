@@ -71,7 +71,6 @@ h5.card-title {
 nav {
     background-color: var(--bs-primary);
     color: var(--bs-text-light);
-    padding: 0.5rem 1rem;
 }
 
 /* Radio buttons */
