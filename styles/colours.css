@@ -52,10 +52,10 @@
 /* Brown Theme */
 [data-theme="brown"] {
     --bs-primary: #8B4513;  /* Saddle Brown */
-    --bs-secondary: #D2B48C; /* Tan */
-    --bs-light: #F5F5DC;    /* Beige */
+    --bs-secondary: #9d886c; /* Tan */
+    --bs-light: #a0714a;    /* Beige */
     --bs-btn: #A52A2A;      /* Brown for buttons */
-    --bs-background: #3E2723; /* Dark Brown Background */
+    --bs-background: #6d5331; /* Dark Brown Background */
     --bs-text-light: #F5F5DC; /* Beige Text */
     --bs-text-dark: #d48750; /* Saddle Brown Text */
     --bs-btn-hover: #cc3c3c; /* Lighter Brown for button hover */
