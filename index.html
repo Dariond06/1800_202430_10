@@ -44,7 +44,7 @@
         </section>
 
         <!-- Features Section -->
-        <div class="featurer"  id="featureArea">
+        <div class="featurer" id="featureArea">
             <section id="features" class="py-3">
                 <h2 class="text-center mb-4">Key Features</h2>
                 <div class="row text-center">
@@ -123,6 +123,17 @@
                 // Shrink the button and reset the text
                 loginWrapper.classList.remove('expanded');
                 loginButton.textContent = "Login Create";
+            }
+        });
+
+
+        // Apply the saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme'); // Retrieve the saved theme from localStorage
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme); // Apply the theme
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light'); // Default theme
             }
         });
     </script>
