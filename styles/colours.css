@@ -25,15 +25,15 @@
 
 /* Forest Theme */
 [data-theme="forest"] {
-    --bs-primary: #2A9D8F;  /* Teal */
-    --bs-secondary: #264653; /* Dark Forest Green */
-    --bs-light: #F4A261;    /* Soft Peach */
-    --bs-btn: #E76F51;      /* Burnt Orange */
-    --bs-background: #264653; /* Dark Forest Green Background */
-    --bs-text-light: #E9C46A; /* Warm Yellow Text */
-    --bs-text-dark: #00ffe1; /* Teal Text */
-    --bs-btn-hover: #d35d3d; /* Deeper Burnt Orange for button hover */
-    --bs-date-text: #3c3524; /* Light text for contrast */
+    --bs-primary: #606c38;  /* Light Forest Green */
+    --bs-secondary: #283618; /* Dark Forest Green */
+    --bs-light: #fefae0;    /* Cream */
+    --bs-btn: #bc6c25;      /* Burnt Orange */
+    --bs-background: #e0e6de; /* Dark Forest Green Background */
+    --bs-text-light: #ffffff; /* Warm Yellow Text */
+    --bs-text-dark: #283618; /* Dark Forest Green Text */
+    --bs-btn-hover: #dda15e; /* Lighter Burnt Orange for button hover */
+    --bs-date-text: #283618; /* Dark text for contrast */
 }
 
 /* Pastel Theme */
