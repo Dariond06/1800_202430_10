@@ -91,128 +91,123 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Check if the assignment is marked as complete or not
-function isItComplete(user) {
+// Toggle completion status
+function toggleCompletion(button) {
+  const currentStatus = button.dataset.status;
+  const user = firebase.auth().currentUser;
   const assignmentId = new URLSearchParams(window.location.search).get('id');
-  if (!assignmentId) {
-    console.error("Assignment ID not found in URL.");
+
+  if (!assignmentId || !user) {
+    Swal.fire('Error!', 'User not authenticated or assignment ID not found.', 'error');
     return;
   }
 
-  const userId = user.uid;
+  if (currentStatus === "not-done") {
+    // Mark as done
+    button.textContent = "Mark As Still Due";
+    button.classList.add("not-complete");
+    button.dataset.status = "done"; 
+    markAsDone(user, assignmentId);  // Mark assignment as done
+  } else if (currentStatus === "done") {
+    // Mark as still due
+    button.textContent = "Mark As Done";
+    button.classList.remove("not-complete");
+    button.dataset.status = "not-done"; 
+    markAsNotDone(user, assignmentId);  // Mark assignment as not done
+  }
+}
+
+// Mark assignment as complete in Firestore
+function markAsDone(user, assignmentId) {
   firebase.firestore()
     .collection('users')
-    .doc(userId)
+    .doc(user.uid)
+    .collection('completedAssignments')
+    .doc(assignmentId)
+    .set({ assignmentId })
+    .then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Marked as done!"
+      });
+    })
+    .catch((error) => {
+      Swal.fire('Error!', 'There was an error marking the assignment as complete.', 'error');
+    });
+}
+
+// Mark assignment as not done in Firestore
+function markAsNotDone(user, assignmentId) {
+  firebase.firestore()
+    .collection('users')
+    .doc(user.uid)
+    .collection('completedAssignments')
+    .doc(assignmentId)
+    .delete()
+    .then(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Marked as not done!"
+      });
+    })
+    .catch((error) => {
+      Swal.fire('Error!', 'There was an error marking the assignment as not complete.', 'error');
+    });
+}
+
+// Check if the assignment is complete and update the button state
+function isItComplete(user) {
+  const assignmentId = new URLSearchParams(window.location.search).get('id');
+  if (!assignmentId || !user) {
+    Swal.fire('Error!', 'User not authenticated or assignment ID not found.', 'error');
+    return;
+  }
+
+  firebase.firestore()
+    .collection('users')
+    .doc(user.uid)
     .collection('completedAssignments')
     .doc(assignmentId)
     .get()
     .then((doc) => {
-      const complete = document.getElementById('completeAssignment');
+      const completeButton = document.getElementById('completeAssignment');
       if (doc.exists) {
-        complete.textContent = "Mark As Not Complete";
-        complete.classList.add("not-complete"); // Add class for dark gray styling
+        completeButton.textContent = "Mark As Still Due";
+        completeButton.classList.add("not-complete"); // Add class for dark gray styling
+        completeButton.dataset.status = "done"; // Update status to "done"
       } else {
-        complete.textContent = "Mark As Complete";
-        complete.classList.remove("not-complete"); // Remove class for default styling
+        completeButton.textContent = "Mark As Done";
+        completeButton.classList.remove("not-complete"); // Remove class for default styling
+        completeButton.dataset.status = "not-done"; // Update status to "not-done"
       }
     })
     .catch((error) => {
-      console.error('Error checking assignment status:', error);
+      Swal.fire('Error!', 'There was an error checking the assignment status.', 'error');
     });
 }
 
-// Mark assignment as complete
-function markAsDone() {
-  const user = firebase.auth().currentUser;
-  const assignmentId = new URLSearchParams(window.location.search).get('id');
-
-  if (user && assignmentId) {
-    const userId = user.uid;
-    firebase.firestore()
-      .collection('users')
-      .doc(userId)
-      .collection('completedAssignments')
-      .doc(assignmentId)
-      .set({ assignmentId })
-      .then(() => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-          }
-      });
-      Toast.fire({
-          icon: "success",
-          title: "Marked as done!"
-      });
-      })
-      .catch((error) => {
-        Swal.fire('Error!', 'There was an error marking the assignment as complete.', 'error');
-      });
-  } else {
-    Swal.fire('Error!', 'User not authenticated or assignment ID not found.', 'error');
-  }
-}
-
-// Mark assignment as not done
-function markAsNotDone() {
-  const user = firebase.auth().currentUser;
-  const assignmentId = new URLSearchParams(window.location.search).get('id');
-
-  if (user && assignmentId) {
-    const userId = user.uid;
-    firebase.firestore()
-      .collection('users')
-      .doc(userId)
-      .collection('completedAssignments')
-      .doc(assignmentId)
-      .delete()
-      .then(() => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-          }
-      });
-      Toast.fire({
-          icon: "success",
-          title: "Marked as not done!"
-      });
-      })
-      .catch((error) => {
-        Swal.fire('Error!', 'There was an error marking the assignment as not complete.', 'error');
-      });
-  } else {
-    Swal.fire('Error!', 'User not authenticated or assignment ID not found.', 'error');
-  }
-}
-
-// Toggle completion status
-function toggleCompletion(button) {
-  const currentStatus = button.dataset.status;
-
-  if (currentStatus === "not-done") {
-    button.textContent = "Mark As Still Due";
-    button.classList.add("not-complete"); 
-    button.dataset.status = "done"; 
-    markAsDone(); //
-  } else if (currentStatus === "done") {
-    button.textContent = "Mark As Done";
-    button.classList.remove("not-complete");
-    button.dataset.status = "not-done"; 
-    markAsNotDone(); 
-  }
-}
 
 
 document.getElementById('editAssignment').addEventListener('click', async function () {
