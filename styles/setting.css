@@ -1,15 +1,3 @@
-:root {
-    --bs-primary: #63ADF2;  /* Vibrant blue */
-    --bs-secondary: #304D6D; /* Muted blue */
-    --bs-light: #A7CCED;    /* Light blue */
-    --bs-btn: #0d6efd; /* btn-primary blue */
-    --bs-background: #dee2e6; /* Light gray */
-    --bs-text-light: #ffffff; /* Light text */
-    --bs-text-dark: #000000; /* Dark text */
-    --bs-btn-hover: #0056b3; /* Darker blue for button hover */
-    --bs-date-text: #000000; /* Default black for date text */
-}
-
 /* General body styling */
 body {
     background-color: var(--bs-background);
