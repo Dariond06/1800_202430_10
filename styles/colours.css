@@ -49,3 +49,70 @@
     --bs-background: #3E2723; /* Dark Brown for background */
     --bs-text: #F5F5DC;     /* Beige for text */
 }
+
+
+/* Ocean Theme */
+[data-theme="ocean"] {
+    --bs-primary: #0077B6;  /* Deep Ocean Blue */
+    --bs-secondary: #00B4D8; /* Bright Aqua */
+    --bs-danger: #03045E;   /* Midnight Blue */
+    --bs-light: #CAF0F8;    /* Soft Sky Blue */
+    --bs-dark: #023E8A;     /* Dark Sea Blue */
+    --bs-background: #03045E;
+    --bs-text: #CAF0F8;
+}
+
+/* Sunset Theme */
+[data-theme="sunset"] {
+    --bs-primary: #FF4500;  /* Bright Orange-Red */
+    --bs-secondary: #FF7F50; /* Coral */
+    --bs-danger: #FF6347;   /* Tomato Red */
+    --bs-light: #FFDAB9;    /* Peach Puff */
+    --bs-dark: #8B0000;     /* Dark Red */
+    --bs-background: #FF6347;
+    --bs-text: #FFDAB9;
+}
+
+/* Minimal Theme */
+[data-theme="minimal"] {
+    --bs-primary: #FFFFFF;  /* White */
+    --bs-secondary: #E0E0E0; /* Light Grey */
+    --bs-danger: #B0B0B0;   /* Grey */
+    --bs-light: #F5F5F5;    /* Soft White */
+    --bs-dark: #333333;     /* Charcoal */
+    --bs-background: #FFFFFF;
+    --bs-text: #333333;
+}
+
+/* Neon Theme */
+[data-theme="neon"] {
+    --bs-primary: #39FF14;  /* Neon Green */
+    --bs-secondary: #FF6EC7; /* Neon Pink */
+    --bs-danger: #FF073A;   /* Neon Red */
+    --bs-light: #E6E6FA;    /* Light Lavender */
+    --bs-dark: #240046;     /* Deep Purple */
+    --bs-background: #240046;
+    --bs-text: #39FF14;
+}
+
+/* Autumn Theme */
+[data-theme="autumn"] {
+    --bs-primary: #D2691E;  /* Chocolate */
+    --bs-secondary: #FF7F50; /* Coral */
+    --bs-danger: #8B0000;   /* Dark Red */
+    --bs-light: #FFE4C4;    /* Bisque */
+    --bs-dark: #5A2D0C;     /* Dark Brown */
+    --bs-background: #5A2D0C;
+    --bs-text: #FFE4C4;
+}
+
+/* Monochrome Theme */
+[data-theme="monochrome"] {
+    --bs-primary: #000000;  /* Black */
+    --bs-secondary: #555555; /* Grey */
+    --bs-danger: #2C2C2C;   /* Dark Grey */
+    --bs-light: #E5E5E5;    /* Light Grey */
+    --bs-dark: #1A1A1A;     /* Almost Black */
+    --bs-background: #1A1A1A;
+    --bs-text: #E5E5E5;
+}
