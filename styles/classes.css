@@ -1,37 +1,32 @@
 /* General Styling */
 body {
     background-color: var(--bs-background);
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
-.container {
-    padding: 20px;
-}
-
-h5.card-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--bs-secondary);
-    padding: 15px;
+    color: var(--bs-text-dark);
+    font-family: Arial, sans-serif;
 }
 
 .card {
-    background-color: var(--bs-white);
-    border-radius: 10px;
+    background-color: var(--bs-text-light);
+    border: 1px solid var(--bs-secondary);
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
+.card-header {
+    background-color: var(--bs-secondary);
+    color: var(--bs-text-light);
+}
+
+h5.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.card-body {
-    padding: 15px;
 }
 
 .card-text {
@@ -45,24 +40,14 @@ h5.card-title {
 
 /* Button Styles */
 .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 0.9em;
-    font-weight: 600;
-    color: #ffffff;
     background-color: var(--bs-btn);
+    color: var(--bs-text-light);
     border: none;
-    border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
-    cursor: pointer;
-}
-
-.btn:focus {
-    outline: none;
+    background-color: var(--bs-btn-hover);
 }
 
 /* Links */
@@ -109,19 +94,9 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Class Card Container */
-#classesContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-}
-
-
 .footer a {
     text-decoration: none;
 }
-
 
 #footerPlaceholder {
     height: 180px;

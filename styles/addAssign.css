@@ -10,7 +10,9 @@ body {
 }
 
 .card {
-    background-color: var(bs);
+    background-color: var(--bs-text-light);
+    color: var(--bs-secondary);
+    border: 1px solid var(--bs-secondary);
     margin-bottom: 0.25rem;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -21,7 +23,7 @@ body {
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 1rem;
-    color: #000;
+    color: var(--bs);
 }
 
 .label-bold {

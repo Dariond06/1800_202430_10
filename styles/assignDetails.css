@@ -1,19 +1,26 @@
 body {
-    background-color: var(--bs-gray-200);
+    background-color: var(--bs-background);
     font-family: Arial, sans-serif;
-  }
+}
 
-.card-title, .info-card {
+.card {
+    background-color: var(--bs-text-light);
+    border: 1px solid var(--bs-secondary);
+    margin-bottom: 0.25rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-title,
+.info-card {
     display: flex;
     justify-content: space-between;
 }
 
-.material-icons {
-    color: var(--bs-white);
-}
-
-.card-link .card-body {
-    color: inherit;
+.card-link,
+.card-body {
+    color: var(--bs-secondary);
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
@@ -44,13 +51,14 @@ body {
 
 #back {
     font-size: 3rem;
-    color: red; 
+    color: red;
     transition: color 0.3s ease;
 
 }
 
 #back:hover {
-    color: rgb(179, 11, 45); /* Darker shade on hover */
+    color: rgb(179, 11, 45);
+    /* Darker shade on hover */
 }
 
 .box {
@@ -84,4 +92,9 @@ body {
 
 #footerPlaceholder {
     height: 180px;
+}
+
+.btn-edit {
+    background-color: var(--bs-btn);
+    color: var(--bs-text-light);
 }

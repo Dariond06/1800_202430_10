@@ -2,6 +2,7 @@
     --bs-primary: #63ADF2;  /* Vibrant blue */
     --bs-secondary: #304D6D; /* Muted blue */
     --bs-light: #A7CCED;    /* Light blue */
+    --bs-card: #ffffff; /* White */
     --bs-btn: #0d6efd; /* btn-primary blue */
     --bs-background: #dee2e6; /* Light gray (--bs-gray-300) */
     --bs-text-light: #ffffff; /* Light text */
@@ -15,6 +16,7 @@
     --bs-primary: #003049;  /* Dark Blue */
     --bs-secondary: #669BBC; /* Muted Blue */
     --bs-light: #121212;    /* Very Dark */
+    --bs-card: #ffffff; /* White */
     --bs-btn: #780000;      /* Deep Red */
     --bs-background: #121212; /* Very Dark Background */
     --bs-text-light: #FDF0D5; /* Light Cream Text */
@@ -25,14 +27,14 @@
 
 /* Forest Theme */
 [data-theme="forest"] {
-    --bs-primary: #606c38;  /* Light Forest Green */
-    --bs-secondary: #283618; /* Dark Forest Green */
+    --bs-primary: #606c38;  /* Light forest green */
+    --bs-secondary: #283618; /* Dark forest green */
     --bs-light: #fefae0;    /* Cream */
-    --bs-btn: #bc6c25;      /* Burnt Orange */
-    --bs-background: #e0e6de; /* Dark Forest Green Background */
-    --bs-text-light: #ffffff; /* Warm Yellow Text */
-    --bs-text-dark: #283618; /* Dark Forest Green Text */
-    --bs-btn-hover: #dda15e; /* Lighter Burnt Orange for button hover */
+    --bs-btn: #bc6c25;      /* Burnt orange */
+    --bs-background: #e0e6de; /* Dark forest green background */
+    --bs-text-light: #ffffff; /* Warm yellow text */
+    --bs-text-dark: #283618; /* Dark forest green text */
+    --bs-btn-hover: #dda15e; /* Lighter burnt orange for button hover */
     --bs-date-text: #283618; /* Dark text for contrast */
 }
 
