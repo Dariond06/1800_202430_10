@@ -6,7 +6,7 @@ body {
 }
 
 .card {
-    background-color: var(--bs-text-light);
+    background-color: var(--bs-card-background);
     border: 1px solid var(--bs-secondary);
     border-radius: 8px;
     overflow: hidden;

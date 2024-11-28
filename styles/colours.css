@@ -2,9 +2,10 @@
     --bs-primary: #63ADF2;  /* Vibrant blue */
     --bs-secondary: #304D6D; /* Muted blue */
     --bs-light: #A7CCED;    /* Light blue */
-    --bs-card: #ffffff; /* White */
-    --bs-btn: #0d6efd; /* btn-primary blue */
+    --bs-card: #ffffff;     /* White */
+    --bs-btn: #0d6efd;      /* btn-primary blue */
     --bs-background: #dee2e6; /* Light gray (--bs-gray-300) */
+    --bs-card-background: #ffffff; /* White */
     --bs-text-light: #ffffff; /* Light text */
     --bs-text-dark: #000000; /* Dark text */
     --bs-btn-hover: #0056b3; /* Darker blue for button hover */
@@ -16,9 +17,10 @@
     --bs-primary: #003049;  /* Dark Blue */
     --bs-secondary: #669BBC; /* Muted Blue */
     --bs-light: #121212;    /* Very Dark */
-    --bs-card: #ffffff; /* White */
+    --bs-card: #ffffff;     /* White */
     --bs-btn: #780000;      /* Deep Red */
     --bs-background: #121212; /* Very Dark Background */
+    --bs-card-background: #1f1f1f; /* Dark Gray Card */
     --bs-text-light: #FDF0D5; /* Light Cream Text */
     --bs-text-dark: #669BBC; /* Muted Blue Text */
     --bs-btn-hover: #a30000; /* Brighter Red for button hover */
@@ -32,6 +34,7 @@
     --bs-light: #fefae0;    /* Cream */
     --bs-btn: #bc6c25;      /* Burnt orange */
     --bs-background: #e0e6de; /* Dark forest green background */
+    --bs-card-background: #f5f5f0; /* Light Forest Card */
     --bs-text-light: #ffffff; /* Warm yellow text */
     --bs-text-dark: #283618; /* Dark forest green text */
     --bs-btn-hover: #dda15e; /* Lighter burnt orange for button hover */
@@ -45,6 +48,7 @@
     --bs-light: #EDF6E5;    /* Soft Mint */
     --bs-btn: #FFB5A7;      /* Pastel Red for buttons */
     --bs-background: #FFEBE5; /* Soft Pastel Background */
+    --bs-card-background: #FFFFFF; /* White Pastel Card */
     --bs-text-light: #6B4226; /* Soft Brown Text */
     --bs-text-dark: #855a66; /* Pastel Mauve Text */
     --bs-btn-hover: #ff9f91; /* Darker Pastel Red for button hover */
@@ -58,6 +62,7 @@
     --bs-light: #a0714a;    /* Beige */
     --bs-btn: #A52A2A;      /* Brown for buttons */
     --bs-background: #6d5331; /* Dark Brown Background */
+    --bs-card-background: #8b572a; /* Medium Brown Card */
     --bs-text-light: #F5F5DC; /* Beige Text */
     --bs-text-dark: #d48750; /* Saddle Brown Text */
     --bs-btn-hover: #cc3c3c; /* Lighter Brown for button hover */
@@ -71,8 +76,9 @@
     --bs-light: #CAF0F8;    /* Soft Sky Blue */
     --bs-btn: #023E8A;      /* Dark Sea Blue for buttons */
     --bs-background: #03045E; /* Midnight Blue Background */
-    --bs-text-light: #CAF0F8; /* Soft Sky Blue Text */
-    --bs-text-dark: #0757bf; /* Dark Sea Blue Text */
+    --bs-card-background: #CAF0F8; /* Light Sky Blue Card */
+    --bs-text-light: #03045E; /* Deep Ocean Text */
+    --bs-text-dark: #023E8A; /* Darker Ocean Text */
     --bs-btn-hover: #0055a4; /* Darker Ocean Blue for button hover */
     --bs-date-text: #0400ff; /* Light text for contrast */
 }
@@ -84,6 +90,7 @@
     --bs-light: #FFDAB9;    /* Peach Puff */
     --bs-btn: #8B0000;      /* Dark Red for buttons */
     --bs-background: #FF6347; /* Tomato Red Background */
+    --bs-card-background: #FFCF9F; /* Light Peach Card */
     --bs-text-light: #FFDAB9; /* Peach Puff Text */
     --bs-text-dark: #8B0000; /* Dark Red Text */
     --bs-btn-hover: #b30000; /* Brighter Red for button hover */
@@ -97,6 +104,7 @@
     --bs-light: #F5F5F5;    /* Soft White */
     --bs-btn: #B0B0B0;      /* Grey for buttons */
     --bs-background: #FFFFFF; /* White Background */
+    --bs-card-background: #F5F5F5; /* Soft White Card */
     --bs-text-light: #887e7e; /* Light Grey Text */
     --bs-text-dark: #333333; /* Charcoal Text */
     --bs-btn-hover: #999999; /* Darker Grey for button hover */
@@ -110,6 +118,7 @@
     --bs-light: #E6E6FA;    /* Light Lavender */
     --bs-btn: #FF073A;      /* Neon Red for buttons */
     --bs-background: #240046; /* Deep Purple Background */
+    --bs-card-background: #4c0072; /* Purple Neon Card */
     --bs-text-light: #00b7ff; /* Neon Green Text */
     --bs-text-dark: #FF6EC7; /* Neon Pink Text */
     --bs-btn-hover: #ff294d; /* Brighter Neon Red for button hover */
@@ -123,6 +132,7 @@
     --bs-light: #FFE4C4;    /* Bisque */
     --bs-btn: #8B0000;      /* Dark Red for buttons */
     --bs-background: #5A2D0C; /* Dark Brown Background */
+    --bs-card-background: #8b5e34; /* Warm Brown Card */
     --bs-text-light: #FFE4C4; /* Bisque Text */
     --bs-text-dark: #a24502; /* Chocolate Text */
     --bs-btn-hover: #a30000; /* Brighter Dark Red for button hover */
@@ -136,6 +146,7 @@
     --bs-light: #E5E5E5;    /* Light Grey */
     --bs-btn: #2C2C2C;      /* Dark Grey for buttons */
     --bs-background: #1A1A1A; /* Almost Black Background */
+    --bs-card-background: #333333; /* Dark Grey Card */
     --bs-text-light: #635f5f; /* Light Grey Text */
     --bs-text-dark: #ffffff; /* Black Text */
     --bs-btn-hover: #444444; /* Lighter Grey for button hover */
