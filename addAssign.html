@@ -55,59 +55,55 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- Assignment details -->
-    <div class="container">
-        <div id="addAssignPage" class="card">
-            <div class="card-body">
-                <div class="space box">
-                    <a><i id="back" class="material-symbols-outlined hide">cancel</i></a>
-                    <div class="card-title left">Add Assignment</div>
-                    <a href="main.html"><i id="back" class="material-symbols-outlined right">cancel</i></a>
+    <div class="container mt-4">
+        <div id="addAssignPage" class="col-md-4 mb-4">
+            <div class="card shadow-lg rounded">
+                <div class="card-header">
+                    <h5 class="card-title mb-0 text-center">Add Assignment</h5>
                 </div>
-
-                <form>
-                    <div class="form-group mb-4">
-                        <label for="titleInput" class="label-bold">Assignment Title</label>
-                        <input type="text" class="form-control" id="titleInput"  placeholder="Title of assignment..." maxlength="25" />
-                    </div>
-
-                    <div class="row">
-                        <!-- Class Section -->
-                        <div class="col-md-3 mb-3">
-                            <label for="classSelect" class="fw-bold">Class</label>
-                            <select class="form-select" id="classSelect">
-                                <option value="COMP 1100">COMP 1100</option>
-                                <option value="COMM 1116">COMM 1116</option>
-                                <option value="COMP 1113">COMP 1113</option>
-                                <option value="COMP 1510">COMP 1510</option>
-                                <option value="COMP 1537">COMP 1537</option>
-                                <option value="COMP 1712">COMP 1712</option>
-                                <option value="COMP 1800">COMP 1800</option>
-                            </select>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group mb-4">
+                            <label for="titleInput" class="label-bold">Assignment Title</label>
+                            <input type="text" class="form-control" id="titleInput" placeholder="Title of assignment..." maxlength="25" />
                         </div>
-
-                        <!-- Assignment Notes Section -->
-                        <div class="col-md-3 mb-3">
-                            <label for="detailsInput" class="fw-bold">Assignment Details</label>
-                            <textarea class="form-control" id="detailsInput" rows="4"
-                                placeholder="Assignment details..."> </textarea>
+    
+                        <div class="row">
+                            <!-- Class Section -->
+                            <div class="col-md-12 mb-3">
+                                <label for="classSelect" class="fw-bold">Class</label>
+                                <select class="form-select" id="classSelect">
+                                    <option value="COMP 1100">COMP 1100</option>
+                                    <option value="COMM 1116">COMM 1116</option>
+                                    <option value="COMP 1113">COMP 1113</option>
+                                    <option value="COMP 1510">COMP 1510</option>
+                                    <option value="COMP 1537">COMP 1537</option>
+                                    <option value="COMP 1712">COMP 1712</option>
+                                    <option value="COMP 1800">COMP 1800</option>
+                                </select>
+                            </div>
+    
+                            <!-- Assignment Notes Section -->
+                            <div class="col-md-12 mb-3">
+                                <label for="detailsInput" class="fw-bold">Assignment Details</label>
+                                <textarea class="form-control" id="detailsInput" rows="4" placeholder="Assignment details..."></textarea>
+                            </div>
+    
+                            <!-- Assignment Links Section -->
+                            <div class="col-md-12 mb-3">
+                                <label for="linkInput" class="fw-bold">Assignment Link</label>
+                                <textarea class="form-control" id="linkInput" rows="4" placeholder="Link to assignment..."></textarea>
+                            </div>
                         </div>
-
-                        <!-- Assignmets links -->
-                        <div class="col-md-3 mb-3">
-                            <label for="linkInput" class="fw-bold">Assignment Link</label>
-                            <textarea class="form-control" id="linkInput" rows="4"
-                                placeholder="Link to assignment..."></textarea>
+    
+                        <div class="mb-4">
+                            <label for="dateInput" class="fw-bold">Due Date:</label>
+                            <input type="datetime-local" id="dateInput" class="form-control mb-2" required>
                         </div>
-
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="dateInput" class="fw-bold">Due Date:</label>
-                        <input type="datetime-local" id="dateInput" class="form-control mb-2" required>
-                    </div>
-
-                    <button type="button" class="btn btn-primary addBtn" id="submitAssignment">Submit</button>
-                </form>
+    
+                        <button type="button" class="btn btn-primary addBtn" id="submitAssignment">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

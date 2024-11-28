@@ -1,5 +1,6 @@
 body {
     background: var(--bs-background);
+    color: var(--bs-text-dark);
     font-family: Arial, sans-serif;
 }
 
@@ -19,11 +20,15 @@ body {
     overflow: hidden;
 }
 
+.card-header {
+    background-color: var(--bs-secondary);
+    color: var(--bs-text-light);
+}
+
 .card-title {
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 1rem;
-    color: var(--bs);
 }
 
 .label-bold {
