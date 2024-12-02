@@ -65,14 +65,14 @@
                     <form>
                         <div class="form-group mb-4">
                             <label for="titleInput" class="label-bold">Assignment Title</label>
-                            <input type="text" class="form-control" id="titleInput" placeholder="Title of assignment..." maxlength="25" />
+                            <input type="text" class="form-control addText" id="titleInput" placeholder="Title of assignment..." maxlength="25" />
                         </div>
     
                         <div class="row">
                             <!-- Class Section -->
                             <div class="col-md-12 mb-3">
                                 <label for="classSelect" class="fw-bold">Class</label>
-                                <select class="form-select" id="classSelect">
+                                <select class="form-select addText" id="classSelect">
                                     <option value="COMP 1100">COMP 1100</option>
                                     <option value="COMM 1116">COMM 1116</option>
                                     <option value="COMP 1113">COMP 1113</option>
@@ -86,20 +86,22 @@
                             <!-- Assignment Notes Section -->
                             <div class="col-md-12 mb-3">
                                 <label for="detailsInput" class="fw-bold">Assignment Details</label>
-                                <textarea class="form-control" id="detailsInput" rows="4" placeholder="Assignment details..."></textarea>
+                                <textarea class="form-control addText" id="detailsInput" rows="4" placeholder="Assignment details..."></textarea>
                             </div>
     
                             <!-- Assignment Links Section -->
                             <div class="col-md-12 mb-3">
                                 <label for="linkInput" class="fw-bold">Assignment Link</label>
-                                <textarea class="form-control" id="linkInput" rows="4" placeholder="Link to assignment..."></textarea>
+                                <textarea class="form-control addText" id="linkInput" rows="4" placeholder="Link to assignment..."></textarea>
                             </div>
                         </div>
     
-                        <div class="mb-4">
+                        <div class="mb-4 position-relative">
                             <label for="dateInput" class="fw-bold">Due Date:</label>
-                            <input type="datetime-local" id="dateInput" class="form-control mb-2" required>
+                            <input type="datetime-local" id="dateInput" class="form-control mb-2 addText" required>
+                            <span class="material-icons custom-calendar-icon">today</span> <!-- Google Material Icon -->
                         </div>
+                        
     
                         <button type="button" class="btn btn-primary addBtn" id="submitAssignment">Submit</button>
                     </form>

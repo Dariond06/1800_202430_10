@@ -31,7 +31,7 @@ h5.card-title {
 
 .card-text {
     font-size: 0.9em;
-    color: #555;
+    color: var(--bs-text-dark);
 }
 
 .mt-3 {
@@ -100,4 +100,8 @@ footer a:hover {
 
 #footerPlaceholder {
     height: 180px;
+}
+
+p, p a {
+    color: var(--bs-text-dark);
 }

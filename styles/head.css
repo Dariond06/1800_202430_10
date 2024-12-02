@@ -15,10 +15,10 @@
   color: var(--bs-text-dark);
 }
 
-.navbar-icon {
-  font-size: 1.8rem;
+.img {
+  height: 50px;
+  width: auto;
   margin-right: 0.5rem;
-  color: var(--bs-text-dark);
 }
 
 .navbar-text {
