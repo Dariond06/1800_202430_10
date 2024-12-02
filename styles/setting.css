@@ -110,3 +110,33 @@ nav {
 #footerPlaceholder {
     height: 180px;
 }
+
+
+/* General input styling */
+.addText {
+    background-color: var(--bs-card-background);
+    color: var(--bs-text-dark);
+    border: 1px solid var(--bs-text-dark); /* Optional: border color */
+    padding: 0.5rem; /* Optional: consistent spacing */
+    transition: color 0.2s, background-color 0.2s; /* Smooth transitions */
+}
+
+/* Placeholder text styling */
+.addText::placeholder {
+    color: var(--bs-text-dark);
+    opacity: 0.7; /* Optional: Adjust placeholder visibility */
+}
+
+/* Keep text color consistent while typing (focused state) */
+.addText:focus {
+    color: var(--bs-text-dark);
+    background-color: var(--bs-card-background);
+    border-color: var(--bs-text-dark); /* Optional: focus border color */
+    outline: none;
+}
+
+/* Adjust placeholder styling while focused (optional) */
+.addText:focus::placeholder {
+    color: var(--bs-text-dark);
+    opacity: 0.5; /* Reduce opacity to emphasize typed text */
+}
