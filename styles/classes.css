@@ -44,10 +44,12 @@ h5.card-title {
     color: var(--bs-text-light);
     border: none;
     transition: background-color 0.3s ease;
+    
 }
 
 .btn:hover {
     background-color: var(--bs-btn-hover);
+    text-decoration: none;
 }
 
 /* Links */
